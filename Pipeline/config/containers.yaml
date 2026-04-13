@@ -1,0 +1,39 @@
+# config/containers.yaml
+# Information about which containers to use for each rule is stored here.
+# If you want to change a version of a container, change the link stored in image:
+
+fastqc:
+  image: docker://biocontainers/fastqc:v0.11.9_cv8
+  output: fastqc.sif
+
+fastp:
+  image: docker://staphb/fastp:1.0.1
+  output: fastp.sif
+
+seqkit:
+  image: "docker://staphb/seqkit:2.10.1"
+  output: seqkit.sif
+
+bwa:
+  image: "docker://biocontainers/bwa:v0.7.17-3-deb_cv1"
+  output: bwa.sif
+
+samtools:
+  image: "docker://staphb/samtools:1.22.1"
+  output: samtools.sif
+
+pilon:
+  image: "docker://biocontainers/pilon:v1.23dfsg-1-deb_cv1"
+  output: pilon.sif
+
+ncbi:
+  image: "docker://quay.io/biocontainers/ncbi-genome-download:0.3.3--pyh7cba7a3_0"
+  output: ncbi.sif
+
+bakta:
+  image: docker://staphb/bakta:1.11.4-6.0-light
+  output: bakta.sif
+
+bcftools:
+  image: quay.io/biocontainers/bcftools:1.23.1--hb2cee57_0
+  output: bcftools.sif

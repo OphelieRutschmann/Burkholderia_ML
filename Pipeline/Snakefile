@@ -1,0 +1,57 @@
+# Main Snakefile
+from snakemake.utils import min_version
+min_version("6.0")
+
+# Load configuration
+import yaml
+
+# Load and merge YAML configs
+with open("config/config.yaml") as f:
+    config_main = yaml.safe_load(f)
+
+with open("config/databases.yaml") as f:
+    config_db = yaml.safe_load(f)
+
+# Simple shallow merge
+config = {**config_main, **config_db}
+
+# Include shared functions
+include: "workflow/rules/common.smk"
+
+# Get samples from config
+SAMPLES = config["samples"]["name"]
+SPECIES = config["samples"]["species"].replace(" ", "_")
+
+module QC_illumina:
+    snakefile: "workflow/modules/QC_illumina.smk"
+    config: config
+
+module databases:
+    snakefile: "workflow/modules/databases.smk"
+    config: config
+
+module variant_calling_snps:
+    snakefile: "workflow/modules/variant_calling_snps.smk"
+    config: config
+
+# Define all possible outputs
+ALL_OUTPUTS = [
+    expand("results/00_QC/fastqc/{sample}_R1_fastqc.html", sample=SAMPLES),
+    "results/03_SNPs/core_SNP/final_snps/core.snps.vcf"
+]
+        
+# Main target rule
+rule all:
+    input:
+        ALL_OUTPUTS
+    resources:
+        runtime=config["resources"]["general"]["runtime"],
+        mem_mb=config["resources"]["general"]["mem_mb"],
+        cpus_per_task=config["resources"]["general"]["cpus"]
+
+# Use rules from modules with prefixes
+use rule * from databases as databases_*
+use rule * from assembly as assembly_*
+use rule * from QC_assembly as QC_assembly_*
+use rule * from cgMLST as cgMLST_*
+use rule * from QC_illumina as QC_illumina_*

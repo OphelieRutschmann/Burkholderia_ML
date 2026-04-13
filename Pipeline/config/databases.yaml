@@ -1,0 +1,42 @@
+# config/databases.yaml
+# path to all databases
+
+#Fill in this section with the name of the BUSCO lineage you wish to download. Alternatively, you can provide the path to your BUSCO lineage database.
+databases_busco:
+  lineage_version: "francisellaceae_odb12.2025-05-14" # can be left empty if a path is provided below
+  busco_path: "" #this should contain the path to your busco lineage database (ex: "databases/busco_lineages/francisellaceae_odb12/"")
+
+#Fill in this section with information regarding the genomes to be used for cgMLST and core-SNP phylogeny. The genomes should be in fasta or fna format.
+# You can Fill in either a taxid or a custom_database_path
+genomes:
+  taxid: "263"                        # Leave empty "" to use custom databases
+  custom_database_path_cgMLST: ""     # Path to custom genomes for cgMLST phylogeny
+  custom_database_path_coreSNP: ""    # Path to custom genomes for coreSNP phylogeny
+
+
+# FIll in this section with information about the genome to be used as a reference for general mapping and coverage / depths calculations
+# You can provide either the accession number (the genome will be downloaded from NCBI) or a path.
+ref_mapping:
+  accession: "GCF_000008985.1" 
+  path: ""
+
+# Fill in this section with information for the creation of the cgMLST schema. 
+# Option 1: Give the path to a schema
+# Option 2: give the path to a file with genomes you would like to use for the creation of a schema.
+# Option 3: leave both empty. The genomes from the path above will be used for the creation of a schema
+typing_cgmlst:
+  schema_path: "/home/ruop/Projects/2026_Pipeline_validation/Databases/cgMLST_schema/Francisella_tularensis"
+  genome_path: ""
+
+# If left empty, database will be downloaded and stored in databases/checkM2_database
+# Path should be point to the .dmnd file
+databases_checkM2:
+  checkM2_path: "databases/CheckM2_database/checkm.dmnd"
+
+# If left empty, database will be downloaded and stored in databases/bakta
+databases_bakta:
+  bakta_path: ""
+
+# If left empty, database will be downloaded and stored in databases/kraken_database
+databases_kraken:
+  kraken_path: "/mnt/nfs/bio/db/Kraken2/Kraken2_NLI_20220405"
