@@ -34,10 +34,10 @@ module variant_calling_snps:
     snakefile: "workflow/modules/variant_calling_snps.smk"
     config: config
 
-# Define all possible outputs
+# Define what outputs you want
 ALL_OUTPUTS = [
     expand("results/00_QC/fastqc/{sample}_R1_fastqc.html", sample=SAMPLES),
-    "results/03_SNPs/core_SNP/final_snps/core.snps.vcf"
+    expand("results/{sample}.done", sample=get_passed_samples)
 ]
         
 # Main target rule
@@ -51,7 +51,4 @@ rule all:
 
 # Use rules from modules with prefixes
 use rule * from databases as databases_*
-use rule * from assembly as assembly_*
-use rule * from QC_assembly as QC_assembly_*
-use rule * from cgMLST as cgMLST_*
 use rule * from QC_illumina as QC_illumina_*

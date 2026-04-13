@@ -11,19 +11,10 @@ samples:
   - /home/ruop/Projects/2026_Pipeline_validation/Validation/Francisella_tularensis/raw_reads/Ftt/Ftt_200x_1_R2.fastq
   - /home/ruop/Projects/2026_Pipeline_validation/Validation/Francisella_tularensis/raw_reads/Ftt/Ftt_200x_2_R2.fastq
   - /home/ruop/Projects/2026_Pipeline_validation/Validation/Francisella_tularensis/raw_reads/Ftt/Ftt_200x_3_R2.fastq
-  nanopore_reads: ''
   species: Francisella tularensis
   genome_size: '1900000'
-  raw_reads_nanopore:
-  - ''
-  - ''
-  - ''
 read_type: illumina-PE
 assembly:
-  flye:
-    asm_coverage: 20
-    genome_size: 2000000
-    read_type: nano-hq
   pilon:
     additional_args: --fix all
   minimap2:
@@ -31,33 +22,11 @@ assembly:
     additional_args: ''
   spades:
     isolate: --isolate
-quality:
-  busco:
-    lineage: francisellaceae_odb12
-  quast:
-    gene_finding: true
-    reference: ''
-typing:
-  ExtractCgMLST:
-    threshold: 0.99
 resources:
   general:
-    runtime: 600
+    runtime: 18000
     mem_mb: 20000
     cpus: 16
-  flye:
-    runtime: 60000
-    mem_mb: 40000
-    cpus: 24
-  minimap2:
-    runtime: 60000
-    mem_mb: 40000
-    cpus: 24
-  pilon:
-    runtime: 60000
-    mem_mb: 40000
-    cpus: 24
-  busco:
     runtime: 60000
     mem_mb: 40000
     cpus: 24
@@ -65,19 +34,3 @@ resources:
     runtime: 18000
     mem_mb: 60000
     cpus: 16
-  chewbbaca_schema:
-    runtime: 18000
-    mem_mb: 60000
-    cpus: 32
-  allele_calling:
-    runtime: 18000
-    mem_mb: 60000
-    cpus: 32
-  cgMLST:
-    runtime: 18000
-    mem_mb: 60000
-    cpus: 32
-  kraken:
-    runtime: 18000
-    mem_mb: 60000
-    cpus: 32

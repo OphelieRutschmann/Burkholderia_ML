@@ -6,6 +6,10 @@ fastqc:
   image: docker://biocontainers/fastqc:v0.11.9_cv8
   output: fastqc.sif
 
+multiqc:
+  image: docker://multiqc/multiqc:v1.33
+  output: multiqc.sif
+
 fastp:
   image: docker://staphb/fastp:1.0.1
   output: fastp.sif
@@ -37,3 +41,7 @@ bakta:
 bcftools:
   image: quay.io/biocontainers/bcftools:1.23.1--hb2cee57_0
   output: bcftools.sif
+
+python_env:
+  image: workflow/containers/python_env.def
+  output: python_env.sif

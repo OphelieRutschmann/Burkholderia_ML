@@ -3,8 +3,7 @@
 
 rule fastQC:
     input: 
-        r1="results/00_QC/fastp/trimmed_reads/{sample}_trimmed_R1.fastq",
-        r2="results/00_QC/fastp/trimmed_reads/{sample}_trimmed_R2.fastq"
+        unpack(get_illumina_raw)
     output:
         r1="results/00_QC/fastqc/{sample}_R1_fastqc.html",
         r2="results/00_QC/fastqc/{sample}_R2_fastqc.html"
@@ -27,14 +26,15 @@ rule fastQC:
 
         mv $TMPDIR/*R1_fastqc.html {output.r1}
         mv $TMPDIR/*R2_fastqc.html {output.r2}
+        mv $TMPDIR/*R1_fastqc.zip {output.r1_zip}
+        mv $TMPDIR/*R2_fastqc.zip {output.r2_zip}
 
         rm -rf $TMPDIR
         """
 
 rule fastp:
     input: 
-        r1="results/00_QC/fastp/trimmed_reads/{sample}_trimmed_R1.fastq",
-        r2="results/00_QC/fastp/trimmed_reads/{sample}_trimmed_R2.fastq"
+        unpack(get_illumina_raw)
     output:
         html="results/00_QC/fastp/{sample}_fastp.html",
         json="results/00_QC/fastp/{sample}_fastp.json",
@@ -62,7 +62,25 @@ rule fastp:
             --qualified_quality_phred 30 \
             --html {output.html} \
             --json {output.json}
-        """    
+        """   
+
+rule multiqc:
+    input:
+        expand("results/00_QC/fastp/{sample}_fastp.json", sample=config["samples"]["name"])
+    output:
+        report="results/00_QC/multiqc/multiqc_report.html",
+        data="results/00_QC/multiqc/multiqc_data/multiqc_fastp.txt"
+    resources:
+        runtime=config["resources"]["general"]["runtime"],
+        mem_mb=config["resources"]["general"]["mem_mb"],
+        cpus_per_task=config["resources"]["general"]["cpus"]
+    container:
+        "workflow/containers/multiqc.sif"
+    shell:
+        """
+        mkdir -p results/00_QC/multiqc/
+        multiqc results/00_QC/fastp/ -o results/00_QC/multiqc/
+        """
 
 rule bwa_index:
     input:
@@ -107,7 +125,7 @@ rule coverage:
     input:
         alignement="results/00_QC/coverage/{sample}/aligned.sam"
     output:
-        coverage="results/00_QC/coverage/{sample}/coverage.txt"
+        coverage="results/00_QC/coverage/{sample}/coverage.txt",
         mapping_stats="results/00_QC/coverage/{sample}/mapping_stats.txt"
     params:
         outdir="results/00_QC/coverage/{sample}"

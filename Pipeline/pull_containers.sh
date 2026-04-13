@@ -64,6 +64,11 @@ singularity pull "$CONT_DIR/${OUTPUT[fastp]}" "${IMAGE[fastp]}"
 echo "Pulling fastqc image"
 singularity pull "$CONT_DIR/${OUTPUT[fastqc]}" "${IMAGE[fastqc]}"
 
+echo "Pulling multiqc image"
+singularity pull "$CONT_DIR/${OUTPUT[multiqc]}" "${IMAGE[multiqc]}"
+
 echo "Pulling bcftools image"
 singularity pull "$CONT_DIR/${OUTPUT[bcftools]}" "${IMAGE[bcftools]}"
 
+echo "Building python_env image"
+singularity build "$CONT_DIR/${OUTPUT[python_env]}" "${IMAGE[python_env]}"
