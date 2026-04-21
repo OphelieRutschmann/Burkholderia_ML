@@ -4,8 +4,7 @@ include: "../rules/common.smk"
 # Download reference genome that will be used for variant calling
 rule download_reference:
     output:
-        ref="databases/genomes/refgenome/ref_genome.fasta",
-        ref_gff="databases/genomes/refgenome/ref_genome.gff"
+        ref="databases/genomes/refgenome/ref_genome.fasta"
     params:
         ref_gen_dir="databases/genomes/refgenome",
         accession=config["ref_mapping"]["accession"],
@@ -42,15 +41,8 @@ rule download_reference:
             --flat-output \
             -o {params.ref_gen_dir}
         
-        ncbi-genome-download bacteria \
-            -F gff \
-            --assembly-accessions "{params.accession}" \
-            --flat-output \
-            -o {params.ref_gen_dir}
-                
         # Uncompress and rename the files
         find {params.ref_gen_dir} -name "*.fna.gz" -exec gunzip -c {{}} \\; > {output.ref}
-        find {params.ref_gen_dir} -name "*.gff" -exec cat {{}} \; > {output.ref_gff}
         """
 
 # Download the bakta database 

@@ -128,14 +128,15 @@ rule annotate_ref:
             --db $BAKTA_DB \
             --output {params.outdir} \
             --force \
-            --prefix reference \
+            --prefix ref_genome \
+            --keep-contig-headers \
             {input.ref}
         """
 
 rule build_snpeff_db:
     input:
         ref="databases/genomes/refgenome/ref_genome.fasta",
-        gff="databases/genomes/refgenome/ref_genome.gff3"
+        gbff="databases/genomes/refgenome/ref_genome.gbff"
     output:
         db_done="databases/snpeff_db/.db_built"
     params:
@@ -148,20 +149,24 @@ rule build_snpeff_db:
         "workflow/containers/snpEff.sif"
     shell:
         """
-        mkdir -p {params.outdir}
+        mkdir -p {params.outdir}/data/ref
         
-        # Copy files to snpEff database structure
-        cp {input.gff} {params.outdir}/genes.gff
+        # Symlink files to snpEff expected structure
+        ln -sf $(realpath {input.gbff}) {params.outdir}/data/ref/genes.gbk
+        ln -sf $(realpath {input.ref}) {params.outdir}/data/ref/sequences.fa
         
         # Create snpEff config
-        echo "ref.genome : ref" > {params.outdir}/snpEff.config
+        echo "data.dir = $(realpath {params.outdir})/data" > {params.outdir}/snpEff.config
+        echo "ref.genome : ref" >> {params.outdir}/snpEff.config
         
-        # Build database using the Bakta annotation
-        snpEff build -gff3 -v -c {params.outdir}/snpEff.config ref \
-        -noCheckCds -noCheckProtein 
-               
+        # Build database
+        
+        snpEff build -genbank -v -c {params.outdir}/snpEff.config ref \
+            -noCheckCds -noCheckProtein
+        
         touch {output.db_done}
         """
+
 
 rule snpeff:
     input:

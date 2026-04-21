@@ -49,3 +49,7 @@ python_env:
 snippy:
   image: docker://staphb/snippy:4.6.0
   output: snippy.sif
+
+snpEff:
+  image: "docker://staphb/snpeff:5.2f"
+  output: snpEff.sif

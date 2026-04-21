@@ -75,3 +75,6 @@ singularity build "$CONT_DIR/${OUTPUT[python_env]}" "${IMAGE[python_env]}"
 
 echo "Pulling snippy image"
 singularity pull "$CONT_DIR/${OUTPUT[snippy]}" "${IMAGE[snippy]}"
+
+echo "Pulling snpEff image"
+singularity pull "$CONT_DIR/${OUTPUT[snpEff]}" "${IMAGE[snpEff]}"
