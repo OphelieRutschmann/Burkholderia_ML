@@ -1,0 +1,2 @@
+sample_name	species	genome_size	raw_reads_r1	raw_reads_r2
+46W	Burkholderia pseudomallei	7000000	/home/ruop/Projects/2026_Burkholderia_ML/raw_reads/46W_R1.fastq	/home/ruop/Projects/2026_Burkholderia_ML/raw_reads/46W_R2.fastq

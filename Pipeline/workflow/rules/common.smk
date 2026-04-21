@@ -16,8 +16,9 @@ def get_illumina_raw(wildcards):
         "r2": r2_paths[sample_idx]
         }
 
-def get_passed_samples(wildcards):
-    with open("passed_file.csv","r") as f:
-        samples = [line.strip() for line in f]
-    return samples
-    
+def get_passed_samples():
+    # don't run until checkpoint has been done
+    checkpoints.filter.get()
+
+    with open("results/00_QC/passed_samples.csv", "r") as f:
+        return [line.strip() for line in f if line.strip()]

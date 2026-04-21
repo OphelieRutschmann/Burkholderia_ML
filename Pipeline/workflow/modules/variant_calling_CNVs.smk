@@ -1,28 +1,20 @@
-# workflow/modules/variant_calling_snps.smk
+# workflow/modules/variant_calling_cnv.smk
 include: "../rules/common.smk"
 
-## This module detects CNV (copy number variations) using Pindel. Before using Pindel, PCR duplicates are marked using Picard ##
-rule sort_bam:
-  input:
-    bam="results/mapping/{sample}.bam"
-  output:
-    bam="results/mapping/{sample}.sorted.bam",
-    bai="results/mapping/{sample}.sorted.bam.bai"
-  container:
-    "workflow/containers/samtools.sif"
-  shell:
-    """
-    samtools sort -o {output.bam} {input.bam}
-    samtools index {output.bam}
-    """
+## This module detects CNV (copy number variations) using Pindel. Before using Pindel, PCR duplicates are marked using Picard
 
+# Use alignement to reference generated in the QC_Illumina.smk module (for coverage calculation)
 rule mark_duplicates:
   input:
-    bam="results/mapping/{sample}.sorted.bam"
+    bam="results/alignement/{sample}.aligned.sorted.bam"
   output:
-    bam="results/mapping/{sample}.dedup.bam",
-    bai="results/mapping/{sample}.dedup.bam.bai",
-    metrics="results/mapping/{sample}.dedup.metrics.txt"
+    bam="results/alignement/{sample}.dedup.bam",
+    bai="results/alignement/{sample}.dedup.bam.bai",
+    metrics="results/alignement/{sample}.dedup.metrics.txt"
+  resources:
+    runtime=config["resources"]["general"]["runtime"],
+    mem_mb=config["resources"]["general"]["mem_mb"],
+    cpus_per_task=config["resources"]["general"]["cpus"]
   container:
     "workflow/containers/picard.sif"
   shell:
@@ -38,12 +30,16 @@ rule mark_duplicates:
 
 rule pindel_config:
   input:
-    bam="results/mapping/{sample}.dedup.bam"
+    bam="results/alignement/{sample}.dedup.bam"
   output:
     config="results/CNV/{sample}/pindel_config.txt",
     metrics="results/CNV/{sample}/insert_metrics.txt"
   params:
     outdir="results/CNV/{sample}"
+  resources:
+    runtime=config["resources"]["general"]["runtime"],
+    mem_mb=config["resources"]["general"]["mem_mb"],
+    cpus_per_task=config["resources"]["general"]["cpus"]
   container:
     "workflow/containers/picard.sif"
   shell:
@@ -71,6 +67,10 @@ rule pindel:
       ref="databases/genomes/refgenome/ref_genome.fasta"
     output:
       prefix="results/CNV/{sample}/pindel"
+    resources:
+      runtime=config["resources"]["general"]["runtime"],
+      mem_mb=config["resources"]["general"]["mem_mb"],
+      cpus_per_task=config["resources"]["general"]["cpus"]
     container:
       "workflow/containers/pindel.sif"
     threads: 4
@@ -89,6 +89,10 @@ rule pindel_to_vcf_cnv:
     ref="databases/genomes/refgenome/ref_genome.fasta"
   output:
     vcf="results/CNV/{sample}/cnv.vcf"
+  resources:
+    runtime=config["resources"]["general"]["runtime"],
+    mem_mb=config["resources"]["general"]["mem_mb"],
+    cpus_per_task=config["resources"]["general"]["cpus"]
   container:
     "workflow/containers/pindel.sif"
   shell:
@@ -107,6 +111,10 @@ rule index_cnv_vcf:
   output:
     vcf_gz="results/CNV/{sample}/cnv.vcf.gz",
     tbi="results/CNV/{sample}/cnv.vcf.gz.tbi"
+  resources:
+    runtime=config["resources"]["general"]["runtime"],
+    mem_mb=config["resources"]["general"]["mem_mb"],
+    cpus_per_task=config["resources"]["general"]["cpus"]
   container:
     "workflow/containers/bcftools.sif"
   shell:
@@ -117,9 +125,16 @@ rule index_cnv_vcf:
 
 rule merge_cnv_vcfs:
   input:
-    expand("results/CNV/{sample}/cnv.vcf.gz", sample=SAMPLES)
+    lambda _: expand(
+      "results/CNV/{sample}/cnv.vcf.gz",
+      sample=get_passed_samples()
+    )
   output:
     merged="results/CNV/merged_cnv.vcf.gz"
+  resources:
+    runtime=config["resources"]["general"]["runtime"],
+    mem_mb=config["resources"]["general"]["mem_mb"],
+    cpus_per_task=config["resources"]["general"]["cpus"]
   container:
     "workflow/containers/bcftools.sif"
   shell:

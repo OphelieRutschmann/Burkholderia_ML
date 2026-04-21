@@ -5,7 +5,8 @@ include: "../rules/common.smk"
 
 rule variant_snippy: 
     input:
-        unpack(get_illumina_trimmed),
+        r1="results/00_QC/fastp/trimmed_reads/{sample}_trimmed_R1.fastq",
+        r2="results/00_QC/fastp/trimmed_reads/{sample}_trimmed_R2.fastq",
         ref="databases/genomes/refgenome/ref_genome.fasta"
     output:
         "results/Variant_SNPs/{sample}/snps.filt.vcf"
@@ -72,7 +73,10 @@ rule index_snippy_vcf:
 
 rule merge_filter_vcfs:
     input:
-        expand("results/Variant_SNPs/{sample}/snps.filt.vcf.gz", sample=SAMPLES)
+        lambda _: expand(
+        "results/Variant_SNPs/{sample}/snps.filt.vcf.gz",
+        sample=get_passed_samples()
+        )
     output:
         merged_vcf="results/Variant_SNPs/merged.vcf.gz",
         merged_filtered_vcf="results/Variant_SNPs/merged.filt.vcf.gz"
@@ -84,7 +88,7 @@ rule merge_filter_vcfs:
         "workflow/containers/bcftools.sif"
     shell:
         """
-        bcftools merge {input} -Oz -o {output.merged_vcf} --missing-to-ref
+        bcftools merge {input} -Oz -o {output.merged_vcf} --missing-to-ref --force-single
         tabix -p vcf {output.merged_vcf}
 
         # Filter by allele frequency and missingness:
@@ -97,7 +101,8 @@ rule merge_filter_vcfs:
 
 rule annotate_ref:
     input:
-        ref="databases/genomes/refgenome/ref_genome.fasta"
+        ref="databases/genomes/refgenome/ref_genome.fasta",
+        flag="databases/bakta_db/.download_complete"
     output:
         ref_annotation="databases/genomes/refgenome/ref_genome.gff3"
     params:
@@ -129,12 +134,12 @@ rule annotate_ref:
 
 rule build_snpeff_db:
     input:
-        ref="databases/genomes/refgenome/ref_genome.fasta"
+        ref="databases/genomes/refgenome/ref_genome.fasta",
         gff="databases/genomes/refgenome/ref_genome.gff3"
     output:
         db_done="databases/snpeff_db/.db_built"
     params:
-        outdir=""databases/snpeff_db"
+        outdir="databases/snpeff_db"
     resources:
         runtime=config["resources"]["general"]["runtime"],
         mem_mb=config["resources"]["general"]["mem_mb"],
@@ -161,8 +166,7 @@ rule build_snpeff_db:
 rule snpeff:
     input:
         vcf="results/Variant_SNPs/merged.vcf.gz",
-        db_done="databases/snpeff_db/.db_built",
-        map="databases/genomes/refgenome/ref_contig_map.tsv"
+        db_done="databases/snpeff_db/.db_built"
     output:
         vcf="results/Variant_SNPs/snps.ann.vcf",
         stats="results/Variant_SNPs/snpeff_stats.html"

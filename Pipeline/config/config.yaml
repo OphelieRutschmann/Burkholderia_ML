@@ -1,16 +1,10 @@
 samples:
   name:
-  - Ftt_1
-  - Ftt_2
-  - Ftt_3
+  - 46W
   raw_reads_r1:
-  - /home/ruop/Projects/2026_Pipeline_validation/Validation/Francisella_tularensis/raw_reads/Ftt/Ftt_200x_1_R1.fastq
-  - /home/ruop/Projects/2026_Pipeline_validation/Validation/Francisella_tularensis/raw_reads/Ftt/Ftt_200x_2_R1.fastq
-  - /home/ruop/Projects/2026_Pipeline_validation/Validation/Francisella_tularensis/raw_reads/Ftt/Ftt_200x_3_R1.fastq
+  - /home/ruop/Projects/2026_Burkholderia_ML/raw_reads/46W_R1.fastq
   raw_reads_r2:
-  - /home/ruop/Projects/2026_Pipeline_validation/Validation/Francisella_tularensis/raw_reads/Ftt/Ftt_200x_1_R2.fastq
-  - /home/ruop/Projects/2026_Pipeline_validation/Validation/Francisella_tularensis/raw_reads/Ftt/Ftt_200x_2_R2.fastq
-  - /home/ruop/Projects/2026_Pipeline_validation/Validation/Francisella_tularensis/raw_reads/Ftt/Ftt_200x_3_R2.fastq
+  - /home/ruop/Projects/2026_Burkholderia_ML/raw_reads/46W_R2.fastq
   species: Francisella tularensis
   genome_size: '1900000'
 read_type: illumina-PE
@@ -24,9 +18,6 @@ assembly:
     isolate: --isolate
 resources:
   general:
-    runtime: 18000
-    mem_mb: 20000
-    cpus: 16
     runtime: 60000
     mem_mb: 40000
     cpus: 24

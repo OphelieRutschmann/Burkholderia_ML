@@ -1,12 +1,16 @@
 # workflow/modules/QC_illumina.smk
 # Module for QC and trimming of illumina reads
 
+include: "../rules/common.smk"
+
 rule fastQC:
     input: 
         unpack(get_illumina_raw)
     output:
         r1="results/00_QC/fastqc/{sample}_R1_fastqc.html",
-        r2="results/00_QC/fastqc/{sample}_R2_fastqc.html"
+        r2="results/00_QC/fastqc/{sample}_R2_fastqc.html",
+        r1_zip="results/00_QC/fastqc/{sample}_R1_fastqc.zip",
+        r2_zip="results/00_QC/fastqc/{sample}_R2_fastqc.zip"
     params:
         outdir="results/00_QC/fastqc"
     resources:
@@ -78,8 +82,7 @@ rule multiqc:
         "workflow/containers/multiqc.sif"
     shell:
         """
-        mkdir -p results/00_QC/multiqc/
-        multiqc results/00_QC/fastp/ -o results/00_QC/multiqc/
+        multiqc results/00_QC/fastp/ -o results/00_QC/multiqc/ --force
         """
 
 rule bwa_index:
@@ -91,6 +94,10 @@ rule bwa_index:
         bwt="databases/genomes/refgenome/ref_genome.fasta.bwt",
         pac="databases/genomes/refgenome/ref_genome.fasta.pac",
         sa="databases/genomes/refgenome/ref_genome.fasta.sa"
+    resources:
+        runtime=config["resources"]["general"]["runtime"],
+        mem_mb=config["resources"]["general"]["mem_mb"],
+        cpus_per_task=config["resources"]["general"]["cpus"]
     container:
         "workflow/containers/bwa.sif"
     shell:
@@ -98,6 +105,7 @@ rule bwa_index:
         bwa index {input.ref}
         """
 
+# Align to reference genome to calculate coverage
 rule bwa:
     input:
         r1="results/00_QC/fastp/trimmed_reads/{sample}_trimmed_R1.fastq",
@@ -105,11 +113,11 @@ rule bwa:
         ref="databases/genomes/refgenome/ref_genome.fasta",
         index="databases/genomes/refgenome/ref_genome.fasta.ann",
     output:
-        alignement="results/00_QC/coverage/{sample}/aligned.sam"
+        alignement="results/alignement/{sample}.aligned.sam"
     resources:
-        runtime=config["resources"]["minimap2"]["runtime"],
-        mem_mb=config["resources"]["minimap2"]["mem_mb"],
-        cpus_per_task=config["resources"]["minimap2"]["cpus"]
+        runtime=config["resources"]["general"]["runtime"],
+        mem_mb=config["resources"]["general"]["mem_mb"],
+        cpus_per_task=config["resources"]["general"]["cpus"]
     container:
         "workflow/containers/bwa.sif"
     shell:
@@ -123,16 +131,17 @@ rule bwa:
 
 rule coverage:
     input:
-        alignement="results/00_QC/coverage/{sample}/aligned.sam"
+        alignement="results/alignement/{sample}.aligned.sam"
     output:
         coverage="results/00_QC/coverage/{sample}/coverage.txt",
         mapping_stats="results/00_QC/coverage/{sample}/mapping_stats.txt"
     params:
-        outdir="results/00_QC/coverage/{sample}"
+        outdir="results/00_QC/coverage/{sample}",
+        alignement_dir="results/alignement"
     resources:
-        runtime=config["resources"]["minimap2"]["runtime"],
-        mem_mb=config["resources"]["minimap2"]["mem_mb"],
-        cpus_per_task=config["resources"]["minimap2"]["cpus"]
+        runtime=config["resources"]["general"]["runtime"],
+        mem_mb=config["resources"]["general"]["mem_mb"],
+        cpus_per_task=config["resources"]["general"]["cpus"]
     container:
         "workflow/containers/samtools.sif"
     shell:
@@ -140,19 +149,20 @@ rule coverage:
         mkdir -p {params.outdir}
         
         # Sort and Index the alignement
-        samtools view -bS {input.alignement} | samtools sort -o {params.outdir}/output.sorted.bam 
-        samtools index {params.outdir}/output.sorted.bam
+        samtools view -bS {input.alignement} | samtools sort -o {params.alignement_dir}/{wildcards.sample}.aligned.sorted.bam
+        samtools index {params.alignement_dir}/{wildcards.sample}.aligned.sorted.bam
 
         # Calculate coverage
-        samtools coverage {params.outdir}/output.sorted.bam -o {output.coverage}
-        samtools flagstat {params.outdir}/output.sorted.bam > {output.mapping_stats}
+        samtools coverage {params.alignement_dir}/{wildcards.sample}.aligned.sorted.bam -o {output.coverage}
+        samtools flagstat {params.alignement_dir}/{wildcards.sample}.aligned.sorted.bam > {output.mapping_stats}
         """
 
 checkpoint filter:
-    input:
+    input: 
+        multiqc="results/00_QC/multiqc/multiqc_data/multiqc_fastp.txt",
+        coverage=expand("results/00_QC/coverage/{sample}/coverage.txt", sample=config["samples"]["name"])
     output:
-    params:
-        samples=config["samples"]["name"],
+        "results/00_QC/passed_samples.csv"
     resources:
         runtime=config["resources"]["general"]["runtime"],
         mem_mb=config["resources"]["general"]["mem_mb"],

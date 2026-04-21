@@ -38,13 +38,13 @@ rule download_reference:
         echo "Downloading reference genome"
         ncbi-genome-download bacteria \
             -F fasta \
-            --assembly-accessions "{params.reference}" \
+            --assembly-accessions "{params.accession}" \
             --flat-output \
             -o {params.ref_gen_dir}
         
         ncbi-genome-download bacteria \
             -F gff \
-            --assembly-accessions "{params.reference}" \
+            --assembly-accessions "{params.accession}" \
             --flat-output \
             -o {params.ref_gen_dir}
                 

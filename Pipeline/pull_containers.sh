@@ -72,3 +72,6 @@ singularity pull "$CONT_DIR/${OUTPUT[bcftools]}" "${IMAGE[bcftools]}"
 
 echo "Building python_env image"
 singularity build "$CONT_DIR/${OUTPUT[python_env]}" "${IMAGE[python_env]}"
+
+echo "Pulling snippy image"
+singularity pull "$CONT_DIR/${OUTPUT[snippy]}" "${IMAGE[snippy]}"

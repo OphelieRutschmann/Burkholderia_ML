@@ -39,9 +39,13 @@ bakta:
   output: bakta.sif
 
 bcftools:
-  image: quay.io/biocontainers/bcftools:1.23.1--hb2cee57_0
+  image: "docker://quay.io/biocontainers/bcftools:1.23.1--hb2cee57_0"
   output: bcftools.sif
 
 python_env:
   image: workflow/containers/python_env.def
   output: python_env.sif
+
+snippy:
+  image: docker://staphb/snippy:4.6.0
+  output: snippy.sif

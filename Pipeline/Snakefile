@@ -12,7 +12,7 @@ with open("config/config.yaml") as f:
 with open("config/databases.yaml") as f:
     config_db = yaml.safe_load(f)
 
-# Simple shallow merge
+# Simple config and database file merge
 config = {**config_main, **config_db}
 
 # Include shared functions
@@ -20,7 +20,6 @@ include: "workflow/rules/common.smk"
 
 # Get samples from config
 SAMPLES = config["samples"]["name"]
-SPECIES = config["samples"]["species"].replace(" ", "_")
 
 module QC_illumina:
     snakefile: "workflow/modules/QC_illumina.smk"
@@ -30,20 +29,29 @@ module databases:
     snakefile: "workflow/modules/databases.smk"
     config: config
 
-module variant_calling_snps:
+module variant_calling_SNPs:
     snakefile: "workflow/modules/variant_calling_snps.smk"
     config: config
 
+module variant_calling_CNVs:
+    snakefile: "workflow/modules/variant_calling_CNVs.smk"
+    config: config
+
+
 # Define what outputs you want
-ALL_OUTPUTS = [
+QC_ILLUMINA_OUTPUTS = [
     expand("results/00_QC/fastqc/{sample}_R1_fastqc.html", sample=SAMPLES),
-    expand("results/{sample}.done", sample=get_passed_samples)
+    expand("results/00_QC/multiqc/multiqc_data/multiqc_fastp.txt", sample=SAMPLES),
+    expand("results/00_QC/coverage/{sample}/coverage.txt", sample=SAMPLES)
 ]
         
 # Main target rule
 rule all:
     input:
-        ALL_OUTPUTS
+        QC_ILLUMINA_OUTPUTS,
+        # lambda _: expand("results/alignement/{sample}.dedup.metrics.txt", sample=get_passed_samples()) # When you pass a function as an input, it's evaluated later on, not at the beginning (so after the checkpoint has run),
+        lambda _: expand("results/Variant_SNPs/{sample}/snps.filt.vcf.gz", sample=get_passed_samples()),
+        "results/Variant_SNPs/snps.ann.vcf"
     resources:
         runtime=config["resources"]["general"]["runtime"],
         mem_mb=config["resources"]["general"]["mem_mb"],
@@ -52,3 +60,5 @@ rule all:
 # Use rules from modules with prefixes
 use rule * from databases as databases_*
 use rule * from QC_illumina as QC_illumina_*
+use rule * from variant_calling_CNVs as CNVs_*
+use rule * from variant_calling_SNPs as SNPs_*
