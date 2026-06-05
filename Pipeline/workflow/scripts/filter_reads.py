@@ -25,6 +25,7 @@ coverages = coverages = coverage_stats_df.groupby("sample")["coverage"].mean()
 missing_samples = [s for s in samples if s not in multiqc_df.index]
 if missing_samples:
     print("Not all samples in MultiQC file!")
+    print(missing_samples)
     raise ValueError("Missing samples in MultiQC file")
     
 # make sure all samples are in the coverages file

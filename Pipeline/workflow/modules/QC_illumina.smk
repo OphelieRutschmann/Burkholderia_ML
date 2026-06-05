@@ -113,7 +113,7 @@ rule bwa:
         ref="databases/genomes/refgenome/ref_genome.fasta",
         index="databases/genomes/refgenome/ref_genome.fasta.ann",
     output:
-        alignement="results/alignement/{sample}.aligned.sam"
+        alignement="results/01_alignement/{sample}.aligned.sam"
     resources:
         runtime=config["resources"]["general"]["runtime"],
         mem_mb=config["resources"]["general"]["mem_mb"],
@@ -131,13 +131,15 @@ rule bwa:
 
 rule coverage:
     input:
-        alignement="results/alignement/{sample}.aligned.sam"
+        alignement="results/01_alignement/{sample}.aligned.sam"
     output:
+        bam="results/01_alignement/{sample}.aligned.sorted.bam",      
+        bai="results/01_alignement/{sample}.aligned.sorted.bam.bai",
         coverage="results/00_QC/coverage/{sample}/coverage.txt",
         mapping_stats="results/00_QC/coverage/{sample}/mapping_stats.txt"
     params:
         outdir="results/00_QC/coverage/{sample}",
-        alignement_dir="results/alignement"
+        alignement_dir="results/01_alignement"
     resources:
         runtime=config["resources"]["general"]["runtime"],
         mem_mb=config["resources"]["general"]["mem_mb"],
@@ -147,14 +149,12 @@ rule coverage:
     shell:
         """
         mkdir -p {params.outdir}
-        
-        # Sort and Index the alignement
-        samtools view -bS {input.alignement} | samtools sort -o {params.alignement_dir}/{wildcards.sample}.aligned.sorted.bam
-        samtools index {params.alignement_dir}/{wildcards.sample}.aligned.sorted.bam
 
-        # Calculate coverage
-        samtools coverage {params.alignement_dir}/{wildcards.sample}.aligned.sorted.bam -o {output.coverage}
-        samtools flagstat {params.alignement_dir}/{wildcards.sample}.aligned.sorted.bam > {output.mapping_stats}
+        samtools view -bS {input.alignement} | samtools sort -o {output.bam}
+        samtools index {output.bam}
+
+        samtools coverage {output.bam} -o {output.coverage}
+        samtools flagstat {output.bam} > {output.mapping_stats}
         """
 
 checkpoint filter:

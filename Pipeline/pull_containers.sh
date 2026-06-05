@@ -78,3 +78,9 @@ singularity pull "$CONT_DIR/${OUTPUT[snippy]}" "${IMAGE[snippy]}"
 
 echo "Pulling snpEff image"
 singularity pull "$CONT_DIR/${OUTPUT[snpEff]}" "${IMAGE[snpEff]}"
+
+echo "Pulling picard image"
+singularity pull "$CONT_DIR/${OUTPUT[picard]}" "${IMAGE[picard]}"
+
+echo "Pulling pindel image"
+singularity pull "$CONT_DIR/${OUTPUT[pindel]}" "${IMAGE[pindel]}"

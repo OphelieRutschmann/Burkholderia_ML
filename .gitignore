@@ -1,0 +1,9 @@
+raw_reads/
+Pipeline/slurm*
+Pipeline/workflow/containers/*.sif
+.cache/
+.java/
+.parallel/
+.snakemake/
+databases/
+results/

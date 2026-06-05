@@ -1,10 +1,13 @@
 samples:
   name:
   - 46W
+  - Bp28_SR_200x
   raw_reads_r1:
   - /home/ruop/Projects/2026_Burkholderia_ML/raw_reads/46W_R1.fastq
+  - /home/ruop/Projects/2026_Burkholderia_ML/raw_reads/Bp28_SR_200x_R1.fastq
   raw_reads_r2:
   - /home/ruop/Projects/2026_Burkholderia_ML/raw_reads/46W_R2.fastq
+  - /home/ruop/Projects/2026_Burkholderia_ML/raw_reads/Bp28_SR_200x_R2.fastq
   species: Francisella tularensis
   genome_size: '1900000'
 read_type: illumina-PE

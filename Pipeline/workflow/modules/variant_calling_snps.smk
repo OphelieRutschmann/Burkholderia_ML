@@ -9,9 +9,9 @@ rule variant_snippy:
         r2="results/00_QC/fastp/trimmed_reads/{sample}_trimmed_R2.fastq",
         ref="databases/genomes/refgenome/ref_genome.fasta"
     output:
-        "results/Variant_SNPs/{sample}/snps.filt.vcf"
+        "results/02_Variant_SNPs/{sample}/snps.filt.vcf"
     params:
-        outdir="results/Variant_SNPs/{sample}",
+        outdir="results/02_Variant_SNPs/{sample}",
         read_type=config["read_type"]
     resources:
         runtime=config["resources"]["general"]["runtime"], 
@@ -52,10 +52,10 @@ rule variant_snippy:
 
 rule index_snippy_vcf:
     input:
-        vcf="results/Variant_SNPs/{sample}/snps.filt.vcf"
+        vcf="results/02_Variant_SNPs/{sample}/snps.filt.vcf"
     output:
-        vcf_gz="results/Variant_SNPs/{sample}/snps.filt.vcf.gz",
-        tbi="results/Variant_SNPs/{sample}/snps.filt.vcf.gz.tbi"
+        vcf_gz="results/02_Variant_SNPs/{sample}/snps.filt.vcf.gz",
+        tbi="results/02_Variant_SNPs/{sample}/snps.filt.vcf.gz.tbi"
     resources:
         runtime=config["resources"]["general"]["runtime"], 
         mem_mb=config["resources"]["general"]["mem_mb"],    
@@ -74,12 +74,12 @@ rule index_snippy_vcf:
 rule merge_filter_vcfs:
     input:
         lambda _: expand(
-        "results/Variant_SNPs/{sample}/snps.filt.vcf.gz",
+        "results/02_Variant_SNPs/{sample}/snps.filt.vcf.gz",
         sample=get_passed_samples()
         )
     output:
-        merged_vcf="results/Variant_SNPs/merged.vcf.gz",
-        merged_filtered_vcf="results/Variant_SNPs/merged.filt.vcf.gz"
+        merged_vcf="results/02_Variant_SNPs/merged.vcf.gz",
+        merged_filtered_vcf="results/02_Variant_SNPs/merged.filt.vcf.gz"
     resources:
         runtime=config["resources"]["general"]["runtime"], 
         mem_mb=config["resources"]["general"]["mem_mb"],    
@@ -104,7 +104,7 @@ rule annotate_ref:
         ref="databases/genomes/refgenome/ref_genome.fasta",
         flag="databases/bakta_db/.download_complete"
     output:
-        ref_annotation="databases/genomes/refgenome/ref_genome.gff3"
+        ref_annotation="databases/genomes/refgenome/ref_genome.gbff"
     params:
         outdir="databases/genomes/refgenome",
         db_path=config["databases_bakta"]["bakta_path"]
@@ -170,11 +170,11 @@ rule build_snpeff_db:
 
 rule snpeff:
     input:
-        vcf="results/Variant_SNPs/merged.vcf.gz",
+        vcf="results/02_Variant_SNPs/merged.vcf.gz",
         db_done="databases/snpeff_db/.db_built"
     output:
-        vcf="results/Variant_SNPs/snps.ann.vcf",
-        stats="results/Variant_SNPs/snpeff_stats.html"
+        vcf="results/02_Variant_SNPs/snps.ann.vcf",
+        stats="results/02_Variant_SNPs/snpeff_stats.html"
     params:
         db_dir="databases/snpeff_db"
     resources:

@@ -53,3 +53,11 @@ snippy:
 snpEff:
   image: "docker://staphb/snpeff:5.2f"
   output: snpEff.sif
+
+picard:
+  image: "docker://broadinstitute/picard:2.27.5"
+  output: picard.sif
+
+pindel:
+  image: "docker://mgibio/pindel:v0.2.5b8"
+  output: pindel.sif
