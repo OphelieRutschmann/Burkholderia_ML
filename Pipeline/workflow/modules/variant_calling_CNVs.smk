@@ -101,14 +101,16 @@ rule pindel:
             -T {threads}
         """
 
-rule pindel_to_vcf_cnv:
+rule pindel2vcf:
     input:
+        ref="databases/genomes/refgenome/ref_genome.fasta",
+        pindel="results/03_CNV/{sample}/pindel_{svtype}",
         flag="results/03_CNV/{sample}/.pindel_done",
-        ref="databases/genomes/refgenome/ref_genome.fasta"
     output:
-        vcf="results/03_CNV/{sample}/cnv.vcf"
+        vcf="results/03_CNV/{sample}/cnv_{svtype}.vcf"
     params:
-        prefix="results/03_CNV/{sample}/pindel"
+        refname="ref",
+        refdate="20240101"
     resources:
         runtime=config["resources"]["general"]["runtime"],
         mem_mb=config["resources"]["general"]["mem_mb"],
@@ -116,21 +118,21 @@ rule pindel_to_vcf_cnv:
     container:
         "workflow/containers/pindel.sif"
     shell:
-        """
+        r"""
         pindel2vcf \
-            -p {params.prefix}_TD \
+            -p {input.pindel} \
             -r {input.ref} \
-            -R ref \
-            -d 20240101 \
+            -R {params.refname} \
+            -d {params.refdate} \
             -v {output.vcf}
         """
 
 rule index_cnv_vcf:
     input:
-        vcf="results/03_CNV/{sample}/cnv.vcf"
+        vcf="results/03_CNV/{sample}/cnv_{svtype}.vcf"
     output:
-        vcf_gz="results/03_CNV/{sample}/cnv.vcf.gz",
-        tbi="results/03_CNV/{sample}/cnv.vcf.gz.tbi"
+        vcf_gz="results/03_CNV/{sample}/cnv_{svtype}.vcf.gz",
+        tbi="results/03_CNV/{sample}/cnv_{svtype}.vcf.gz.tbi"
     resources:
         runtime=config["resources"]["general"]["runtime"],
         mem_mb=config["resources"]["general"]["mem_mb"],
@@ -145,12 +147,19 @@ rule index_cnv_vcf:
 
 rule merge_cnv_vcfs:
     input:
-        lambda _: expand(
-            "results/03_CNV/{sample}/cnv.vcf.gz",
-            sample=get_passed_samples()
+        vcfs=lambda _: expand(
+            "results/03_CNV/{sample}/cnv_{svtype}.vcf.gz",
+            sample=get_passed_samples(),
+            svtype=["TD", "INV", "LI", "D"]
+        ),
+        tbis=lambda _: expand(
+            "results/03_CNV/{sample}/cnv_{svtype}.vcf.gz.tbi",
+            sample=get_passed_samples(),
+            svtype=["TD", "INV", "LI", "D"]
         )
     output:
-        merged="results/03_CNV/merged_cnv.vcf.gz"
+        merged="results/03_CNV/merged_cnv.vcf.gz",
+        tbi="results/03_CNV/merged_cnv.vcf.gz.tbi"
     resources:
         runtime=config["resources"]["general"]["runtime"],
         mem_mb=config["resources"]["general"]["mem_mb"],
@@ -159,6 +168,6 @@ rule merge_cnv_vcfs:
         "workflow/containers/bcftools.sif"
     shell:
         """
-        bcftools merge {input} -Oz -o {output.merged} --missing-to-ref --force-single
+        bcftools merge {input.vcfs} -Oz -o {output.merged} --missing-to-ref --force-samples 
         tabix -p vcf {output.merged}
         """

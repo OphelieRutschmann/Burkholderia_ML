@@ -167,10 +167,9 @@ rule build_snpeff_db:
         touch {output.db_done}
         """
 
-
 rule snpeff:
     input:
-        vcf="results/02_Variant_SNPs/merged.vcf.gz",
+        vcf="results/02_Variant_SNPs/merged.filt.vcf.gz",
         db_done="databases/snpeff_db/.db_built"
     output:
         vcf="results/02_Variant_SNPs/snps.ann.vcf",

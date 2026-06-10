@@ -99,9 +99,8 @@ snakemake \
     --jobs 10 \
     --resources mem_mb=400000 \
     --use-singularity \
-    --use-conda --latency-wait=60 \
-    --conda-frontend conda \
     --rerun-incomplete \
+    --latency-wait 60 \
     --singularity-args "-B /mnt/nfs -B /home/ruop/" \
 
 if [ $? -eq 0 ]; then
