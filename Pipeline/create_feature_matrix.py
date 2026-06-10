@@ -92,7 +92,8 @@ def extract_snp_genotypes(vcf_path: str):
             
             feature_meta[var_id] = {
                 "gene": None,
-                "impact": None
+                "impact": None,
+                "effect": None
             }
 
             ann_list = ann_by_alt.get(alt, [])
@@ -109,13 +110,6 @@ def extract_snp_genotypes(vcf_path: str):
                     "gene": best.get("gene_name", ""),
                     "impact": best.get("putative_impact", ""),
                     "effect": best.get("effect", "")
-                }
-
-            else:
-                feature_meta[var_id] = {
-                    "gene": None,
-                    "impact": None,
-                    "effect": None
                 }
 
     vcf.close()
