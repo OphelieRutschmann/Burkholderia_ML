@@ -92,8 +92,8 @@ rule merge_filter_vcfs:
         tabix -p vcf {output.merged_vcf}
 
         # Filter by allele frequency and missingness:
-        # Remove variants (alleles) present in less than 1% of the samples, and remove sites where > 10% of the data is missing
-        bcftools view -i 'MAF > 0.01 && F_MISSING < 0.1' {output.merged_vcf} -Oz -o {output.merged_filtered_vcf}
+        # Remove variants (alleles) present in less than 1% of the samples, which are likely a sequencing/mapping issue
+        bcftools view -i 'F_MISSING < 0.1' {output.merged_vcf} -Oz -o {output.merged_filtered_vcf}
 
         # Index output
         tabix -p vcf {output.merged_filtered_vcf}

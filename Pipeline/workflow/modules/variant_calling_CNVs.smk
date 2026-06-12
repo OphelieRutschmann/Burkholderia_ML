@@ -60,6 +60,7 @@ rule pindel_config:
         # Create pindel config file
         echo "{input.bam} $INSERT_SIZE {wildcards.sample}" > {output.config}
         """
+        
 rule fasta_index:
     input:
         ref="databases/genomes/refgenome/ref_genome.fasta"
