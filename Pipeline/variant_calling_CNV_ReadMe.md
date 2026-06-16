@@ -36,9 +36,9 @@ Constructs a BED file of all genomic regions to be depth-profiled. Each region l
 
 Two passes are made over the GFF:
 
-**Pass 1: All features.** Every annotated feature (gene, CDS, rRNA, tRNA, etc.) is extracted as a BED interval. Labels encode the GFF `ID`, `Name`, and feature type (gene, CDS, rRNA, tRNA, etc.).
+**Pass 1: Extract all features.** Every annotated feature (gene, CDS, rRNA, tRNA, etc.) is extracted as a BED interval. Labels encode the GFF `ID`, `Name`, and feature type (gene, CDS, rRNA, tRNA, etc.).
 
-**Pass 2: Promoter windows.** For CDS and gene features only, `bedtools flank` extends each interval upstream by `promoter_window` bp, which corresponds approximating the regulatory promoter region. These intervals receive the suffix `__promoter` in their label.
+**Pass 2: Extract promoter windows.** For CDS and gene features only, `bedtools flank` creates a new interval upstream of the region of interest by `promoter_window` bp (default 200bp). This corresponds approximately to the promoter region. These new intervals receive the suffix `__promoter` in their label.
 
 Both sets are concatenated, sorted with `bedtools sort`, and deduplicated with `uniq`.
 ---
