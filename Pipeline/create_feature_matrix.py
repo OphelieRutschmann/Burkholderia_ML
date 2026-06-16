@@ -3,6 +3,8 @@ build_feature_matrix.py
 -----------------------
 Combines SNP and CNV VCFs into a single per-sample feature matrix for machine learning.
 Keeps only HIGH, MODERATE and MODIFIER variants, doesn't include LOW variants.
+Keeps only TD, INV, LI and D structural variants. Doesn't include
+
 
 Usage:
     python build_feature_matrix.py \

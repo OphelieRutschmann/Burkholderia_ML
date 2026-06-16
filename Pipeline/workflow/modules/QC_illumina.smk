@@ -136,7 +136,8 @@ rule coverage:
         bam="results/01_alignement/{sample}.aligned.sorted.bam",      
         bai="results/01_alignement/{sample}.aligned.sorted.bam.bai",
         coverage="results/00_QC/coverage/{sample}/coverage.txt",
-        mapping_stats="results/00_QC/coverage/{sample}/mapping_stats.txt"
+        mapping_stats="results/00_QC/coverage/{sample}/mapping_stats.txt",
+        depth="results/00_QC/{sample}/depth.txt"
     params:
         outdir="results/00_QC/coverage/{sample}",
         alignement_dir="results/01_alignement"
@@ -155,6 +156,7 @@ rule coverage:
 
         samtools coverage {output.bam} -o {output.coverage}
         samtools flagstat {output.bam} > {output.mapping_stats}
+        samtools depth -a {output.bam} > {output.depth}
         """
 
 checkpoint filter:

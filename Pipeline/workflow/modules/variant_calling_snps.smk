@@ -3,7 +3,7 @@ include: "../rules/common.smk"
 
 ## This module performs SNP calling using snippy, followed by filtering and annotation of the vcf file using SNPEff ##
 
-rule variant_snippy: 
+rule variant_snippy:
     input:
         r1="results/00_QC/fastp/trimmed_reads/{sample}_trimmed_R1.fastq",
         r2="results/00_QC/fastp/trimmed_reads/{sample}_trimmed_R2.fastq",
@@ -23,7 +23,6 @@ rule variant_snippy:
         """
         mkdir -p {params.outdir}/tmp
 
-        #perform snippy
         snippy --cpus {resources.cpus_per_task} \
             --outdir {params.outdir} \
             --reference {input.ref} \
@@ -35,7 +34,7 @@ rule variant_snippy:
             --force \
             --cleanup
 
-        # Clean up temporary directory and other unecessary files
+        # Clean up temporary directory and other unnecessary files
         rm -rf {params.outdir}/tmp
         rm -rf {params.outdir}/reference
         rm -f "{params.outdir}/snps.html"
@@ -91,11 +90,9 @@ rule merge_filter_vcfs:
         bcftools merge {input} -Oz -o {output.merged_vcf} --missing-to-ref --force-single
         tabix -p vcf {output.merged_vcf}
 
-        # Filter by allele frequency and missingness:
-        # Remove variants (alleles) present in less than 1% of the samples, which are likely a sequencing/mapping issue
+        # remove variants where more than 10% of samples have a missing genotype.
         bcftools view -i 'F_MISSING < 0.1' {output.merged_vcf} -Oz -o {output.merged_filtered_vcf}
 
-        # Index output
         tabix -p vcf {output.merged_filtered_vcf}
         """
 
@@ -161,8 +158,11 @@ rule build_snpeff_db:
         
         # Build database
         
-        snpEff build -genbank -v -c {params.outdir}/snpEff.config ref \
-            -noCheckCds -noCheckProtein
+        snpEff build -genbank -v \
+            -c {params.outdir}/snpEff.config \
+            -noCheckCds \
+            -noCheckProtein \
+            ref
         
         touch {output.db_done}
         """
