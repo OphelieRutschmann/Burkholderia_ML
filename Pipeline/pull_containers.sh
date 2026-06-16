@@ -84,3 +84,12 @@ singularity pull "$CONT_DIR/${OUTPUT[picard]}" "${IMAGE[picard]}"
 
 echo "Pulling pindel image"
 singularity pull "$CONT_DIR/${OUTPUT[pindel]}" "${IMAGE[pindel]}"
+
+echo "Pulling bedtools image"
+singularity pull "$CONT_DIR/${OUTPUT[bedtools]}" "${IMAGE[bedtools]}"
+
+echo "Pulling biopython image"
+singularity pull "$CONT_DIR/${OUTPUT[biopython]}" "${IMAGE[biopython]}"
+
+echo "Pulling mosdepth image"
+singularity pull "$CONT_DIR/${OUTPUT[mosdepth]}" "${IMAGE[mosdepth]}"

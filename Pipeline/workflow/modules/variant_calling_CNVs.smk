@@ -2,9 +2,55 @@
 
 include: "../rules/common.smk"
 
+rule gbff_to_gff3:
+    input:
+        gbff="databases/genomes/refgenome/ref_genome.gbff"
+    output:
+        gff3="databases/genomes/refgenome/ref_genome.gff3"
+    resources:
+        runtime=config["resources"]["general"]["runtime"],
+        mem_mb=config["resources"]["general"]["mem_mb"],
+        cpus_per_task=config["resources"]["general"]["cpus"]
+    container:
+        "workflow/containers/biopython.sif"
+    shell:
+        r"""
+        python3 - << 'EOF' > {output.gff3}
+from Bio import SeqIO
+
+def gff_escape(value):
+    return value.replace(";", "%3B").replace("=", "%3D").replace(",", "%2C")
+
+for rec in SeqIO.parse("{input.gbff}", "genbank"):
+    for f in rec.features:
+
+        start = int(f.location.start) + 1
+        end = int(f.location.end)
+        strand = "+" if f.location.strand != -1 else "-"
+
+        ftype = f.type
+
+        attrs = []
+
+        for key in ["locus_tag", "gene", "product", "protein_id"]:
+            if key in f.qualifiers:
+                attrs.append(f"{{{{key}}}}={{gff_escape(f.qualifiers[key][0])}}")
+
+        attr_str = ";".join(attrs) if attrs else "."
+
+        print(
+            rec.id, "GenBank", ftype,
+            start, end,
+            ".", strand, ".",
+            attr_str,
+            sep="\t"
+        )
+EOF
+        """
+
 rule prepare_regions:
     input:
-        gff="databases/genomes/refgenome/ref_genome.gbff",
+        gff="databases/genomes/refgenome/ref_genome.gff3",
         fai="databases/genomes/refgenome/ref_genome.fasta.fai"
     output:
         bed="databases/genomes/refgenome/regions.bed"
@@ -24,19 +70,17 @@ rule prepare_regions:
         grep -v "^#" {input.gff} | \
         awk 'BEGIN{{OFS="\t"}} {{
 
-            name="unknown"
             id="unknown"
+            name="unknown"
 
             n=split($9,a,";")
 
             for(i=1;i<=n;i++) {{
+                split(a[i],kv,"=")
 
-                if(a[i] ~ /^ID=/) {{
-                    id=substr(a[i],4)
-                }}
-
-                if(a[i] ~ /^Name=/) {{
-                    name=substr(a[i],6)
+                if(length(kv[2]) > 0) {{
+                    if(id=="unknown") id=kv[2]
+                    name=kv[2]
                 }}
             }}
 
@@ -46,27 +90,25 @@ rule prepare_regions:
         > {output.bed}.tmp_features
 
         # Extract promoter regions for CDS and gene features only.
-        # bedtools flank extends each feature upstream (strand-aware, -l bp, -r 0)
-        # to approximate the promoter window defined in the config.
+        # bedtools flank extends each feature upstream to approximate the promoter window.
         grep -v "^#" {input.gff} | \
         awk '$3=="CDS" || $3=="gene"' | \
         awk 'BEGIN{{OFS="\t"}} {{
 
-            name="unknown"
             id="unknown"
+            name="unknown"
 
             n=split($9,a,";")
 
             for(i=1;i<=n;i++) {{
+                split(a[i],kv,"=")
 
-                if(a[i] ~ /^ID=/) {{
-                    id=substr(a[i],4)
-                }}
-
-                if(a[i] ~ /^Name=/) {{
-                    name=substr(a[i],6)
+                if(length(kv[2]) > 0) {{
+                    if(id=="unknown") id=kv[2]
+                    name=kv[2]
                 }}
             }}
+
             feature = id"__"name"__"$3
             print $1,$4-1,$5,feature,".",$7
         }}' | \
@@ -82,26 +124,22 @@ rule prepare_regions:
         > {output.bed}.tmp_promoters
 
         # Merge features and promoters, sort, and deduplicate.
-        cat \
-            {output.bed}.tmp_features \
-            {output.bed}.tmp_promoters | \
+        cat {output.bed}.tmp_features {output.bed}.tmp_promoters | \
         bedtools sort -i stdin | \
         uniq > {output.bed}
 
-        rm \
-            {output.bed}.tmp_features \
-            {output.bed}.tmp_promoters
+        rm {output.bed}.tmp_features {output.bed}.tmp_promoters
         """
 
 rule mosdepth_regions:
     input:
-        bam="results/01_alignment/{sample}.bam",
-        bai="results/01_alignment/{sample}.bam.bai",
+        bam="results/01_alignement/{sample}.dedup.bam",
+        bai="results/01_alignement/{sample}.dedup.bai",
         bed="databases/genomes/refgenome/regions.bed"
     output:
-        regions="results/04_CNV_depth/{sample}/mosdepth.regions.bed.gz"
+        regions="results/04_CNV/{sample}/mosdepth.regions.bed.gz"
     params:
-        prefix="results/04_CNV_depth/{sample}/mosdepth"
+        prefix="results/04_CNV/{sample}/mosdepth"
     resources:
         runtime=config["resources"]["general"]["runtime"],
         mem_mb=config["resources"]["general"]["mem_mb"],
@@ -110,7 +148,7 @@ rule mosdepth_regions:
         "workflow/containers/mosdepth.sif"
     shell:
         """
-        mkdir -p results/04_CNV_depth/{wildcards.sample}
+        mkdir -p results/04_CNV/{wildcards.sample}
 
         mosdepth \
             --threads {resources.cpus_per_task} \
@@ -122,10 +160,10 @@ rule mosdepth_regions:
 
 rule normalize_region_depth:
     input:
-        regions="results/04_CNV_depth/{sample}/mosdepth.regions.bed.gz"
+        regions="results/04_CNV/{sample}/mosdepth.regions.bed.gz"
     output:
-        tsv="results/04_CNV_depth/{sample}/cnv_per_region.tsv"
-    resources:  # FIX: missing resources block added for scheduler compatibility
+        tsv="results/04_CNV/{sample}/cnv_per_region.tsv"
+    resources:
         runtime=config["resources"]["general"]["runtime"],
         mem_mb=config["resources"]["general"]["mem_mb"],
         cpus_per_task=config["resources"]["general"]["cpus"]
@@ -142,46 +180,45 @@ rule normalize_region_depth:
         )
 
         # Use only CDS and gene features to estimate a stable per-chromosome
-        # baseline coverage (median), excluding promoter regions which may have
-        # systematically lower depth and would bias the normalisation.
-        mask = df["region"].str.contains("__CDS") | df["region"].str.contains("__gene")
-
+        # coverage. don't consider promoter regions.
+        mask = (
+            df["region"].str.contains("__CDS", na=False)
+            | df["region"].str.contains("__gene", na=False)
+        )
         medians = df.loc[mask].groupby("chrom")["depth"].median().to_dict()
 
         df["chrom_median"] = df["chrom"].map(medians)
         df["cnv_ratio"] = df["depth"] / df["chrom_median"]
-        # Zeros replaced with NaN before log2 to avoid -inf in the feature matrix.
+        # Avoid -inf when depth == 0
         df["log2cnv"] = np.log2(df["cnv_ratio"].replace(0, np.nan))
         df[["region", "chrom", "depth", "chrom_median", "cnv_ratio", "log2cnv"]].to_csv(
-            output.tsv, sep="\t", index=False
+            output.tsv,
+            sep="\t",
+            index=False
         )
-
 
 rule merge_depth_cnv:
     input:
         tsvs=lambda _: expand(
-            "results/04_CNV_depth/{sample}/cnv_per_region.tsv",
+            "results/04_CNV/{sample}/cnv_per_region.tsv",
             sample=get_passed_samples()
         )
     output:
-        matrix="results/04_CNV_depth/cnv_depth_matrix.tsv"
-    params:
-        samples=lambda _: get_passed_samples()
+        matrix="results/04_CNV/cnv_depth_matrix.tsv"
+    resources:
+        runtime=config["resources"]["general"]["runtime"],
+        mem_mb=config["resources"]["general"]["mem_mb"],
+        cpus_per_task=config["resources"]["general"]["cpus"]
     run:
         import pandas as pd
-
         dfs = []
-
-        for sample, tsv in zip(params.samples, input.tsvs):
+        
+        for sample, tsv in zip(get_passed_samples(), input.tsvs):
             df = pd.read_csv(tsv, sep="\t")
             df = df[["region", "log2cnv"]]
             df.columns = ["region", sample]
             df = df.set_index("region")
             dfs.append(df)
-
-        # Concatenate per-sample Series along columns, then transpose so that
-        # the final matrix is (samples × regions) — one row per sample, one
-        # column per genomic feature, ready for ML ingestion.
         matrix = pd.concat(dfs, axis=1).T
         matrix.index.name = "sample"
         matrix.columns = [f"cnv_depth__{c}" for c in matrix.columns]

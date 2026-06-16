@@ -33,10 +33,10 @@ rule pindel_config:
     input:
         bam="results/01_alignement/{sample}.dedup.bam"
     output:
-        config="results/03_CNV/{sample}/pindel_config.txt",
-        metrics="results/03_CNV/{sample}/insert_metrics.txt"
+        config="results/03_SV/{sample}/pindel_config.txt",
+        metrics="results/03_SV/{sample}/insert_metrics.txt"
     params:
-        outdir="results/03_CNV/{sample}"
+        outdir="results/03_SV/{sample}"
     resources:
         runtime=config["resources"]["general"]["runtime"],
         mem_mb=config["resources"]["general"]["mem_mb"],
@@ -81,13 +81,13 @@ rule fasta_index:
 
 rule pindel:
     input:
-        config="results/03_CNV/{sample}/pindel_config.txt",
+        config="results/03_SV/{sample}/pindel_config.txt",
         ref="databases/genomes/refgenome/ref_genome.fasta",
         fai="databases/genomes/refgenome/ref_genome.fasta.fai"
     output:
-        flag=touch("results/03_CNV/{sample}/.pindel_done")
+        flag=touch("results/03_SV/{sample}/.pindel_done")
     params:
-        prefix="results/03_CNV/{sample}/pindel"
+        prefix="results/03_SV/{sample}/pindel"
     resources:
         runtime=config["resources"]["general"]["runtime"],
         mem_mb=config["resources"]["general"]["mem_mb"],
@@ -106,10 +106,10 @@ rule pindel:
 rule pindel2vcf:
     input:
         ref="databases/genomes/refgenome/ref_genome.fasta",
-        pindel="results/03_CNV/{sample}/pindel_{svtype}",
-        flag="results/03_CNV/{sample}/.pindel_done",
+        flag="results/03_SV/{sample}/.pindel_done",
+        pindel="results/03_SV/{sample}/pindel_{svtype}"
     output:
-        vcf="results/03_CNV/{sample}/cnv_{svtype}.vcf"
+        vcf="results/03_SV/{sample}/cnv_{svtype}.vcf"
     params:
         refname="ref",
         refdate="20240101"
@@ -131,10 +131,10 @@ rule pindel2vcf:
 
 rule index_cnv_vcf:
     input:
-        vcf="results/03_CNV/{sample}/cnv_{svtype}.vcf"
+        vcf="results/03_SV/{sample}/cnv_{svtype}.vcf"
     output:
-        vcf_gz="results/03_CNV/{sample}/cnv_{svtype}.vcf.gz",
-        tbi="results/03_CNV/{sample}/cnv_{svtype}.vcf.gz.tbi"
+        vcf_gz="results/03_SV/{sample}/cnv_{svtype}.vcf.gz",
+        tbi="results/03_SV/{sample}/cnv_{svtype}.vcf.gz.tbi"
     resources:
         runtime=config["resources"]["general"]["runtime"],
         mem_mb=config["resources"]["general"]["mem_mb"],
@@ -150,18 +150,18 @@ rule index_cnv_vcf:
 rule merge_cnv_vcfs:
     input:
         vcfs=lambda _: expand(
-            "results/03_CNV/{sample}/cnv_{svtype}.vcf.gz",
+            "results/03_SV/{sample}/cnv_{svtype}.vcf.gz",
             sample=get_passed_samples(),
             svtype=["TD", "INV", "LI", "D"]
         ),
         tbis=lambda _: expand(
-            "results/03_CNV/{sample}/cnv_{svtype}.vcf.gz.tbi",
+            "results/03_SV/{sample}/cnv_{svtype}.vcf.gz.tbi",
             sample=get_passed_samples(),
             svtype=["TD", "INV", "LI", "D"]
         )
     output:
-        merged="results/03_CNV/merged_cnv.vcf.gz",
-        tbi="results/03_CNV/merged_cnv.vcf.gz.tbi"
+        merged="results/03_SV/merged_cnv.vcf.gz",
+        tbi="results/03_SV/merged_cnv.vcf.gz.tbi"
     resources:
         runtime=config["resources"]["general"]["runtime"],
         mem_mb=config["resources"]["general"]["mem_mb"],

@@ -11,20 +11,10 @@ samples:
   species: Francisella tularensis
   genome_size: '1900000'
 read_type: illumina-PE
-assembly:
-  pilon:
-    additional_args: --fix all
-  minimap2:
-    preset: sr
-    additional_args: ''
-  spades:
-    isolate: --isolate
 resources:
   general:
     runtime: 60000
     mem_mb: 40000
     cpus: 24
-  checkM:
-    runtime: 18000
-    mem_mb: 60000
-    cpus: 16
+cnv_depth:
+  promoter_window: 200

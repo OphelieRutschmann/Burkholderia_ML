@@ -61,3 +61,15 @@ picard:
 pindel:
   image: "docker://markwelsh/pindel:v0.2.5"
   output: pindel.sif
+
+bedtools:
+  image: "docker://biocontainers/bedtools:v2.28.0_cv2"
+  output: bedtools.sif
+
+biopython:
+  image: "docker://biocontainers/biopython:v1.73dfsg-1-deb-py3_cv1"
+  output: biopython.sif
+
+mosdepth:
+  image: "docker://brentp/mosdepth:v0.3.3"
+  output: mosdepth.sif
