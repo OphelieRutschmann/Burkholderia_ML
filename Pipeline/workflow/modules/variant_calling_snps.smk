@@ -80,9 +80,9 @@ rule merge_filter_vcfs:
         merged_vcf="results/02_Variant_SNPs/merged.vcf.gz",
         merged_filtered_vcf="results/02_Variant_SNPs/merged.filt.vcf.gz"
     resources:
-        runtime=config["resources"]["general"]["runtime"], 
-        mem_mb=config["resources"]["general"]["mem_mb"],    
-        cpus_per_task=config["resources"]["general"]["cpus"] 
+        runtime=config["resources"]["general"]["runtime"],
+        mem_mb=config["resources"]["general"]["mem_mb"],
+        cpus_per_task=config["resources"]["general"]["cpus"]
     container:
         "workflow/containers/bcftools.sif"
     shell:
@@ -93,6 +93,7 @@ rule merge_filter_vcfs:
         # remove variants where more than 10% of samples have a missing genotype.
         bcftools view -i 'F_MISSING < 0.1' {output.merged_vcf} -Oz -o {output.merged_filtered_vcf}
 
+        # reindex to fix contig header warnings
         tabix -p vcf {output.merged_filtered_vcf}
         """
 
@@ -179,7 +180,7 @@ rule snpeff:
     resources:
         runtime=config["resources"]["general"]["runtime"],
         mem_mb=config["resources"]["general"]["mem_mb"],
-        cpus_per_task=config["resources"]["general"]["cpus"] 
+        cpus_per_task=config["resources"]["general"]["cpus"]
     container:
         "workflow/containers/snpEff.sif"
     shell:

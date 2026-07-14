@@ -1,5 +1,3 @@
-
-
 def extract_gene_mutations(feature_meta, geno_df):
 """See in which gene each sample has mutations
 requires some sort of data cleaning before performing this step (i.e. variants that are very often -1 might need to be removed because they are low confidence.)"""

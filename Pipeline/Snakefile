@@ -34,11 +34,11 @@ module variant_calling_SNPs:
     config: config
 
 module variant_calling_SVs:
-    snakefile: "workflow/modules/variant_calling_SVs.smk"
+    snakefile: "workflow/modules/variant_calling_svs.smk"
     config: config
 
 module variant_calling_CNVs:
-    snakefile: "workflow/modules/variant_calling_CNVs.smk"
+    snakefile: "workflow/modules/variant_calling_cnvs.smk"
     config: config
 
 
@@ -55,7 +55,7 @@ rule all:
         QC_ILLUMINA_OUTPUTS,
         lambda _: expand("results/02_Variant_SNPs/{sample}/snps.filt.vcf.gz", sample=get_passed_samples()),
         "results/02_Variant_SNPs/snps.ann.vcf",
-        "results/03_SV/merged_cnv.vcf.gz",
+        "results/03_SV/merged_svs.vcf.gz",
         "results/04_CNV/cnv_depth_matrix.tsv",
         lambda _: expand("results/04_CNV/{sample}/cnv_per_region.tsv", sample=get_passed_samples())
 

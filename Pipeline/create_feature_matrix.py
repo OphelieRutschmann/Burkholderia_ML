@@ -1,20 +1,24 @@
 """
-build_feature_matrix.py
------------------------
-Combines SNP and CNV VCFs into a single per-sample feature matrix for machine learning.
-Keeps only HIGH, MODERATE and MODIFIER variants, doesn't include LOW variants.
-Keeps only TD, INV, LI and D structural variants. Doesn't include
+create_feature_matrix.py
+------------------------
+Combines SNP, SV, and CNV features into a single per-sample feature matrix for machine learning.
 
+Features extracted:
+- SNPs: Individual variants with HIGH/MODERATE/MODIFIER impact (excludes LOW)
+- SVs: Structural variants (TD, INV, LI, D types) - presence/absence and counts
+- CNVs: Depth-based copy-number variations per genomic region
 
 Usage:
-    python build_feature_matrix.py \
+    python create_feature_matrix.py \
         --snp  results/02_Variant_SNPs/snps.ann.vcf \
-        --cnv  results/03_CNV/merged_cnv.vcf.gz \
+        --sv   results/03_SV/merged_svs.vcf.gz \
+        --cnv-depth  results/04_CNV/cnv_depth_matrix.tsv \
         --out  results/feature_matrix.tsv
 
 Outputs:
     - <out> feature matrix (samples vs features)
-    - <out>_meta.tsv SNP variant metadata (var_id vs gene/impact/effect)
+    - <out>_snp_meta.tsv SNP variant metadata (var_id vs gene/impact/effect)
+    - <out>_sv_meta.tsv SV metadata (sv_id vs svtype/length)
 """
 
 import argparse
@@ -134,7 +138,7 @@ SVTYPES = ["TD", "INV", "LI", "D"]
 
 def extract_cnv_features(cnv_vcf_path: str) -> pd.DataFrame:
     """
-    Returns a DataFrame (samples × CNV features) with:
+    Returns a DataFrame (samples X CNV features) with:
       - Binary presence/absence per SV event   (cnv__<CHROM>_<POS>_<SVTYPE>)
       - Per-sample, per-SVTYPE count           (cnv_count_<SVTYPE>)
       - Per-sample, per-SVTYPE total bp        (cnv_bp_<SVTYPE>)
@@ -190,53 +194,141 @@ def extract_cnv_features(cnv_vcf_path: str) -> pd.DataFrame:
 
 
 # ---------------------------------------------------------------------------
+# Structural Variant feature extraction
+# ---------------------------------------------------------------------------
+
+def extract_sv_features(sv_vcf_path: str) -> tuple[pd.DataFrame, dict]:
+    """
+    Extract structural variant features from a merged SV VCF.
+
+    Returns:
+    1) sv_df: DataFrame with samples as rows and SV variants as columns.
+       Values: -1 (missing), 0 (absent), 1 (present)
+    2) sv_meta: dict keyed by sv_id containing svtype and svlen
+    """
+    vcf = VCF(sv_vcf_path)
+    samples = list(vcf.samples)
+
+    sv_rows = {}
+    sv_meta = {}
+    sv_types = ["TD", "INV", "LI", "D"]
+
+    for variant in vcf:
+        chrom = variant.CHROM
+        pos = variant.POS
+        svtype = variant.INFO.get("SVTYPE", "UNKNOWN")
+        svlen = abs(int(variant.INFO.get("SVLEN", 0)))
+
+        sv_id = f"sv__{chrom}_{pos}_{svtype}"
+        presences = []
+
+        for gt in variant.genotypes:
+            a1, a2 = gt[0], gt[1]
+            present = int(a1 > 0 or a2 > 0) if (a1 != -1 and a2 != -1) else -1
+            presences.append(present)
+
+        sv_rows[sv_id] = presences
+        sv_meta[sv_id] = {
+            "svtype": svtype,
+            "svlen": svlen
+        }
+
+    vcf.close()
+
+    sv_df = pd.DataFrame(sv_rows, index=samples)
+    sv_df.columns = sv_df.columns.astype(str)
+    sv_df.index.name = "sample"
+
+    print(f"[SV] {len(sv_rows)} SV events across {len(samples)} samples")
+    return sv_df, sv_meta
+
+
+# ---------------------------------------------------------------------------
+# Depth-based CNV matrix loading
+# ---------------------------------------------------------------------------
+
+def load_cnv_depth_matrix(cnv_depth_path: str) -> pd.DataFrame:
+    """Load the pre-computed depth-based CNV feature matrix."""
+    cnv_df = pd.read_csv(cnv_depth_path, sep="\t", index_col=0)
+    cnv_df.index.name = "sample"
+    print(f"[CNV-depth] Loaded {cnv_df.shape[1]} depth-based CNV features")
+    return cnv_df
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
 def main():
-    parser = argparse.ArgumentParser(description="Build ML feature matrix from SNP + CNV VCFs.")
+    parser = argparse.ArgumentParser(description="Build ML feature matrix from SNP, SV, and CNV features.")
     parser.add_argument("--snp", required=True, help="Path to annotated SNP VCF (snps.ann.vcf)")
-    parser.add_argument("--cnv", required=True, help="Path to merged CNV VCF (merged_cnv.vcf.gz)")
+    parser.add_argument("--sv", required=True, help="Path to merged SV VCF (merged_svs.vcf.gz)")
+    parser.add_argument("--cnv-depth", required=True, help="Path to depth-based CNV matrix (cnv_depth_matrix.tsv)")
     parser.add_argument("--out", required=True, help="Output TSV path for the feature matrix")
     args = parser.parse_args()
 
     print("Extracting SNP features...")
-    snp_df, feature_meta = extract_snp_genotypes(args.snp)
+    snp_df, snp_meta = extract_snp_genotypes(args.snp)
 
     # Drop variants whose strongest effect is LOW
     keep = [
-        var_id for var_id, meta in feature_meta.items()
+        var_id for var_id, meta in snp_meta.items()
         if meta["impact"] in ("HIGH", "MODERATE", "MODIFIER")
     ]
     snp_df = snp_df[keep]
-    feature_meta = {var_id: feature_meta[var_id] for var_id in keep}
+    snp_meta = {var_id: snp_meta[var_id] for var_id in keep}
     print(f"[SNP] {len(keep)} variants kept after dropping LOW")
 
-    print("Extracting CNV features...")
-    cnv_df = extract_cnv_features(args.cnv)
+    print("Extracting SV features...")
+    sv_df, sv_meta = extract_sv_features(args.sv)
 
-    # Align on shared samples
-    shared = snp_df.index.intersection(cnv_df.index)
-    only_snp = snp_df.index.difference(cnv_df.index).tolist()
-    only_cnv = cnv_df.index.difference(snp_df.index).tolist()
-    if only_snp:
-        print(f"[WARN] {len(only_snp)} samples only in SNP VCF, dropped: {only_snp}")
-    if only_cnv:
-        print(f"[WARN] {len(only_cnv)} samples only in CNV VCF, dropped: {only_cnv}")
+    print("Loading depth-based CNV features...")
+    cnv_depth_df = load_cnv_depth_matrix(args.cnv_depth)
 
-    matrix = pd.concat([snp_df.loc[shared], cnv_df.loc[shared]], axis=1)
+    # Align on shared samples across all three feature types
+    shared = snp_df.index.intersection(sv_df.index).intersection(cnv_depth_df.index)
+    all_samples = snp_df.index.union(sv_df.index).union(cnv_depth_df.index)
+
+    missing_snp = all_samples.difference(snp_df.index).tolist()
+    missing_sv = all_samples.difference(sv_df.index).tolist()
+    missing_cnv = all_samples.difference(cnv_depth_df.index).tolist()
+
+    if missing_snp:
+        print(f"[WARN] {len(missing_snp)} samples missing from SNP VCF")
+    if missing_sv:
+        print(f"[WARN] {len(missing_sv)} samples missing from SV VCF")
+    if missing_cnv:
+        print(f"[WARN] {len(missing_cnv)} samples missing from CNV depth matrix")
+
+    if len(shared) == 0:
+        raise ValueError("No shared samples found across all feature files!")
+
+    print(f"[INFO] Using {len(shared)} shared samples")
+
+    # Combine features
+    matrix = pd.concat([
+        snp_df.loc[shared],
+        sv_df.loc[shared],
+        cnv_depth_df.loc[shared]
+    ], axis=1)
     matrix.index.name = "sample"
     matrix.to_csv(args.out, sep="\t")
 
-    # Save SNP metadata alongside the matrix
-    meta_path = args.out.replace(".tsv", "_snp_meta.tsv")
-    pd.DataFrame(feature_meta).T.to_csv(meta_path, sep="\t", index_label="var_id")
+    # Save metadata alongside the matrix
+    snp_meta_path = args.out.replace(".tsv", "_snp_meta.tsv")
+    pd.DataFrame(snp_meta).T.to_csv(snp_meta_path, sep="\t", index_label="var_id")
 
-    print(f"\nFeature matrix written to : {args.out}")
-    print(f"SNP metadata written to : {meta_path}")
-    print(f"Shape: {matrix.shape[0]} samples vs {matrix.shape[1]} features")
-    print(f"SNP features : {snp_df.shape[1]}")
-    print(f"CNV features : {cnv_df.shape[1]}")
+    sv_meta_path = args.out.replace(".tsv", "_sv_meta.tsv")
+    pd.DataFrame(sv_meta).T.to_csv(sv_meta_path, sep="\t", index_label="sv_id")
+
+    print(f"\nFeature matrix written to: {args.out}")
+    print(f"SNP metadata written to: {snp_meta_path}")
+    print(f"SV metadata written to: {sv_meta_path}")
+    print(f"\nMatrix shape: {matrix.shape[0]} samples × {matrix.shape[1]} features")
+    print(f"Feature breakdown:")
+    print(f"SNP features: {snp_df.shape[1]}")
+    print(f"SV features: {sv_df.shape[1]}")
+    print(f"CNV (depth) features: {cnv_depth_df.shape[1]}")
 
 
 if __name__ == "__main__":

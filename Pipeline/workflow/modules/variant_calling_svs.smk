@@ -1,4 +1,4 @@
-# workflow/modules/variant_calling_sv.smk
+# workflow/modules/variant_calling_svs.smk
 include: "../rules/common.smk"
 
 ## This module detects structural variants using Pindel. 
@@ -85,6 +85,10 @@ rule pindel:
         ref="databases/genomes/refgenome/ref_genome.fasta",
         fai="databases/genomes/refgenome/ref_genome.fasta.fai"
     output:
+        td="results/03_SV/{sample}/pindel_TD",
+        inv="results/03_SV/{sample}/pindel_INV",
+        li="results/03_SV/{sample}/pindel_LI",
+        d="results/03_SV/{sample}/pindel_D",
         flag=touch("results/03_SV/{sample}/.pindel_done")
     params:
         prefix="results/03_SV/{sample}/pindel"
@@ -109,7 +113,7 @@ rule pindel2vcf:
         flag="results/03_SV/{sample}/.pindel_done",
         pindel="results/03_SV/{sample}/pindel_{svtype}"
     output:
-        vcf="results/03_SV/{sample}/cnv_{svtype}.vcf"
+        vcf="results/03_SV/{sample}/sv_{svtype}.vcf"
     params:
         refname="ref",
         refdate="20240101"
@@ -129,12 +133,12 @@ rule pindel2vcf:
             -v {output.vcf}
         """
 
-rule index_cnv_vcf:
+rule index_sv_vcf:
     input:
-        vcf="results/03_SV/{sample}/cnv_{svtype}.vcf"
+        vcf="results/03_SV/{sample}/sv_{svtype}.vcf"
     output:
-        vcf_gz="results/03_SV/{sample}/cnv_{svtype}.vcf.gz",
-        tbi="results/03_SV/{sample}/cnv_{svtype}.vcf.gz.tbi"
+        vcf_gz="results/03_SV/{sample}/sv_{svtype}.vcf.gz",
+        tbi="results/03_SV/{sample}/sv_{svtype}.vcf.gz.tbi"
     resources:
         runtime=config["resources"]["general"]["runtime"],
         mem_mb=config["resources"]["general"]["mem_mb"],
@@ -147,21 +151,21 @@ rule index_cnv_vcf:
         tabix -p vcf {output.vcf_gz}
         """
 
-rule merge_cnv_vcfs:
+rule merge_sv_vcfs:
     input:
         vcfs=lambda _: expand(
-            "results/03_SV/{sample}/cnv_{svtype}.vcf.gz",
+            "results/03_SV/{sample}/sv_{svtype}.vcf.gz",
             sample=get_passed_samples(),
             svtype=["TD", "INV", "LI", "D"]
         ),
         tbis=lambda _: expand(
-            "results/03_SV/{sample}/cnv_{svtype}.vcf.gz.tbi",
+            "results/03_SV/{sample}/sv_{svtype}.vcf.gz.tbi",
             sample=get_passed_samples(),
             svtype=["TD", "INV", "LI", "D"]
         )
     output:
-        merged="results/03_SV/merged_cnv.vcf.gz",
-        tbi="results/03_SV/merged_cnv.vcf.gz.tbi"
+        merged="results/03_SV/merged_svs.vcf.gz",
+        tbi="results/03_SV/merged_svs.vcf.gz.tbi"
     resources:
         runtime=config["resources"]["general"]["runtime"],
         mem_mb=config["resources"]["general"]["mem_mb"],
