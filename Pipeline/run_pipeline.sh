@@ -95,9 +95,9 @@ trap cleanup_tmpdir EXIT
 echo ""
 echo "Starting Snakemake..."
 snakemake \
-    --cluster "sbatch --cpus-per-task={resources.cpus_per_task} --mem={resources.mem_mb} --time={resources.runtime} --exclude=hpc-srvbio-01" \
+    --cluster "sbatch --cpus-per-task={resources.cpus_per_task} --mem={resources.mem_mb} --time={resources.runtime}" \
     --jobs 10 \
-    --resources mem_mb=400000 \
+    --resources mem_mb=24000 \
     --use-singularity \
     --rerun-incomplete \
     --latency-wait 60 \

@@ -7,3 +7,4 @@ Pipeline/workflow/containers/*.sif
 .snakemake/
 databases/
 results/
+Pipeline/singularity_tmp

@@ -55,9 +55,9 @@ rule all:
         QC_ILLUMINA_OUTPUTS,
         lambda _: expand("results/02_Variant_SNPs/{sample}/snps.filt.vcf.gz", sample=get_passed_samples()),
         "results/02_Variant_SNPs/snps.ann.vcf",
-        "results/03_SV/merged_svs.vcf.gz",
-        "results/04_CNV/cnv_depth_matrix.tsv",
-        lambda _: expand("results/04_CNV/{sample}/cnv_per_region.tsv", sample=get_passed_samples())
+        #"results/03_SV/merged_svs.vcf.gz",
+        #"results/04_CNV/cnv_depth_matrix.tsv",
+        #lambda _: expand("results/04_CNV/{sample}/cnv_per_region.tsv", sample=get_passed_samples())
 
 # Use rules from modules with prefixes
 use rule * from databases as databases_*
