@@ -73,3 +73,7 @@ biopython:
 mosdepth:
   image: "docker://brentp/mosdepth:v0.3.3"
   output: mosdepth.sif
+  
+freebayes:
+  image: "docker://staphb/freebayes:1.3.10"
+  output: freebayes.sif  

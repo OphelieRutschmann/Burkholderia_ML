@@ -93,3 +93,6 @@ singularity pull "$CONT_DIR/${OUTPUT[biopython]}" "${IMAGE[biopython]}"
 
 echo "Pulling mosdepth image"
 singularity pull "$CONT_DIR/${OUTPUT[mosdepth]}" "${IMAGE[mosdepth]}"
+
+echo "Pulling freebayes image"
+singularity pull "$CONT_DIR/${OUTPUT[freebayes]}" "${IMAGE[freebayes]}"

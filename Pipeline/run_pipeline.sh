@@ -49,16 +49,16 @@ r2_paths = []
 with open('$SAMPLE_SHEET', 'r') as f:
     reader = csv.DictReader(f, delimiter='\t')
     rows = list(reader)
-    
+
     if not rows:
         print("ERROR: Sample sheet is empty!")
         sys.exit(1)
-    
+
     for row in rows:
         samples.append(row["sample_name"])
         r1_paths.append(row.get("raw_reads_r1", ""))
         r2_paths.append(row.get("raw_reads_r2", ""))
-       
+
 # Update config
 with open('config/config.yaml', 'r') as f:
     config = yaml.safe_load(f)
@@ -81,11 +81,20 @@ echo "Using Singularity tmpdir: $SINGULARITY_TMPDIR"
 df -h "$SINGULARITY_TMPDIR" | tail -1
 echo ""
 
-# Cleanup temp dir at end of run
+# Make a general scratch TMPDIR in the current directory
+export TMPDIR="$(pwd)/tmp_scratch"
+mkdir -p "$TMPDIR"
+echo "Using TMPDIR: $TMPDIR"
+df -h "$TMPDIR" | tail -1
+echo ""
+
+# Cleanup temp dirs at end of run
 cleanup_tmpdir() {
     echo ""
     echo "Cleaning up Singularity tmpdir: $SINGULARITY_TMPDIR"
     rm -rf "$SINGULARITY_TMPDIR"
+    echo "Cleaning up scratch TMPDIR: $TMPDIR"
+    rm -rf "$TMPDIR"
     echo "Cleanup complete"
 }
 # Register cleanup to run on exit (success or failure)
@@ -97,11 +106,12 @@ echo "Starting Snakemake..."
 snakemake \
     --cluster "sbatch --cpus-per-task={resources.cpus_per_task} --mem={resources.mem_mb} --time={resources.runtime}" \
     --jobs 10 \
-    --resources mem_mb=24000 \
+    --resources mem_mb=32000 \
     --use-singularity \
     --rerun-incomplete \
     --latency-wait 60 \
-    --singularity-args "-B /mnt/nfs -B /home/ruop/" \
+    --singularity-args "-B /mnt/nfs -B /home/ruop/ -B ${TMPDIR}:/tmp" \
+    --rerun-triggers params
 
 if [ $? -eq 0 ]; then
     echo ""
