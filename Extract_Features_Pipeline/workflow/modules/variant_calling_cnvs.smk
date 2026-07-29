@@ -7,45 +7,17 @@ rule gbff_to_gff3:
         gbff="databases/genomes/refgenome/ref_genome.gbff"
     output:
         gff3="databases/genomes/refgenome/ref_genome.gff3"
+    container:
+        "workflow/containers/python.sif"
     resources:
         runtime=config["resources"]["general"]["runtime"],
         mem_mb=config["resources"]["general"]["mem_mb"],
         cpus_per_task=config["resources"]["general"]["cpus"]
-    container:
-        "workflow/containers/biopython.sif"
     shell:
-        r"""
-        python3 - << 'EOF' > {output.gff3}
-from Bio import SeqIO
-
-def gff_escape(value):
-    return value.replace(";", "%3B").replace("=", "%3D").replace(",", "%2C")
-
-for rec in SeqIO.parse("{input.gbff}", "genbank"):
-    for f in rec.features:
-
-        start = int(f.location.start) + 1
-        end = int(f.location.end)
-        strand = "+" if f.location.strand != -1 else "-"
-
-        ftype = f.type
-
-        attrs = []
-
-        for key in ["locus_tag", "gene", "product", "protein_id"]:
-            if key in f.qualifiers:
-                attrs.append(f"{{{{key}}}}={{gff_escape(f.qualifiers[key][0])}}")
-
-        attr_str = ";".join(attrs) if attrs else "."
-
-        print(
-            rec.id, "GenBank", ftype,
-            start, end,
-            ".", strand, ".",
-            attr_str,
-            sep="\t"
-        )
-EOF
+        """
+        python workflow/scripts/gbff_to_gff3.py \
+            --input {input.gbff} \
+            --output {output.gff3}
         """
 
 rule prepare_regions:
@@ -163,39 +135,18 @@ rule normalize_region_depth:
         regions="results/04_CNV/{sample}/mosdepth.regions.bed.gz"
     output:
         tsv="results/04_CNV/{sample}/cnv_per_region.tsv"
+    container:
+        "workflow/containers/python.sif"
     resources:
         runtime=config["resources"]["general"]["runtime"],
         mem_mb=config["resources"]["general"]["mem_mb"],
         cpus_per_task=config["resources"]["general"]["cpus"]
-    run:
-        import numpy as np
-        import pandas as pd
-
-        df = pd.read_csv(
-            input.regions,
-            sep="\t",
-            compression="gzip",
-            header=None,
-            names=["chrom", "start", "end", "region", "depth"]
-        )
-
-        # Use only CDS and gene features to estimate a stable per-chromosome
-        # coverage. don't consider promoter regions.
-        mask = (
-            df["region"].str.contains("__CDS", na=False)
-            | df["region"].str.contains("__gene", na=False)
-        )
-        medians = df.loc[mask].groupby("chrom")["depth"].median().to_dict()
-
-        df["chrom_median"] = df["chrom"].map(medians)
-        df["cnv_ratio"] = df["depth"] / df["chrom_median"]
-        # Avoid -inf when depth == 0
-        df["log2cnv"] = np.log2(df["cnv_ratio"].replace(0, np.nan))
-        df[["region", "chrom", "depth", "chrom_median", "cnv_ratio", "log2cnv"]].to_csv(
-            output.tsv,
-            sep="\t",
-            index=False
-        )
+    shell:
+        """
+        python workflow/scripts/normalize_cnv.py \
+            --input {input.regions} \
+            --output {output.tsv}
+        """
 
 rule merge_depth_cnv:
     input:
@@ -205,21 +156,39 @@ rule merge_depth_cnv:
         )
     output:
         matrix="results/04_CNV/cnv_depth_matrix.tsv"
+    params:
+        samples=" ".join(get_passed_samples())
+    container:
+        "workflow/containers/python.sif"
     resources:
         runtime=config["resources"]["general"]["runtime"],
         mem_mb=config["resources"]["general"]["mem_mb"],
         cpus_per_task=config["resources"]["general"]["cpus"]
-    run:
-        import pandas as pd
-        dfs = []
-        
-        for sample, tsv in zip(get_passed_samples(), input.tsvs):
-            df = pd.read_csv(tsv, sep="\t")
-            df = df[["region", "log2cnv"]]
-            df.columns = ["region", sample]
-            df = df.set_index("region")
-            dfs.append(df)
-        matrix = pd.concat(dfs, axis=1).T
-        matrix.index.name = "sample"
-        matrix.columns = [f"cnv_depth__{c}" for c in matrix.columns]
-        matrix.to_csv(output.matrix, sep="\t")
+    shell:
+        """
+        python workflow/scripts/merge_cnv.py \
+            --input-files {input.tsvs} \
+            --sample-names {params.samples} \
+            --output {output.matrix}
+        """
+
+rule cnv_depth_to_presence:
+    input:
+        tsvs=lambda _: expand(
+            "results/04_CNV/{sample}/cnv_per_region.tsv",
+            sample=get_passed_samples()
+        )
+    output:
+        matrix="results/cnvs_gene_presence.tsv"
+    params:
+        input_dir="results/04_CNV",
+        samples=" ".join(get_passed_samples())
+    container:
+        "workflow/containers/python.sif"
+    shell:
+        """
+        python workflow/scripts/convert_cnv_to_matrix.py \
+            --samples {params.samples} \
+            --input-dir {params.input_dir} \
+            --output {output.matrix}
+        """

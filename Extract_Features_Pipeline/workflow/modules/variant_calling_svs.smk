@@ -177,3 +177,19 @@ rule merge_sv_vcfs:
         bcftools merge {input.vcfs} -Oz -o {output.merged} --missing-to-ref --force-samples
         tabix -p vcf {output.merged}
         """
+
+rule extract_core_svs:
+    input:
+        vcf="results/03_SV/merged_svs.vcf.gz"
+    output:
+        matrix="results/svs_core.tsv",
+        metadata="results/svs_core_meta.tsv"
+    container:
+        "workflow/containers/biopython.sif"
+    shell:
+        """
+        python workflow/scripts/convert_sv_to_matrix.py \
+            --vcf {input.vcf} \
+            --output {output.matrix} \
+            --metadata {output.metadata}
+        """
