@@ -156,8 +156,6 @@ rule merge_depth_cnv:
         )
     output:
         matrix="results/04_CNV/cnv_depth_matrix.tsv"
-    params:
-        samples=" ".join(get_passed_samples())
     container:
         "workflow/containers/python.sif"
     resources:
@@ -166,9 +164,11 @@ rule merge_depth_cnv:
         cpus_per_task=config["resources"]["general"]["cpus"]
     shell:
         """
+        sample_names=$(for f in {input.tsvs}; do basename $(dirname $f); done | tr '\n' ' ')
+
         python workflow/scripts/merge_cnv.py \
             --input-files {input.tsvs} \
-            --sample-names {params.samples} \
+            --sample-names $sample_names \
             --output {output.matrix}
         """
 
@@ -181,14 +181,15 @@ rule cnv_depth_to_presence:
     output:
         matrix="results/cnvs_gene_presence.tsv"
     params:
-        input_dir="results/04_CNV",
-        samples=" ".join(get_passed_samples())
+        input_dir="results/04_CNV"
     container:
         "workflow/containers/python.sif"
     shell:
         """
+        sample_names=$(for f in {input.tsvs}; do basename $(dirname $f); done | tr '\n' ' ')
+
         python workflow/scripts/convert_cnv_to_matrix.py \
-            --samples {params.samples} \
+            --samples $sample_names  \
             --input-dir {params.input_dir} \
             --output {output.matrix}
         """

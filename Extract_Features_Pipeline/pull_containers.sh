@@ -96,3 +96,6 @@ singularity pull "$CONT_DIR/${OUTPUT[mosdepth]}" "${IMAGE[mosdepth]}"
 
 echo "Pulling freebayes image"
 singularity pull "$CONT_DIR/${OUTPUT[freebayes]}" "${IMAGE[freebayes]}"
+
+echo "Pulling ariba image"
+singularity pull "$CONT_DIR/${OUTPUT[ariba]}" "${IMAGE[ariba]}"

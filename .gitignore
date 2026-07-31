@@ -1,10 +1,10 @@
 raw_reads/
-Pipeline/slurm*
-Pipeline/workflow/containers/*.sif
+Extract_Features_Pipeline/slurm*
+Extract_Features_Pipeline/workflow/containers/*.sif
 .cache/
 .java/
 .parallel/
 .snakemake/
 databases/
 results/
-Pipeline/singularity_tmp
+Extract_Features_Pipeline/singularity_tmp
