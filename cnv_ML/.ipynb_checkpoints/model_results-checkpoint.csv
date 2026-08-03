@@ -1,5 +1,0 @@
-model,hyperparameters,test_accuracy,cv_score
-Logistic Regression,C=10.0000,0.9850746268656716,0.9348387096774194
-K-Nearest Neighbors,k=1,0.9850746268656716,0.9281720430107526
-Support Vector Machine,"kernel=poly, C=10.0000",0.9552238805970149,0.9348387096774194
-Decision Tree,"max_depth=5, min_samples_split=10",0.8805970149253731,0.844516129032258
