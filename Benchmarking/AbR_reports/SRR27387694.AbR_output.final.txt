@@ -1,0 +1,1 @@
+BPSL3085|BPSL3085|Ser130Leu|DOXi|50|<PUTATIVE ONLY> <PRECURSOR MUTATION>. Confers DOX MIC=4-8 µg/mL in combination with AmrR loss

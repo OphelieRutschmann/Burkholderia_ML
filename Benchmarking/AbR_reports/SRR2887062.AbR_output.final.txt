@@ -1,0 +1,3 @@
+BPSS0290|bpeT|His278Tyr|SXTr|100|<PRECURSOR MUTATION>. Confers SXT MIC≥32 µg/mL in combination with Ptr1 Arg21fs
+BPSS0039|ptr1|Arg21fs|SXTr|100|<PRECURSOR MUTATION>. Confers SXT MIC≥32 µg/mL in combination with BpeT Thr314fs, BpeT His274Tyr, or BpeT loss. Confers intermediate resistance by itself
+BPSS0039|ptr1|loss|SXTr|100|Confers SXT resistance in combination with efflux pump upregulation. Confers intermediate resistance by itself

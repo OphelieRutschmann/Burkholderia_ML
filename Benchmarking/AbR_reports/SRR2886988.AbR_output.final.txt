@@ -1,0 +1,2 @@
+bpeR|BPSL0812|Asp176Ala|MEMr, AMCi|100,50|<PUTATIVE ONLY>. Confers MEM MIC=6 µg/mL, AMC MIC=12 µg/mL, and CAZ MIC=8 µg/mL
+metF|BPSL3288|Gln142*|SXTi|50|<PUTATIVE ONLY> <PRECURSOR MUTATION>. Confers SXT MIC=3 µg/mL, possibly in combination with BpeR Asp176Ala

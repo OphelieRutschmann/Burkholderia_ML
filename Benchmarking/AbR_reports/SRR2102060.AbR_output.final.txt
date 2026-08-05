@@ -1,0 +1,8 @@
+penA|BPSS0946|-78G>A|CAZi|50|Promoter mutation; confers CAZ MIC=8-16 µg/mL and AMC MIC=4-8 µg/mL; also known as penA -21A
+penA|BPSS0946|Ser78Phe|AMCr|100|<PUTATIVE ONLY>. Confers AMC MIC 64 ug/mL in combination with penA -78G>A promoter mutation
+penA|BPSS0946|Asp245Gly|CAZr|100|<PRECURSOR MUTATION>. Confers CAZ MIC≥128 µg/mL in combination with penA -78G>A promoter mutation 
+amrB|BPSL1803|Ala254fs|GENs, MEMs|-50,-50|Confers GEN, KAN, AZM MICs ≤2µg/mL, and MEM MIC ≤1 ug/mL. The presence of this mutation overrides amrR loss in conferring MEMr
+BPSL3085|BPSL3085|Ala88fs|DOXr|100|Confers DOX MIC=48 µg/mL in combination with AmrR Leu132Pro, DOX MIC=16 µg/mL in combination with AmrR loss, and DOX MIC=6-16 µg/mL by itself
+amrB|BPSL1803|loss|GENs, MEMs|-50,-50|Confers GEN, KAN, AZM MICs ≤2µg/mL, and MEM MIC ≤1 µg/mL. The presence of this mutation overrides amrR loss in conferring MEMr
+amrR|BPSL1805|loss|MEMr|100|Local regulator of AmrAB. Loss of function causes efflux pump upregulation leading to reduced meropenem susceptibility or meropenem resistance. 
+BPSL3085|BPSL3085|loss|DOXr|100|SAM-dependent methyltransferase. Confers DOXr in combination with efflux pump dysregulation. Confers reduced DOX sensitivity or DOXr (MIC=4-16 µg/mL) by itself
