@@ -2,7 +2,6 @@
 # Load configuration
 CONFIG_FILE="config/containers.yaml"
 
-# Snakemake workflow with Singularity/BUSCO
 # Script to handle singularity image pulling and workflow execution
 
 # Set Singularity directories to avoid space issues

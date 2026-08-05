@@ -15,23 +15,23 @@ fastp:
   output: fastp.sif
 
 seqkit:
-  image: "docker://staphb/seqkit:2.10.1"
+  image: docker://staphb/seqkit:2.10.1
   output: seqkit.sif
 
 bwa:
-  image: "docker://biocontainers/bwa:v0.7.17-3-deb_cv1"
+  image: docker://biocontainers/bwa:v0.7.17-3-deb_cv1
   output: bwa.sif
 
 samtools:
-  image: "docker://staphb/samtools:1.22.1"
+  image: docker://staphb/samtools:1.22.1
   output: samtools.sif
 
 pilon:
-  image: "docker://biocontainers/pilon:v1.23dfsg-1-deb_cv1"
+  image: docker://biocontainers/pilon:v1.23dfsg-1-deb_cv1
   output: pilon.sif
 
 ncbi:
-  image: "docker://quay.io/biocontainers/ncbi-genome-download:0.3.3--pyh7cba7a3_0"
+  image: docker://quay.io/biocontainers/ncbi-genome-download:0.3.3--pyh7cba7a3_0
   output: ncbi.sif
 
 bakta:
@@ -39,7 +39,7 @@ bakta:
   output: bakta.sif
 
 bcftools:
-  image: "docker://quay.io/biocontainers/bcftools:1.23.1--hb2cee57_0"
+  image: docker://quay.io/biocontainers/bcftools:1.23.1--hb2cee57_0
   output: bcftools.sif
 
 python_env:
@@ -51,41 +51,41 @@ snippy:
   output: snippy.sif
 
 snpEff:
-  image: "docker://staphb/snpeff:5.2f"
+  image: docker://staphb/snpeff:5.2f
   output: snpEff.sif
 
 picard:
-  image: "docker://broadinstitute/picard:2.27.5"
+  image: docker://broadinstitute/picard:2.27.5
   output: picard.sif
 
 pindel:
-  image: "docker://markwelsh/pindel:v0.2.5"
+  image: docker://markwelsh/pindel:v0.2.5
   output: pindel.sif
 
 bedtools:
-  image: "docker://biocontainers/bedtools:v2.28.0_cv2"
+  image: docker://biocontainers/bedtools:v2.28.0_cv2
   output: bedtools.sif
 
 biopython:
-  image: "docker://biocontainers/biopython:v1.73dfsg-1-deb-py3_cv1"
+  image: docker://biocontainers/biopython:v1.73dfsg-1-deb-py3_cv1
   output: biopython.sif
 
 mosdepth:
-  image: "docker://brentp/mosdepth:v0.3.3"
+  image: docker://brentp/mosdepth:v0.3.3
   output: mosdepth.sif
-  
+
 freebayes:
-  image: "docker://staphb/freebayes:1.3.10"
-  output: freebayes.sif  
-  
+  image: docker://staphb/freebayes:1.3.10
+  output: freebayes.sif
+
 ariba:
-  image: "docker://staphb/ariba:2.14.7"
-  output: ariba.sif    
-  
+  image: docker://staphb/ariba:2.14.7
+  output: ariba.sif
+
 gubbins:
-  image: "docker://sangerpathogens/gubbins:v3.0.0"
+  image: docker://sangerpathogens/gubbins:v3.0.0
   output: gubbins.sif
-  
+
 iqtree:
-  image: "docker://staphb/iqtree2:2.4.0"
+  image: docker://staphb/iqtree2:2.4.0
   output: iqtree.sif
