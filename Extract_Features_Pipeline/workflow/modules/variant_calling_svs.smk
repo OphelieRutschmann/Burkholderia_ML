@@ -184,6 +184,10 @@ rule extract_core_svs:
     output:
         matrix="results/svs_core.tsv",
         metadata="results/svs_core_meta.tsv"
+    resources:
+        runtime=config["resources"]["general"]["runtime"],
+        mem_mb=config["resources"]["general"]["mem_mb"],
+        cpus_per_task=config["resources"]["general"]["cpus"]
     container:
         "workflow/containers/biopython.sif"
     shell:

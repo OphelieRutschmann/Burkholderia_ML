@@ -40,6 +40,10 @@ module variant_calling_SVs:
 module variant_calling_CNVs:
     snakefile: "workflow/modules/variant_calling_cnvs.smk"
     config: config
+ 
+module phylogeny:
+    snakefile: "workflow/modules/phylogeny.smk"
+    config: config
 
 
 # Define what outputs you want
@@ -52,12 +56,15 @@ QC_ILLUMINA_OUTPUTS = [
 # Main target rule
 rule all:
     input:
-        QC_ILLUMINA_OUTPUTS,
+        # QC_ILLUMINA_OUTPUTS,
         lambda _: expand("results/02_Variant_SNPs/{sample}/snps.filt.vcf.gz", sample=get_passed_samples()),
-        "results/02_Variant_SNPs/snps.ann.vcf",
-        #"results/03_SV/merged_svs.vcf.gz",
-        #"results/04_CNV/cnv_depth_matrix.tsv",
-        #lambda _: expand("results/04_CNV/{sample}/cnv_per_region.tsv", sample=get_passed_samples())
+        "results/02_Variant_SNPs/core_SNP/core_snps.ann.vcf",
+        # "results/03_SV/merged_svs.vcf.gz",
+        "results/04_CNV/cnv_depth_matrix.tsv",
+        lambda _: expand("results/04_CNV/{sample}/cnv_per_region.tsv", sample=get_passed_samples()),
+        "results/04_Phylogeny/iqtree/iqtree.treefile",
+        # "results/svs_core.tsv"
+        
 
 # Use rules from modules with prefixes
 use rule * from databases as databases_*
@@ -65,3 +72,4 @@ use rule * from QC_illumina as QC_illumina_*
 use rule * from variant_calling_CNVs as CNVs_*
 use rule * from variant_calling_SNPs as SNPs_*
 use rule * from variant_calling_SVs as SVs_*
+use rule * from phylogeny as phylogeny_*

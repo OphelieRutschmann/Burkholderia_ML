@@ -4,8 +4,7 @@ From: python:3.11-slim
 %post
     pip install --no-cache-dir \
         pandas==2.2.0 \
-        numpy==1.26.4 \
-        biopython==1.83
+        numpy==1.26.4
 
 %help
     Python 3.11 container with pandas and numpy

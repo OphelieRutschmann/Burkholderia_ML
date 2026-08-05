@@ -182,6 +182,10 @@ rule cnv_depth_to_presence:
         matrix="results/cnvs_gene_presence.tsv"
     params:
         input_dir="results/04_CNV"
+    resources:
+        runtime=config["resources"]["general"]["runtime"],
+        mem_mb=config["resources"]["general"]["mem_mb"],
+        cpus_per_task=config["resources"]["general"]["cpus"]
     container:
         "workflow/containers/python.sif"
     shell:

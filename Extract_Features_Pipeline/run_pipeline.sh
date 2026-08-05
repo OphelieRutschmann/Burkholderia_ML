@@ -104,14 +104,14 @@ trap cleanup_tmpdir EXIT
 echo ""
 echo "Starting Snakemake..."
 snakemake \
-    --cluster "sbatch --cpus-per-task={resources.cpus_per_task} --mem={resources.mem_mb} --time={resources.runtime}" \
+    --cluster "sbatch --cpus-per-task={resources.cpus_per_task} --mem={resources.mem_mb} --time={resources.runtime} --exclude=hpc-srvbio-01" \
     --jobs 10 \
     --resources mem_mb=32000 \
     --use-singularity \
-    --rerun-incomplete \
     --latency-wait 60 \
     --singularity-args "-B /mnt/nfs -B /home/ruop/ -B ${TMPDIR}:/tmp" \
-    --rerun-triggers params
+    --rerun-triggers params \
+    --rerun-incomplete
 
 if [ $? -eq 0 ]; then
     echo ""

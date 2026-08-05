@@ -9,7 +9,8 @@ rule variant_snippy:
         r2="results/00_QC/fastp/trimmed_reads/{sample}_trimmed_R2.fastq",
         ref="databases/genomes/refgenome/ref_genome.fasta"
     output:
-        "results/02_Variant_SNPs/{sample}/snps.filt.vcf"
+        vcf = "results/02_Variant_SNPs/{sample}/snps.filt.vcf",
+        alignement = "results/02_Variant_SNPs/{sample}/snps.aligned.fa"
     params:
         outdir="results/02_Variant_SNPs/{sample}",
         read_type=config["read_type"]
@@ -20,7 +21,8 @@ rule variant_snippy:
     container:
         "workflow/containers/snippy.sif"
     shell:
-        """
+        """       
+        rm -rf {params.outdir}
         mkdir -p {params.outdir}/tmp
 
         snippy --cpus {resources.cpus_per_task} \
@@ -34,7 +36,7 @@ rule variant_snippy:
             --force \
             --cleanup
 
-        # Rename output to expected name (Snippy produces snps.vcf, we want snps.filt.vcf)
+        # Rename output to expected name
         mv "{params.outdir}/snps.vcf" "{params.outdir}/snps.filt.vcf"
 
         # Clean up temporary directory and other unnecessary files
@@ -45,7 +47,6 @@ rule variant_snippy:
         rm -f "{params.outdir}/snps.bam.bai"
         rm -f "{params.outdir}/snps.consensus.fa"
         rm -f "{params.outdir}/snps.consensus.subs.fa"
-        rm -f "{params.outdir}/snps.aligned.fa"
         rm -f "{params.outdir}/snps.bed"
         rm -f "{params.outdir}/snps.log"
         rm -f "{params.outdir}/snps.txt"
@@ -151,6 +152,14 @@ rule core_snp_alignment:
         snippy_vcfs=lambda _: expand(
             "results/02_Variant_SNPs/{sample}/snps.filt.vcf",
             sample=get_passed_samples()
+        ),
+        snippy_alignements=lambda _: expand(
+            "results/02_Variant_SNPs/{sample}/snps.aligned.fa",
+            sample=get_passed_samples()
+        ),
+        snippy_dirs=lambda _: expand(
+            "results/02_Variant_SNPs/{sample}",
+            sample=get_passed_samples()
         )
     output:
         core_aln="results/02_Variant_SNPs/core_SNP/core.full.aln",
@@ -169,29 +178,24 @@ rule core_snp_alignment:
         """
         mkdir -p {params.outdir}
 
-        # snippy-core expects .vcf files (not .filt.vcf)
-        # Create symlinks from .filt.vcf to .vcf so snippy-core can find them
-        for vcf_file in {input.snippy_vcfs}; do
-            sample_dir=$(dirname "$vcf_file")
-            # Create link from snps.filt.vcf to snps.vcf if not already present
-            if [ ! -f "$sample_dir/snps.vcf" ]; then
-                ln -s "snps.filt.vcf" "$sample_dir/snps.vcf"
-            fi
-        done
+	for d in {input.snippy_dirs}; do
+	    cp "$d/snps.filt.vcf" "$d/snps.vcf"
+	done
+
 
         # Create core alignment from all snippy VCFs
         snippy-core \
             --ref {input.ref} \
             --prefix {params.outdir}/{params.prefix} \
-            results/02_Variant_SNPs/*/
+            {input.snippy_dirs}
 
         # Remove reference sequence from alignment
-        ref_header=$(grep "^>" {input.ref} | head -1 | sed 's/^>//')
-        snippy-clean_full_aln {params.outdir}/{params.prefix}.full.aln \
-            | awk -v ref="$ref_header" '
-                /^>/ {{ skip = ($0 == ">" ref); next }}
-                !skip
-            ' > {output.clean_aln}
+	ref_header=$(grep "^>" {input.ref} | head -1 | sed 's/^>//')
+	snippy-clean_full_aln {params.outdir}/{params.prefix}.full.aln \
+	    | awk -v ref=">$ref_header" '
+		/^>/ {{ skip = ($0 == ref) }}
+		!skip
+	    ' > {output.clean_aln}
 
         # Extract SNP positions
         cut -d$'\t' -f2 "{params.outdir}/core.tab" | tail -n +2 > "{output.snp_pos}"
@@ -205,11 +209,15 @@ rule core_snp_feature_matrix:
         aln="results/02_Variant_SNPs/core_SNP/clean.full.aln"
     output:
         matrix="results/02_Variant_SNPs/core_SNP/core.tsv"
+    resources:
+        runtime=config["resources"]["general"]["runtime"],
+        mem_mb=config["resources"]["general"]["mem_mb"],
+        cpus_per_task=config["resources"]["general"]["cpus"]
     container:
         "workflow/containers/biopython.sif"
     shell:
         """
-        python workflow/scripts/convert_snp_alignment_to_matrix.py \
+        python workflow/scripts/convert_snp_to_matrix.py \
             --alignment {input.aln} \
             --output {output.matrix}
         """
@@ -256,6 +264,10 @@ rule core_snps_to_vcf:
         ref="databases/genomes/refgenome/ref_genome.fasta"
     output:
         vcf="results/02_Variant_SNPs/core_SNP/core_snps.vcf"
+    resources:
+        runtime=config["resources"]["general"]["runtime"],
+        mem_mb=config["resources"]["general"]["mem_mb"],
+        cpus_per_task=config["resources"]["general"]["cpus"]
     container:
         "workflow/containers/biopython.sif"
     shell:

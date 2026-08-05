@@ -4,8 +4,8 @@
 # FIll in this section with information about the genome to be used as a reference for general mapping and coverage / depths calculations
 # You can provide either the accession number (the genome will be downloaded from NCBI) or a path.
 ref_mapping:
-  accession: "GCF_030297255.1" 
-  path: ""
+  accession: "" 
+  path: "/mnt/nfs/bio/Sequencing/Bacteriology/p025_Burkholderia_ML/Pipeline/databases/genomes/refgenome"
 
 # Fill in this section with information for the creation of the cgMLST schema. 
 # Option 1: Give the path to a schema

@@ -99,3 +99,9 @@ singularity pull "$CONT_DIR/${OUTPUT[freebayes]}" "${IMAGE[freebayes]}"
 
 echo "Pulling ariba image"
 singularity pull "$CONT_DIR/${OUTPUT[ariba]}" "${IMAGE[ariba]}"
+
+echo "Pulling gubbins image"
+singularity pull "$CONT_DIR/${OUTPUT[gubbins]}" "${IMAGE[gubbins]}"
+
+echo "Pulling iqtree image"
+singularity pull "$CONT_DIR/${OUTPUT[iqtree]}" "${IMAGE[iqtree]}"
