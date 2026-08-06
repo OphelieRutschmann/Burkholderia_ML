@@ -1,0 +1,6 @@
+model,hyperparameters,test_accuracy,cv_score
+Logistic Regression,C=0.0100,0.9375,0.8845137420718816
+K-Nearest Neighbors,k=1,0.9583333333333334,0.8957983193277311
+XGBoost,"max_depth=3, learning_rate=0.05, reg_alpha=0.1, reg_lambda=0.1",1.0,0.8727731092436976
+Support Vector Machine,"kernel=poly, C=100.0000",0.8958333333333334,0.9011764705882352
+Decision Tree,"max_depth=5, min_samples_split=20",0.8958333333333334,0.8383193277310923
