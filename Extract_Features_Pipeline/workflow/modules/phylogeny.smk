@@ -6,8 +6,7 @@ rule build_phylogeny:
     input:
         aln="results/02_Variant_SNPs/core_SNP/clean.full.aln"
     output:
-        tree="results/04_Phylogeny/iqtree/iqtree.treefile",
-        model="results/04_Phylogeny/iqtree/iqtree.model.gz"
+        tree="results/04_Phylogeny/iqtree/iqtree.iqtree"
     params:
         prefix="results/04_Phylogeny/iqtree/iqtree"
     resources:

@@ -87,9 +87,6 @@ singularity pull "$CONT_DIR/${OUTPUT[pindel]}" "${IMAGE[pindel]}"
 echo "Pulling bedtools image"
 singularity pull "$CONT_DIR/${OUTPUT[bedtools]}" "${IMAGE[bedtools]}"
 
-echo "Pulling biopython image"
-singularity pull "$CONT_DIR/${OUTPUT[biopython]}" "${IMAGE[biopython]}"
-
 echo "Pulling mosdepth image"
 singularity pull "$CONT_DIR/${OUTPUT[mosdepth]}" "${IMAGE[mosdepth]}"
 
@@ -104,3 +101,7 @@ singularity pull "$CONT_DIR/${OUTPUT[gubbins]}" "${IMAGE[gubbins]}"
 
 echo "Pulling iqtree image"
 singularity pull "$CONT_DIR/${OUTPUT[iqtree]}" "${IMAGE[iqtree]}"
+
+echo "Building python container"
+singularity build "$CONT_DIR/python_env.sif" "$CONT_DIR/python_env.def" # use --remote with access token if this doesn't work. 
+
