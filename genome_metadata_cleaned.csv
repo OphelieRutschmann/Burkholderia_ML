@@ -1,222 +1,228 @@
-,source,species,resistance_profile,ST,location
-SRR3404582,Patient,B. pseudomallei,"Resistant to SXT; Not determined: CAZ, AMC, MEM",unknown,unknown
-SRR3404597,Patient,B. pseudomallei,"Resistant to SXT; Not determined: CAZ, AMC, MEM",unknown,unknown
-SRR3404599,Patient,B. pseudomallei,"Resistant to SXT; Not determined: CAZ, AMC, MEM",unknown,unknown
-SRR5927082,Patient,B. pseudomallei,"Susceptible to MEM, SXT, AMC, IPM; Not determined: ",a,Australia
-SRR6075123,Patient,B. pseudomallei,"Resistant to MEM; Susceptible to SXT, AMC, IPM",a,Australia
-SRR6075124,Patient,B. pseudomallei,"Susceptible to MEM, SXT; Not determined: AMC, IPM",unknown,unknown
-SRR6075125,Patient,B. pseudomallei,"Susceptible to MEM, SXT, AMC; Not determined: IPM",a,Australia
-SRR6075127,Patient,B. pseudomallei,"Resistant to MEM; Susceptible to SXT, IPM; Not determined: AMC",unknown,unknown
-SRR27387687,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",1051,Thailand:Amnat Charoen
-SRR27387688,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",206,Thailand:Amnat Charoen
-SRR27387689,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",54,Thailand:Amnat Charoen
-SRR27387690,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",512,Thailand:Amnat Charoen
-SRR27387691,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",163,Thailand:Amnat Charoen
-SRR27387692,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",Novel ST,Thailand:Amnat Charoen
-SRR27387694,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",70,Thailand:Amnat Charoen
-SRR27387695,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",70,Thailand:Amnat Charoen
-SRR27387696,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",Novel ST,Thailand:Amnat Charoen
-SRR27387697,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",70,Thailand:Amnat Charoen
-SRR27387699,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",Novel ST,Thailand:Amnat Charoen
-SRR27387701,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",Novel ST,Thailand:Amnat Charoen
-SRR27387702,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",178,Thailand:Amnat Charoen
-SRR27387705,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",17,Thailand:Amnat Charoen
-SRR27387706,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",512,Thailand:Amnat Charoen
-SRR27387708,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",70,Thailand:Amnat Charoen
-SRR27387751,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",392,Thailand:Nong Khai
-SRR27387752,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",10,Thailand:Nong Khai
-SRR27387753,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",519,Thailand:Nong Khai
-SRR27387754,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",306,Thailand:Nong Khai
-SRR27387755,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",176,Thailand:Nong Khai
-SRR27387756,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",70,Thailand:Nong Khai
-SRR27387758,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",376,Thailand:Nong Khai
-SRR27387760,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",167,Thailand:Nong Khai
-SRR27387761,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",1534,Thailand:Nong Khai
-SRR27387762,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",884,Thailand:Nong Khai
-SRR27387763,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",16,Thailand:Nong Khai
-SRR27387764,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",10,Thailand:Nong Khai
-SRR27387765,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",167,Thailand:Nong Khai
-SRR27387766,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",54,Thailand:Nong Khai
-SRR27387767,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",70,Thailand:Nong Khai
-SRR27387769,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",389,Thailand:Nong Khai
-SRR27387770,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",1465,Thailand:Nong Khai
-SRR27387771,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",10,Thailand:Nong Khai
-SRR27387772,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",10,Thailand:Nong Khai
-SRR27387773,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",874,Thailand:Nong Khai
-SRR27387774,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",58,Thailand:Nong Khai
-SRR27387775,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",1827,Thailand:Nong Khai
-SRR27387776,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",306,Thailand:Nong Khai
-SRR27387777,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",511,Thailand:Nong Khai
-SRR27387778,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",167,Thailand:Nong Khai
-SRR27387780,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",10,Thailand:Nong Khai
-SRR27387781,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",99,Thailand:Nong Khai
-SRR27387782,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",511,Thailand:Nong Khai
-SRR27387786,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",1421,Thailand:Chaiyaphum
-SRR27387811,Patient,B. pseudomallei,"Resistant to AMC, SXT; Susceptible to CAZ; Not determined: IPM",93,Thailand:Buri Ram
-SRR27387814,Patient,B. pseudomallei,"Resistant to AMC, SXT; Susceptible to CAZ; Not determined: IPM",93,Thailand:Buri Ram
-SRR27387815,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",54,Thailand:Khon Kaen
-SRR27387816,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",1397,Thailand:Khon Kaen
-SRR27387817,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",Novel ST,Thailand:Khon Kaen
-SRR27387819,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",365,Thailand:Khon Kaen
-SRR27387820,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
-SRR27387821,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",10,Thailand:Khon Kaen
-SRR27387822,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
-SRR27387823,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",Novel ST,Thailand:Khon Kaen
-SRR27387824,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",54,Thailand:Khon Kaen
-SRR27387825,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",46,Thailand:Khon Kaen
-SRR27387826,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",46,Thailand:Khon Kaen
-SRR27387827,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",Novel ST,Thailand:Khon Kaen
-SRR27387828,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",46,Thailand:Khon Kaen
-SRR27387830,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",46,Thailand:Khon Kaen
-SRR27387831,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",23,Thailand:Khon Kaen
-SRR27387832,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",52,Thailand:Khon Kaen
-SRR27387833,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",219,Thailand:Khon Kaen
-SRR27387834,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",219,Thailand:Khon Kaen
-SRR27387835,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",219,Thailand:Khon Kaen
-SRR27387836,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",498,Thailand:Khon Kaen
-SRR27387837,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",498,Thailand:Khon Kaen
-SRR27387838,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
-SRR27387839,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
-SRR27387841,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",206,Thailand:Khon Kaen
-SRR27387842,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",206,Thailand:Khon Kaen
-SRR27387843,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
-SRR27387844,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",365,Thailand:Khon Kaen
-SRR27387845,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",492,Thailand:Khon Kaen
-SRR27387846,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",54,Thailand:Khon Kaen
-SRR27387847,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
-SRR27387848,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
-SRR27387849,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
-SRR27387850,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
-SRR27387851,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
-SRR27387854,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",306,Thailand:Khon Kaen
-SRR27387855,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",306,Thailand:Khon Kaen
-SRR27387857,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",34,Thailand:Khon Kaen
-SRR27387858,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",34,Thailand:Khon Kaen
-SRR27387859,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",34,Thailand:Khon Kaen
-SRR27387860,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",34,Thailand:Khon Kaen
-SRR27387861,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",34,Thailand:Khon Kaen
-SRR27387862,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",500,Thailand:Khon Kaen
-SRR27387863,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",500,Thailand:Khon Kaen
-SRR27387865,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",56,Thailand:Khon Kaen
-SRR27387866,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
-SRR27387867,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
-SRR27387868,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
-SRR27387869,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
-SRR27387870,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",831,Thailand:Khon Kaen
-SRR27387871,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",17,Thailand:Khon Kaen
-SRR27387872,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",Novel ST,Thailand:Khon Kaen
-SRR27387873,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",Novel ST,Thailand:Khon Kaen
-SRR27387874,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",33,Thailand:Khon Kaen
-SRR27387876,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",33,Thailand:Khon Kaen
-SRR27387877,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",34,Thailand:Khon Kaen
-SRR27387878,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",34,Thailand:Khon Kaen
-SRR27387929,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",Novel ST,Thailand:Sisaket
-SRR27387930,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",167,Thailand:Sisaket
-SRR27387931,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",93,Thailand:Sisaket
-SRR27387932,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",Novel ST,Thailand:Sisaket
-SRR27387933,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",54,Thailand:Sisaket
-SRR27387934,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",512,Thailand:Sisaket
-SRR27387935,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",33,Thailand:Sisaket
-SRR27387936,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",10,Thailand:Sisaket
-SRR27387938,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",654,Thailand:Sisaket
-SRR27387939,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",654,Thailand:Sisaket
-SRR27387940,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",174,Thailand:Sisaket
-SRR27387941,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",70,Thailand:Sisaket
-SRR27387942,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",520,Thailand:Sisaket
-SRR27387945,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",167,Thailand:Nakhon Ratchasima
-SRR27387946,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",23,Thailand:Nakhon Ratchasima
-SRR27387953,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",511,Thailand:Nakhon Ratchasima
-SRR27387955,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",529,Thailand:Nakhon Ratchasima
-SRR27387961,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",306,Thailand:Nakhon Ratchasima
-SRR27387964,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",99,Thailand:Nakhon Ratchasima
-SRR27387965,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",203,Thailand:Nakhon Ratchasima
-SRR27387985,Patient,B. pseudomallei,"Resistant to AMC, SXT; Susceptible to CAZ; Not determined: IPM",70,Thailand:Buri Ram
-SRR27387987,Patient,B. pseudomallei,"Resistant to AMC, SXT; Susceptible to CAZ; Not determined: IPM",306,Thailand:Buri Ram
-SRR27387990,Patient,B. pseudomallei,"Resistant to AMC, SXT; Susceptible to CAZ, IPM",17,Thailand:Buri Ram
-SRR27387992,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",219,Thailand:Amnat Charoen
-SRR27387993,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",155,Thailand:Amnat Charoen
-SRR27387995,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",54,Thailand:Khon Kaen
-SRR27387996,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",298,Thailand:Khon Kaen
-SRR27387997,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",298,Thailand:Khon Kaen
-SRR27387999,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",298,Thailand:Khon Kaen
-SRR27388000,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",33,Thailand:Khon Kaen
-SRR27388001,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",33,Thailand:Khon Kaen
-SRR27388002,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",306,Thailand:Khon Kaen
-SRR27388003,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",306,Thailand:Khon Kaen
-SRR27388004,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",306,Thailand:Khon Kaen
-SRR27388005,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",306,Thailand:Khon Kaen
-SRR27388006,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",58,Thailand:Khon Kaen
-SRR27388007,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",10,Thailand:Khon Kaen
-SRR27388008,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",10,Thailand:Khon Kaen
-SRR27388010,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",492,Thailand:Khon Kaen
-SRR27388011,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",492,Thailand:Khon Kaen
-SRR27388012,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",492,Thailand:Khon Kaen
-SRR27388013,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",306,Thailand:Khon Kaen
-SRR27388014,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",306,Thailand:Khon Kaen
-SRR27388015,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
-SRR27388016,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
-SRR27388017,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",Novel ST,Thailand:Khon Kaen
-SRR27388018,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
-SRR27388019,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",Novel ST,Thailand:Khon Kaen
-SRR27388022,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",17,Thailand:Khon Kaen
-SRR27388023,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",306,Thailand:Khon Kaen
-SRR27388024,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
-SRR27388025,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
-SRR27388058,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",520,Thailand:Sisaket
-SRR27388059,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",520,Thailand:Sisaket
-SRR27388060,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",Novel ST,Thailand:Sisaket
-SRR27388061,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",526,Thailand:Sisaket
-SRR27388062,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",526,Thailand:Sisaket
-SRR27388064,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",70,Thailand:Sisaket
-SRR27388065,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",219,Thailand:Sisaket
-SRR27388066,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",219,Thailand:Sisaket
-SRR27388067,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",46,Thailand:Sisaket
-SRR27388069,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",54,Thailand:Nakhon Phanom
-SRR27388070,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",176,Thailand:Nakhon Phanom
-SRR27388075,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",1777,Thailand:Nong Khai
-SRR27388076,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",372,Thailand:Nong Khai
-SRR27388078,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",519,Thailand:Nong Khai
-SRR27388079,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",300,Thailand:Nong Khai
-SRR27388080,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",830,Thailand:Nong Khai
-SRR27388081,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",10,Thailand:Nong Khai
-SRR27388082,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",10,Thailand:Nong Khai
-SRR27388083,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",684,Thailand:Nong Khai
-SRR27388084,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",70,Thailand:Nong Khai
-SRR27388086,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",23,Thailand:Nong Khai
-SRR27388087,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",1777,Thailand:Nong Khai
-SRR27388088,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",519,Thailand:Nong Khai
-SRR27388089,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",206,Thailand:Nong Khai
-SRR27388090,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",10,Thailand:Nong Khai
-SRR27388091,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",162,Thailand:Nong Khai
-SRR27388092,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",203,Thailand:Nong Khai
-SRR27388093,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",162,Thailand:Nong Khai
-SRR27388094,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",Novel ST,Thailand:Nong Khai
-SRR27388095,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",307,Thailand:Nong Khai
-SRR27388096,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",93,Thailand:Nong Khai
-SRR27388098,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",10,Thailand:Nong Khai
-SRR27388099,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",167,Thailand:Nong Khai
-SRR27388100,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",163,Thailand:Nong Khai
-SRR27388101,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",376,Thailand:Nong Khai
-SRR27388103,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",167,Thailand:Nong Khai
-SRR27388104,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",Novel ST,Thailand:Nong Khai
-SRR27388105,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",Novel ST,Thailand:Nong Khai
-SRR27388110,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",93,Thailand:Nakhon Ratchasima
-SRR27388112,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",529,Thailand:Nakhon Ratchasima
-SRR27388114,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",203,Thailand:Nakhon Ratchasima
-SRR27388124,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
-SRR27388125,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",654,Thailand:Khon Kaen
-SRR27388126,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",654,Thailand:Khon Kaen
-SRR27388127,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",654,Thailand:Khon Kaen
-SRR27388130,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",174,Thailand:Khon Kaen
-SRR27388131,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
-SRR27388132,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
-SRR27388136,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",Novel ST,Thailand:Khon Kaen
-SRR27388137,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",526,Thailand:Khon Kaen
-SRR27388138,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",526,Thailand:Khon Kaen
-SRR27388141,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
-SRR27388142,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
-SRR32783430,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, SXT, MEM",unknown,unknown
-SRR32783431,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, MEM",unknown,unknown
-SRR32783432,Patient,B. pseudomallei,"Resistant to SXT, MEM; Susceptible to AMC, CAZ",unknown,unknown
-SRR32783433,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, SXT, MEM ",unknown,unknown
-SRR32783434,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, SXT, MEM",unknown,unknown
+,genome_name,source,species,resistance_profile,ST,location
+SRR3404582,SRR3404582,Patient,B. pseudomallei,"Resistant to SXT; Not determined: CAZ, AMC, MEM",,
+SRR3404597,SRR3404597,Patient,B. pseudomallei,"Resistant to SXT; Not determined: CAZ, AMC, MEM",,
+SRR3404599,SRR3404599,Patient,B. pseudomallei,"Resistant to SXT; Not determined: CAZ, AMC, MEM",,
+SRR5927082,MSHR0664,Patient,B. pseudomallei,"Susceptible to MEM, SXT, AMC, IPM; Not determined: ",a,Australia
+SRR6075123,MSHR8481,Patient,B. pseudomallei,"Resistant to MEM; Susceptible to SXT, AMC, IPM",a,Australia
+SRR6075124,MSHR9039,Patient,B. pseudomallei,"Susceptible to MEM, SXT; Not determined: AMC, IPM",,
+SRR6075125,MSHR8544,Patient,B. pseudomallei,"Susceptible to MEM, SXT, AMC; Not determined: IPM",a,Australia
+SRR6075127,MSHR9021,Patient,B. pseudomallei,"Resistant to MEM; Susceptible to SXT, IPM; Not determined: AMC",,
+SRR27387687,EPAC065,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",1051,Thailand:Amnat Charoen
+SRR27387688,EPAC055,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",206,Thailand:Amnat Charoen
+SRR27387689,EPAC053,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",54,Thailand:Amnat Charoen
+SRR27387690,EPAC050,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",512,Thailand:Amnat Charoen
+SRR27387691,EPAC049,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",163,Thailand:Amnat Charoen
+SRR27387692,EPAC048,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",Novel ST,Thailand:Amnat Charoen
+SRR27387694,EPAC039,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",70,Thailand:Amnat Charoen
+SRR27387695,EPAC038,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",70,Thailand:Amnat Charoen
+SRR27387696,EPAC037,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",Novel ST,Thailand:Amnat Charoen
+SRR27387697,EPAC036,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",70,Thailand:Amnat Charoen
+SRR27387699,EPAC032,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",Novel ST,Thailand:Amnat Charoen
+SRR27387701,EPAC023,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",Novel ST,Thailand:Amnat Charoen
+SRR27387702,EPAC021,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",178,Thailand:Amnat Charoen
+SRR27387705,EPAC013,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",17,Thailand:Amnat Charoen
+SRR27387706,EPAC006,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",512,Thailand:Amnat Charoen
+SRR27387708,EPAC004,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",70,Thailand:Amnat Charoen
+SRR27387751,EPNK119,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",392,Thailand:Nong Khai
+SRR27387752,EPNK115,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",10,Thailand:Nong Khai
+SRR27387753,EPNK113,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",519,Thailand:Nong Khai
+SRR27387754,EPNK108,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",306,Thailand:Nong Khai
+SRR27387755,EPNK107,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",176,Thailand:Nong Khai
+SRR27387756,EPNK103,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",70,Thailand:Nong Khai
+SRR27387758,EPNK099,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",376,Thailand:Nong Khai
+SRR27387759,EPNK096,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",Novel ST,Thailand:Nong Khai
+SRR27387760,EPNK093,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",167,Thailand:Nong Khai
+SRR27387761,EPNK090,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",1534,Thailand:Nong Khai
+SRR27387762,EPNK087,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",884,Thailand:Nong Khai
+SRR27387763,EPNK085,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",16,Thailand:Nong Khai
+SRR27387764,EPNK082,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",10,Thailand:Nong Khai
+SRR27387765,EPNK077,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",167,Thailand:Nong Khai
+SRR27387766,EPNK076,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",54,Thailand:Nong Khai
+SRR27387767,EPNK073,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",70,Thailand:Nong Khai
+SRR27387769,EPNK068,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",389,Thailand:Nong Khai
+SRR27387770,EPNK064,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",1465,Thailand:Nong Khai
+SRR27387771,EPNK061,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",10,Thailand:Nong Khai
+SRR27387772,EPNK057,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",10,Thailand:Nong Khai
+SRR27387773,EPNK056,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",874,Thailand:Nong Khai
+SRR27387774,EPNK055,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",58,Thailand:Nong Khai
+SRR27387775,EPNK052,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",1827,Thailand:Nong Khai
+SRR27387776,EPNK049,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",306,Thailand:Nong Khai
+SRR27387777,EPNK047,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",511,Thailand:Nong Khai
+SRR27387778,EPNK046,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",167,Thailand:Nong Khai
+SRR27387780,EPNK044,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",10,Thailand:Nong Khai
+SRR27387781,EPNK039,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",99,Thailand:Nong Khai
+SRR27387782,EPNK038,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",511,Thailand:Nong Khai
+SRR27387786,EPCP163,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",1421,Thailand:Chaiyaphum
+SRR27387811,EPBR064,Patient,B. pseudomallei,"Resistant to AMC, SXT; Susceptible to CAZ; Not determined: IPM",93,Thailand:Buri Ram
+SRR27387814,EPBR048,Patient,B. pseudomallei,"Resistant to AMC, SXT; Susceptible to CAZ; Not determined: IPM",93,Thailand:Buri Ram
+SRR27387815,SH111,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",54,Thailand:Khon Kaen
+SRR27387816,SH110,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",1397,Thailand:Khon Kaen
+SRR27387817,SH109,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",Novel ST,Thailand:Khon Kaen
+SRR27387819,SH108,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",365,Thailand:Khon Kaen
+SRR27387820,SH107,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
+SRR27387821,SH106,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",10,Thailand:Khon Kaen
+SRR27387822,SH105,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
+SRR27387823,SH104,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",Novel ST,Thailand:Khon Kaen
+SRR27387824,SH103,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",54,Thailand:Khon Kaen
+SRR27387825,SH102,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",46,Thailand:Khon Kaen
+SRR27387826,SH101,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",46,Thailand:Khon Kaen
+SRR27387827,SH100,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",Novel ST,Thailand:Khon Kaen
+SRR27387828,SH099,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",46,Thailand:Khon Kaen
+SRR27387830,SH098,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",46,Thailand:Khon Kaen
+SRR27387831,SH097,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",23,Thailand:Khon Kaen
+SRR27387832,SH096,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",52,Thailand:Khon Kaen
+SRR27387833,SH095,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",219,Thailand:Khon Kaen
+SRR27387834,SH094,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",219,Thailand:Khon Kaen
+SRR27387835,SH093,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",219,Thailand:Khon Kaen
+SRR27387836,SH092,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",498,Thailand:Khon Kaen
+SRR27387837,SH091,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",498,Thailand:Khon Kaen
+SRR27387838,SH090,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
+SRR27387839,SH089,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
+SRR27387841,SH088,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",206,Thailand:Khon Kaen
+SRR27387842,SH087,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",206,Thailand:Khon Kaen
+SRR27387843,SH086,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
+SRR27387844,SH085,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",365,Thailand:Khon Kaen
+SRR27387845,SH084,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",492,Thailand:Khon Kaen
+SRR27387846,SH083,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",54,Thailand:Khon Kaen
+SRR27387847,SH053,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
+SRR27387848,SH052,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
+SRR27387849,SH051,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
+SRR27387850,SH050,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
+SRR27387851,SH049,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
+SRR27387854,SH048,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",306,Thailand:Khon Kaen
+SRR27387855,SH047,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",306,Thailand:Khon Kaen
+SRR27387856,SH046,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",306,Thailand:Khon Kaen
+SRR27387857,SH045,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",34,Thailand:Khon Kaen
+SRR27387858,SH044,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",34,Thailand:Khon Kaen
+SRR27387859,SH043,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",34,Thailand:Khon Kaen
+SRR27387860,SH042,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",34,Thailand:Khon Kaen
+SRR27387861,SH041,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",34,Thailand:Khon Kaen
+SRR27387862,SH040,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",500,Thailand:Khon Kaen
+SRR27387863,SH039,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",500,Thailand:Khon Kaen
+SRR27387865,SH038,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",56,Thailand:Khon Kaen
+SRR27387866,SH037,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
+SRR27387867,SH036,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
+SRR27387868,SH035,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
+SRR27387869,SH034,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
+SRR27387870,SH033,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",831,Thailand:Khon Kaen
+SRR27387871,SH032,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",17,Thailand:Khon Kaen
+SRR27387872,SH031,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",Novel ST,Thailand:Khon Kaen
+SRR27387873,SH030,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",Novel ST,Thailand:Khon Kaen
+SRR27387874,SH029,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",33,Thailand:Khon Kaen
+SRR27387876,SH028,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",33,Thailand:Khon Kaen
+SRR27387877,SH027,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",34,Thailand:Khon Kaen
+SRR27387878,SH026,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",34,Thailand:Khon Kaen
+SRR27387929,EPSK086,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",Novel ST,Thailand:Sisaket
+SRR27387930,EPSK081,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",167,Thailand:Sisaket
+SRR27387931,EPSK077,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",93,Thailand:Sisaket
+SRR27387932,EPSK073,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",Novel ST,Thailand:Sisaket
+SRR27387933,EPSK069,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",54,Thailand:Sisaket
+SRR27387934,EPSK065,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",512,Thailand:Sisaket
+SRR27387935,EPSK060,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",33,Thailand:Sisaket
+SRR27387936,EPSK058,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",10,Thailand:Sisaket
+SRR27387938,EPSK054,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",654,Thailand:Sisaket
+SRR27387939,EPSK052,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",654,Thailand:Sisaket
+SRR27387940,EPSK048,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",174,Thailand:Sisaket
+SRR27387941,EPSK040,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",70,Thailand:Sisaket
+SRR27387942,EPSK039,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",520,Thailand:Sisaket
+SRR27387945,EPMN131,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",167,Thailand:Nakhon Ratchasima
+SRR27387946,EPMN130,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",23,Thailand:Nakhon Ratchasima
+SRR27387950,EPMN110,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",Novel ST,Thailand:Nakhon Ratchasima
+SRR27387953,EPMN107,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",511,Thailand:Nakhon Ratchasima
+SRR27387955,EPMN102,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",529,Thailand:Nakhon Ratchasima
+SRR27387961,EPMN081,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",306,Thailand:Nakhon Ratchasima
+SRR27387964,EPMN069,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",99,Thailand:Nakhon Ratchasima
+SRR27387965,EPMN061,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",203,Thailand:Nakhon Ratchasima
+SRR27387985,EPBR017,Patient,B. pseudomallei,"Resistant to AMC, SXT; Susceptible to CAZ; Not determined: IPM",70,Thailand:Buri Ram
+SRR27387987,EPBR012,Patient,B. pseudomallei,"Resistant to AMC, SXT; Susceptible to CAZ; Not determined: IPM",306,Thailand:Buri Ram
+SRR27387990,EPBR007,Patient,B. pseudomallei,"Resistant to AMC, SXT; Susceptible to CAZ, IPM",17,Thailand:Buri Ram
+SRR27387992,EPAC071,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",219,Thailand:Amnat Charoen
+SRR27387993,EPAC066,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",155,Thailand:Amnat Charoen
+SRR27387995,SH081,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",54,Thailand:Khon Kaen
+SRR27387996,SH080,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",298,Thailand:Khon Kaen
+SRR27387997,SH079,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",298,Thailand:Khon Kaen
+SRR27387999,SH078,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",298,Thailand:Khon Kaen
+SRR27388000,SH077,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",33,Thailand:Khon Kaen
+SRR27388001,SH076,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",33,Thailand:Khon Kaen
+SRR27388002,SH075,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",306,Thailand:Khon Kaen
+SRR27388003,SH074,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",306,Thailand:Khon Kaen
+SRR27388004,SH073,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",306,Thailand:Khon Kaen
+SRR27388005,SH072,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",306,Thailand:Khon Kaen
+SRR27388006,SH071,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",58,Thailand:Khon Kaen
+SRR27388007,SH070,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",10,Thailand:Khon Kaen
+SRR27388008,SH069,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",10,Thailand:Khon Kaen
+SRR27388010,SH068,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",492,Thailand:Khon Kaen
+SRR27388011,SH067,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",492,Thailand:Khon Kaen
+SRR27388012,SH066,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",492,Thailand:Khon Kaen
+SRR27388013,SH065,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",306,Thailand:Khon Kaen
+SRR27388014,SH064,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",306,Thailand:Khon Kaen
+SRR27388015,SH063,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
+SRR27388016,SH062,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
+SRR27388017,SH061,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",Novel ST,Thailand:Khon Kaen
+SRR27388018,SH060,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
+SRR27388019,SH059,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",Novel ST,Thailand:Khon Kaen
+SRR27388022,SH057,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",17,Thailand:Khon Kaen
+SRR27388023,SH056,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",306,Thailand:Khon Kaen
+SRR27388024,SH055,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
+SRR27388025,SH054,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",512,Thailand:Khon Kaen
+SRR27388058,EPSK038,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",520,Thailand:Sisaket
+SRR27388059,EPSK027,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",520,Thailand:Sisaket
+SRR27388060,EPSK022,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",Novel ST,Thailand:Sisaket
+SRR27388061,EPSK017,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",526,Thailand:Sisaket
+SRR27388062,EPSK013,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",526,Thailand:Sisaket
+SRR27388064,EPSK005,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",70,Thailand:Sisaket
+SRR27388065,EPSK004,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",219,Thailand:Sisaket
+SRR27388066,EPSK003,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",219,Thailand:Sisaket
+SRR27388067,EPSK001,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",46,Thailand:Sisaket
+SRR27388069,EPNP203,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",54,Thailand:Nakhon Phanom
+SRR27388070,EPNP202,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, IPM",176,Thailand:Nakhon Phanom
+SRR27388075,EPNK195,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",1777,Thailand:Nong Khai
+SRR27388076,EPNK193,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",372,Thailand:Nong Khai
+SRR27388077,EPNK178,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",70,Thailand:Nong Khai
+SRR27388078,EPNK169,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",519,Thailand:Nong Khai
+SRR27388079,EPNK163,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",300,Thailand:Nong Khai
+SRR27388080,EPNK158,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",830,Thailand:Nong Khai
+SRR27388081,EPNK154,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",10,Thailand:Nong Khai
+SRR27388082,EPNK150,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",10,Thailand:Nong Khai
+SRR27388083,EPNK146,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",684,Thailand:Nong Khai
+SRR27388084,EPNK144,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",70,Thailand:Nong Khai
+SRR27388086,EPNK137,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",23,Thailand:Nong Khai
+SRR27388087,EPNK131,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",1777,Thailand:Nong Khai
+SRR27388088,EPNK128,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",519,Thailand:Nong Khai
+SRR27388089,EPNK123,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",206,Thailand:Nong Khai
+SRR27388090,EPNK029,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",10,Thailand:Nong Khai
+SRR27388091,EPNK025,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",162,Thailand:Nong Khai
+SRR27388092,EPNK022,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",203,Thailand:Nong Khai
+SRR27388093,EPNK020,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",162,Thailand:Nong Khai
+SRR27388094,EPNK019,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",Novel ST,Thailand:Nong Khai
+SRR27388095,EPNK018,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",307,Thailand:Nong Khai
+SRR27388096,EPNK016,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",93,Thailand:Nong Khai
+SRR27388098,EPNK013,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",10,Thailand:Nong Khai
+SRR27388099,EPNK011,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",167,Thailand:Nong Khai
+SRR27388100,EPNK010,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",163,Thailand:Nong Khai
+SRR27388101,EPNK009,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",376,Thailand:Nong Khai
+SRR27388102,EPNK008,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",315,Thailand:Nong Khai
+SRR27388103,EPNK007,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",167,Thailand:Nong Khai
+SRR27388104,EPNK005,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",Novel ST,Thailand:Nong Khai
+SRR27388105,EPNK004,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",Novel ST,Thailand:Nong Khai
+SRR27388110,EPMN193,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",93,Thailand:Nakhon Ratchasima
+SRR27388112,EPMN182,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",529,Thailand:Nakhon Ratchasima
+SRR27388114,EPMN174,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ; Not determined: IPM",203,Thailand:Nakhon Ratchasima
+SRR27388124,SH023,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
+SRR27388125,SH022,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",654,Thailand:Khon Kaen
+SRR27388126,SH021,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",654,Thailand:Khon Kaen
+SRR27388127,SH020,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",654,Thailand:Khon Kaen
+SRR27388130,SH018,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",174,Thailand:Khon Kaen
+SRR27388131,SH017,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
+SRR27388132,SH016,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
+SRR27388136,SH012,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",Novel ST,Thailand:Khon Kaen
+SRR27388137,SH011,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",526,Thailand:Khon Kaen
+SRR27388138,SH010,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",526,Thailand:Khon Kaen
+SRR27388139,SH009,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",526,Thailand:Khon Kaen
+SRR27388141,SH008,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
+SRR27388142,SH007,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, IPM, SXT",70,Thailand:Khon Kaen
+SRR32783430,SRR32783430,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, SXT, MEM",,
+SRR32783431,SRR32783431,Patient,B. pseudomallei,"Resistant to SXT; Susceptible to AMC, CAZ, MEM",,
+SRR32783432,SRR32783432,Patient,B. pseudomallei,"Resistant to SXT, MEM; Susceptible to AMC, CAZ",,
+SRR32783433,SRR32783433,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, SXT, MEM ",,
+SRR32783434,SRR32783434,Patient,B. pseudomallei,"Susceptible to AMC, CAZ, SXT, MEM",,
