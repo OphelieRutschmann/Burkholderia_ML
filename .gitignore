@@ -10,3 +10,4 @@ results/
 Extract_Features_Pipeline/singularity_tmp
 Extract_Features_Pipeline/config/*.yaml
 create_samplesheet.sh
+Burkholderia_ML/Extract_Features_Pipeline/config/config.yaml
