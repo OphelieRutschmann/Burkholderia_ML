@@ -1,7 +1,7 @@
 #!/bin/bash
 
-reads_dir="/mnt/nfs/bio/Sequencing/Bacteriology/p024_Burkholderia_ML/Genomes"   
-output="/home/ruop/Projects/2026_Burkholderia_ML/Pipeline/samples.tsv"
+reads_dir="path/to/Genomes"   
+output="path/to/samples.tsv"
 
 echo -e "sample_name\traw_reads_r1\traw_reads_r2" > "$output"
 

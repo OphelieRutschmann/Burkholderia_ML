@@ -125,26 +125,24 @@ rule build_snpeff_db:
     shell:
         """
         mkdir -p {params.outdir}/data/ref
-        
+
         # Symlink files to snpEff expected structure
         ln -sf $(realpath {input.gbff}) {params.outdir}/data/ref/genes.gbk
         ln -sf $(realpath {input.ref}) {params.outdir}/data/ref/sequences.fa
-        
+
         # Create snpEff config
         echo "data.dir = $(realpath {params.outdir})/data" > {params.outdir}/snpEff.config
         echo "ref.genome : ref" >> {params.outdir}/snpEff.config
-        
+
         # Build database
-        
         snpEff build -genbank -v \
             -c {params.outdir}/snpEff.config \
             -noCheckCds \
             -noCheckProtein \
             ref
-        
+
         touch {output.db_done}
         """
-
 rule core_snp_alignment:
     input:
         ref="databases/genomes/refgenome/ref_genome.fasta",
@@ -220,42 +218,6 @@ rule core_snp_feature_matrix:
         python workflow/scripts/convert_snp_to_matrix.py \
             --alignment {input.aln} \
             --output {output.matrix}
-        """
-
-rule build_snpeff_db:
-    input:
-        ref="databases/genomes/refgenome/ref_genome.fasta",
-        gbff="databases/genomes/refgenome/ref_genome.gbff"
-    output:
-        db_done="databases/snpeff_db/.db_built"
-    params:
-        outdir="databases/snpeff_db"
-    resources:
-        runtime=config["resources"]["general"]["runtime"],
-        mem_mb=config["resources"]["general"]["mem_mb"],
-        cpus_per_task=1
-    container:
-        "workflow/containers/snpEff.sif"
-    shell:
-        """
-        mkdir -p {params.outdir}/data/ref
-
-        # Symlink files to snpEff expected structure
-        ln -sf $(realpath {input.gbff}) {params.outdir}/data/ref/genes.gbk
-        ln -sf $(realpath {input.ref}) {params.outdir}/data/ref/sequences.fa
-
-        # Create snpEff config
-        echo "data.dir = $(realpath {params.outdir})/data" > {params.outdir}/snpEff.config
-        echo "ref.genome : ref" >> {params.outdir}/snpEff.config
-
-        # Build database
-        snpEff build -genbank -v \
-            -c {params.outdir}/snpEff.config \
-            -noCheckCds \
-            -noCheckProtein \
-            ref
-
-        touch {output.db_done}
         """
 
 rule core_snps_to_vcf:
