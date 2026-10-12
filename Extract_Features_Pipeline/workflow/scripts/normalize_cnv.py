@@ -28,11 +28,11 @@ def normalize_cnv_depth(input_file, output_file):
         names=["chrom", "start", "end", "region", "depth"]
     )
 
-    # Use only CDS and gene features to estimate a stable per-chromosome coverage
+    # Only use CDS and gene features to estimate coverage per-chromosome
     # Don't consider promoter regions
     mask = (
-        df["region"].str.contains("__CDS", na=False)
-        | df["region"].str.contains("__gene", na=False)
+        df["region"].str.contains("__CDS|__gene", na=False)
+        & ~df["region"].str.endswith("__promoter", na=False)
     )
     medians = df.loc[mask].groupby("chrom")["depth"].median().to_dict()
 
