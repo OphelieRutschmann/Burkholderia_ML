@@ -1,6 +1,9 @@
 # Burkholderia_ML
 Predicting co-trimoxazole (trimethoprim–sulfamethoxazole, **SXT**) resistance in *Burkholderia pseudomallei* from whole-genome sequencing data using machine learning.
 
+## Author
+Ophélie Hofer-Rutschmann
+
 ## Introduction
 *Burkholderia pseudomallei* is a Gram-negative bacterium and the causative agent of melioidosis, a disease with a mortality rate exceeding 50%. Treatment is complicated by the bacterium’s many intrinsic and acquired antibiotic resistances, and determining the resistance profile of a clinical strain is a major bottleneck. Current laboratory-based susceptibility tests are slow and labor-intensive, and sequencing combined with *in silico* resitance prediction is largely ineffective for *B. pseudomallei*. Indeed, unlike most bacteria, *B. pseudomallei* develops resistances through gene copy number variations (CNVs) and single-nucleotide polymorphisms (SNPs) rather than through the acquisition of new resistance genes that could be detected using existing *in silico* resistance prediction tools.
 
