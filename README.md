@@ -29,14 +29,6 @@ Alltogether, the data consists of **282 genomes** with corresponding antibiotic 
 
 The raw sequencing reads was downloaded from SRA and relevant features from the data were extracted using a custom Snakemake pipeline. 
 
-| File | Content |
-|---|---|
-| `genome_metadata.csv` | Raw metadata (accession, source, species, resistance profile, ST, location) |
-| `genome_metadata_cleaned.csv` | Filtered metadata for the 227 isolates used |
-| `itol_SXT` | iTOL binary dataset to annotate the phylogeny with SXT resistance |
-
----
-
 ## Repository structure
 
 ```
