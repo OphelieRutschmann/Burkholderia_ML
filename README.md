@@ -204,7 +204,3 @@ Nested cross-validation with 10 ST-separated outer test folds (`cnv_ML/nested_cv
 Per-model results and hyperparameters are in `cnv_ML/Results/model_results.csv`.
 
 ---
-
-## Author
-
-Ophélie Rutschmann
