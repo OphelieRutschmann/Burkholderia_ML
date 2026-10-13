@@ -1,4 +1,4 @@
-,genome_name,source,species,resistance_profile,ST,location
+accession,genome_name,source,species,resistance_profile,ST,location
 SRR3404582,SRR3404582,Patient,B. pseudomallei,"Resistant to SXT; Not determined: CAZ, AMC, MEM",,
 SRR3404597,SRR3404597,Patient,B. pseudomallei,"Resistant to SXT; Not determined: CAZ, AMC, MEM",,
 SRR3404599,SRR3404599,Patient,B. pseudomallei,"Resistant to SXT; Not determined: CAZ, AMC, MEM",,
