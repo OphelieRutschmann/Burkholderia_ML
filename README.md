@@ -35,26 +35,26 @@ The raw sequencing reads was downloaded from SRA and relevant features from the 
 Burkholderia_ML/
 ├── Extract_Features_Pipeline/      # Snakemake feature-extraction workflow
 │   ├── Snakefile
-│   ├── run_pipeline.sh             # launches the workflow on SLURM
-│   ├── create_samplesheet.sh       # builds samples.tsv from a reads folder
+│   ├── run_pipeline.sh             # launches the pipeline on SLURM
+│   ├── create_samplesheet.sh       # builds samples.tsv from the raw reads folder
 │   ├── pull_containers.sh          # pulls/builds Singularity images
-│   ├── Burkholderia_ML.yml         # conda env (Snakemake 7.32 + Apptainer)
+│   ├── Burkholderia_ML.yml         # conda env (Snakemake 7.32)
 │   └── workflow/
 │       ├── modules/                # QC, databases, SNPs, SVs, CNVs, phylogeny
 │       ├── rules/common.smk        # shared helper functions
-│       ├── scripts/                # Python helpers (matrix conversion, normalisation…)
+│       ├── scripts/                # Python helpers (matrix conversion, normalisation, etc.)
 │       └── containers/python_env.def
 ├── snp_ML/                         # ML on core-genome SNP features
-│   ├── Data/                       # snps.tsv, snps_cleaned.csv, SXT_cleaned.csv …
+│   ├── Data/                       
 │   ├── Figures/
-│   └── 01_… – 09_….ipynb
-├── cnv_ML/                         # ML on copy-number (read-depth) features
-│   ├── Data/                       # cnv_depth_matrix.tsv, train/test splits, clusters
-│   ├── Figures/                    # ROC, confusion matrices, biomarkers, annotated trees
-│   ├── Results/                    # model metrics, predictions, biomarker rankings
+│   ├── Results/ 
+│   └── 01_… – 09_….ipynb           # Analysis notebooks
+├── cnv_ML/                         # ML on copy-number features
+│   ├── Data/                       
+│   ├── Figures/                    
+│   ├── Results/                    
 │   ├── nested_cv_results.csv
-│   └── 01_… – 10_….ipynb
-├── Benchmarking/AbR_reports/       # per-isolate rule-based AMR prediction reports
+│   └── 01_… – 10_….ipynb           # Analysis notebooks
 ├── genome_metadata*.csv
 └── itol_SXT
 ```
