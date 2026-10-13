@@ -170,7 +170,7 @@ bash run_pipeline.sh -s samples.tsv
 
 Both the SNP and CNV analyses follow the same structure and should be run in numerical order.
 
-| Step | `notebook Name/` |
+| Step | Notebook |
 |---|---|
 | Exploration & cleaning | `01_data_exploration_cleaning` |
 | ST-aware train/test split | `02_splitting_data` |
