@@ -43,7 +43,7 @@ echo "Pulling bakta image"
 singularity pull "$CONT_DIR/${OUTPUT[bakta]}" "${IMAGE[bakta]}"
 
 echo "Pulling seqkit image"
-singularity pull "$CONT_DIR/${OUTPUT[seqkit]}" "${IMAGE[seqkit]}"
+#singularity pull "$CONT_DIR/${OUTPUT[seqkit]}" "${IMAGE[seqkit]}"
 
 echo "Pulling bwa image"
 singularity pull "$CONT_DIR/${OUTPUT[bwa]}" "${IMAGE[bwa]}"
@@ -52,37 +52,37 @@ echo "Pulling samtools image"
 singularity pull "$CONT_DIR/${OUTPUT[samtools]}" "${IMAGE[samtools]}"
 
 echo "Pulling pilon image"
-singularity pull "$CONT_DIR/${OUTPUT[pilon]}" "${IMAGE[pilon]}"
+#singularity pull "$CONT_DIR/${OUTPUT[pilon]}" "${IMAGE[pilon]}"
 
 echo "Pulling ncbi-genome-download image"
-singularity pull "$CONT_DIR/${OUTPUT[ncbi]}" "${IMAGE[ncbi]}"
+#singularity pull "$CONT_DIR/${OUTPUT[ncbi]}" "${IMAGE[ncbi]}"
 
 echo "Pulling fastp image"
 singularity pull "$CONT_DIR/${OUTPUT[fastp]}" "${IMAGE[fastp]}"
 
 echo "Pulling fastqc image"
-singularity pull "$CONT_DIR/${OUTPUT[fastqc]}" "${IMAGE[fastqc]}"
+# singularity pull "$CONT_DIR/${OUTPUT[fastqc]}" "${IMAGE[fastqc]}"
 
 echo "Pulling multiqc image"
 singularity pull "$CONT_DIR/${OUTPUT[multiqc]}" "${IMAGE[multiqc]}"
 
 echo "Pulling bcftools image"
-singularity pull "$CONT_DIR/${OUTPUT[bcftools]}" "${IMAGE[bcftools]}"
+# singularity pull "$CONT_DIR/${OUTPUT[bcftools]}" "${IMAGE[bcftools]}"
 
 echo "Building python_env image"
 singularity build "$CONT_DIR/${OUTPUT[python_env]}" "${IMAGE[python_env]}"
 
 echo "Pulling snippy image"
-singularity pull "$CONT_DIR/${OUTPUT[snippy]}" "${IMAGE[snippy]}"
+# singularity pull "$CONT_DIR/${OUTPUT[snippy]}" "${IMAGE[snippy]}"
 
 echo "Pulling snpEff image"
-singularity pull "$CONT_DIR/${OUTPUT[snpEff]}" "${IMAGE[snpEff]}"
+# singularity pull "$CONT_DIR/${OUTPUT[snpEff]}" "${IMAGE[snpEff]}"
 
 echo "Pulling picard image"
 singularity pull "$CONT_DIR/${OUTPUT[picard]}" "${IMAGE[picard]}"
 
 echo "Pulling pindel image"
-singularity pull "$CONT_DIR/${OUTPUT[pindel]}" "${IMAGE[pindel]}"
+# singularity pull "$CONT_DIR/${OUTPUT[pindel]}" "${IMAGE[pindel]}"
 
 echo "Pulling bedtools image"
 singularity pull "$CONT_DIR/${OUTPUT[bedtools]}" "${IMAGE[bedtools]}"
@@ -91,17 +91,17 @@ echo "Pulling mosdepth image"
 singularity pull "$CONT_DIR/${OUTPUT[mosdepth]}" "${IMAGE[mosdepth]}"
 
 echo "Pulling freebayes image"
-singularity pull "$CONT_DIR/${OUTPUT[freebayes]}" "${IMAGE[freebayes]}"
+# singularity pull "$CONT_DIR/${OUTPUT[freebayes]}" "${IMAGE[freebayes]}"
 
 echo "Pulling ariba image"
-singularity pull "$CONT_DIR/${OUTPUT[ariba]}" "${IMAGE[ariba]}"
+# singularity pull "$CONT_DIR/${OUTPUT[ariba]}" "${IMAGE[ariba]}"
 
 echo "Pulling gubbins image"
-singularity pull "$CONT_DIR/${OUTPUT[gubbins]}" "${IMAGE[gubbins]}"
+# singularity pull "$CONT_DIR/${OUTPUT[gubbins]}" "${IMAGE[gubbins]}"
 
 echo "Pulling iqtree image"
-singularity pull "$CONT_DIR/${OUTPUT[iqtree]}" "${IMAGE[iqtree]}"
+# singularity pull "$CONT_DIR/${OUTPUT[iqtree]}" "${IMAGE[iqtree]}"
 
 echo "Building python container"
-singularity build "$CONT_DIR/python_env.sif" "$CONT_DIR/python_env.def" # use --remote with access token if this doesn't work. 
+singularity build "$CONT_DIR/python.sif" "$CONT_DIR/python_env.def" # use --remote with access token if this doesn't work. 
 
