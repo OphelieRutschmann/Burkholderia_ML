@@ -190,17 +190,3 @@ In each of the model-specific notebook, a basic model is trained, then hyperpara
 ```bash
 pip install pandas numpy scipy scikit-learn xgboost matplotlib seaborn matplotlib-venn prince jupyter
 ```
-
-### Results (CNV features)
-
-Nested cross-validation with 10 ST-separated outer test folds (`cnv_ML/nested_cv_results.csv`):
-
-| Model | Accuracy | AUC |
-|---|---|---|
-| Logistic regression | 0.937 ± 0.077 | 0.971 ± 0.061 |
-| XGBoost | 0.936 ± 0.082 | 0.975 ± 0.053 |
-| KNN | 0.900 ± 0.073 | 0.979 ± 0.041 |
-
-Per-model results and hyperparameters are in `cnv_ML/Results/model_results.csv`.
-
----
