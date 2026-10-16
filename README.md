@@ -190,4 +190,3 @@ In each of the model-specific notebook, a basic model is trained, then hyperpara
 ```bash
 pip install pandas numpy scipy scikit-learn xgboost matplotlib seaborn matplotlib-venn prince jupyter
 ```
----
