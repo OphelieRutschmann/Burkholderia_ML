@@ -1,0 +1,170 @@
+accession	genome_name	source	species	ST	location	resistance_profile
+SRR27387649	MBPC195	Patient	B. pseudomallei	70	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387655	EPMN023	Patient	B. pseudomallei	Novel ST	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387656	EPMN019	Patient	B. pseudomallei	15	Thailand:Nakhon Ratchasima	Resistant to MEM; Susceptible to AMC, CAZ, SXT
+SRR27387657	EPMN016	Patient	B. pseudomallei	Novel ST	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387658	EPMN011	Patient	B. pseudomallei	84	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387659	EPMN007	Patient	B. pseudomallei	1790	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387660	EPMN002	Patient	B. pseudomallei	70	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387661	EPMD179	Patient	B. pseudomallei	512	Thailand:Mukdahan	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387662	EPMD174	Patient	B. pseudomallei	1315	Thailand:Mukdahan	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387663	EPMD169	Patient	B. pseudomallei	84	Thailand:Mukdahan	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387664	EPMD164	Patient	B. pseudomallei	Novel ST	Thailand:Mukdahan	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387665	BpSRW008	Soil	B. pseudomallei	Novel ST	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387666	EPMD158	Patient	B. pseudomallei	32	Thailand:Mukdahan	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387668	EPMD148	Patient	B. pseudomallei	526	Thailand:Mukdahan	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387669	EPMD145	Patient	B. pseudomallei	58	Thailand:Mukdahan	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387670	EPMD140	Patient	B. pseudomallei	70	Thailand:Mukdahan	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387671	EPMD136	Patient	B. pseudomallei	206	Thailand:Mukdahan	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387672	EPMD132	Patient	B. pseudomallei	884	Thailand:Mukdahan	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387673	EPMD128	Patient	B. pseudomallei	306	Thailand:Mukdahan	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387674	EPMD123	Patient	B. pseudomallei	70	Thailand:Mukdahan	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387676	BpSRW007	Soil	B. pseudomallei	Novel ST	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387677	EPMD115	Patient	B. pseudomallei	535	Thailand:Mukdahan	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387678	EPMD112	Patient	B. pseudomallei	219	Thailand:Mukdahan	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387679	EPMD109	Patient	B. pseudomallei	535	Thailand:Mukdahan	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387680	EPMD106	Patient	B. pseudomallei	208	Thailand:Mukdahan	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387681	EPCP198	Patient	B. pseudomallei	70	Thailand:Chaiyaphum	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387682	EPCP194	Patient	B. pseudomallei	1397	Thailand:Chaiyaphum	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387683	EPCP191	Patient	B. pseudomallei	498	Thailand:Chaiyaphum	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387684	EPCP188	Patient	B. pseudomallei	93	Thailand:Chaiyaphum	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387685	EPCP183	Patient	B. pseudomallei	1051	Thailand:Chaiyaphum	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387686	EPCP174	Patient	B. pseudomallei	376	Thailand:Chaiyaphum	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387693	BpSRW001	Soil	B. pseudomallei	Novel ST	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387698	EPAC034	Patient	B. pseudomallei	32	Thailand:Amnat Charoen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387700	EPAC031	Patient	B. pseudomallei	197	Thailand:Amnat Charoen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387703	EPAC018	Patient	B. pseudomallei	Novel ST	Thailand:Amnat Charoen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387704	BpS060	Soil	B. pseudomallei	Novel ST	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387707	EPAC005	Patient	B. pseudomallei	Novel ST	Thailand:Amnat Charoen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387709	CMH9	Patient	B. pseudomallei	167	Thailand:Maha Sarakham	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387710	CMH34	Patient	B. pseudomallei	10	Thailand:Maha Sarakham	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387711	CMH33	Patient	B. pseudomallei	300	Thailand:Maha Sarakham	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387712	CMH32	Patient	B. pseudomallei	206	Thailand:Maha Sarakham	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387713	CMH3	Patient	B. pseudomallei	521	Thailand:Maha Sarakham	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387714	CMH24	Patient	B. pseudomallei	34	Thailand:Maha Sarakham	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387715	BpAQ06	Water	B. pseudomallei	34	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387716	CMH19	Patient	B. pseudomallei	10	Thailand:Maha Sarakham	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387717	CMH17	Patient	B. pseudomallei	1797	Thailand:Maha Sarakham	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387718	CMH10	Patient	B. pseudomallei	1797	Thailand:Maha Sarakham	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387719	MBPE112	Soil	B. pseudomallei	70	Thailand	Resistant to MEM; Susceptible to AMC, CAZ, SXT
+SRR27387720	MBPE103	Soil	B. pseudomallei	10	Thailand	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387725	MBPC76	Patient	B. pseudomallei	Novel ST	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387729	MBPC7	Patient	B. pseudomallei	495	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387738	CKK71	Patient	B. pseudomallei	512	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387749	CKK65	Patient	B. pseudomallei	206	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387757	BpZR04	Animal Organ	B. pseudomallei	208	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387768	BpZR03	Animal Organ	B. pseudomallei	34	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387779	BpSRW015	Soil	B. pseudomallei	Novel ST	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387783	BpSRW006	Soil	B. pseudomallei	Novel ST	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387784	EPCP170	Patient	B. pseudomallei	Novel ST	Thailand:Chaiyaphum	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387785	EPCP166	Patient	B. pseudomallei	70	Thailand:Chaiyaphum	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387787	EPCP160	Patient	B. pseudomallei	1257	Thailand:Chaiyaphum	Resistant to MEM; Susceptible to AMC, CAZ, SXT
+SRR27387788	EPCP157	Patient	B. pseudomallei	99	Thailand:Chaiyaphum	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387789	EPCP153	Patient	B. pseudomallei	Novel ST	Thailand:Chaiyaphum	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387790	EPCP148	Patient	B. pseudomallei	70	Thailand:Chaiyaphum	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387791	EPCP144	Patient	B. pseudomallei	1397	Thailand:Chaiyaphum	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387792	EPCP140	Patient	B. pseudomallei	Novel ST	Thailand:Chaiyaphum	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387793	EPCP136	Patient	B. pseudomallei	Novel ST	Thailand:Chaiyaphum	Susceptible to CAZ, MEM, SXT; Not determined: AMC
+SRR27387794	BpSRW005	Soil	B. pseudomallei	Novel ST	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387795	EPCP131	Patient	B. pseudomallei	Novel ST	Thailand:Chaiyaphum	Susceptible to CAZ, MEM, SXT; Not determined: AMC
+SRR27387796	EPCP126	Patient	B. pseudomallei	203	Thailand:Chaiyaphum	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387797	EPCP124	Patient	B. pseudomallei	70	Thailand:Chaiyaphum	Susceptible to CAZ, MEM, SXT; Not determined: AMC
+SRR27387798	EPCP121	Patient	B. pseudomallei	315	Thailand:Chaiyaphum	Susceptible to CAZ, MEM, SXT; Not determined: AMC
+SRR27387799	EPCP117	Patient	B. pseudomallei	Novel ST	Thailand:Chaiyaphum	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387800	EPCP113	Patient	B. pseudomallei	Novel ST	Thailand:Chaiyaphum	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387801	EPCP110	Patient	B. pseudomallei	Novel ST	Thailand:Chaiyaphum	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387802	EPCP108	Patient	B. pseudomallei	Novel ST	Thailand:Chaiyaphum	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387803	EPCP104	Patient	B. pseudomallei	203	Thailand:Chaiyaphum	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387804	EPCP102	Patient	B. pseudomallei	93	Thailand:Chaiyaphum	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387805	BpSRW004	Soil	B. pseudomallei	70	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387806	EPBR084	Patient	B. pseudomallei	167	Thailand:Buri Ram	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387807	EPBR081	Patient	B. pseudomallei	498	Thailand:Buri Ram	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387808	EPBR076	Patient	B. pseudomallei	298	Thailand:Buri Ram	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387809	EPBR072	Patient	B. pseudomallei	205	Thailand:Buri Ram	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387810	EPBR068	Patient	B. pseudomallei	228	Thailand:Buri Ram	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387812	EPBR058	Patient	B. pseudomallei	300	Thailand:Buri Ram	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387813	EPBR053	Patient	B. pseudomallei	441	Thailand:Buri Ram	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387853	BpAQ04	Water	B. pseudomallei	Novel ST	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387875	CKK89	Patient	B. pseudomallei	208	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387881	MBPC4	Patient	B. pseudomallei	68	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387890	MBPC361	Patient	B. pseudomallei	70	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387893	MBPC359	Patient	B. pseudomallei	211	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387894	MBPC357	Patient	B. pseudomallei	650	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387897	MBPC345	Patient	B. pseudomallei	70	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387937	BpZR08	Animal Organ	B. pseudomallei	512	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387943	EPMN140	Patient	B. pseudomallei	70	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387944	EPMN133	Patient	B. pseudomallei	208	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387947	EPMN120	Patient	B. pseudomallei	306	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387948	EPMN116	Patient	B. pseudomallei	16	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387949	EPMN112	Patient	B. pseudomallei	205	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387951	EPMN109	Patient	B. pseudomallei	99	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387952	BpSRW011	Soil	B. pseudomallei	507	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387954	EPMN105	Patient	B. pseudomallei	46	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387956	EPMN101	Patient	B. pseudomallei	526	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387957	EPMN095	Patient	B. pseudomallei	34	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387958	EPMN090	Patient	B. pseudomallei	16	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387959	EPMN086	Patient	B. pseudomallei	54	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387960	EPMN082	Patient	B. pseudomallei	1827	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387962	EPMN078	Patient	B. pseudomallei	511	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387963	BpSRW010	Soil	B. pseudomallei	Novel ST	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387966	EPMN060	Patient	B. pseudomallei	Novel ST	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387967	EPMN054	Patient	B. pseudomallei	307	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387968	EPMN050	Patient	B. pseudomallei	163	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387969	EPMN046	Patient	B. pseudomallei	376	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387970	EPMN041	Patient	B. pseudomallei	315	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387971	EPMN037	Patient	B. pseudomallei	Novel ST	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387972	EPMN033	Patient	B. pseudomallei	167	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387973	EPMN028	Patient	B. pseudomallei	93	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387974	BpSRW009	Soil	B. pseudomallei	Novel ST	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387975	EPBR042	Patient	B. pseudomallei	10	Thailand:Buri Ram	Resistant to SXT; Intermediate to AMC; Susceptible to CAZ, MEM
+SRR27387976	BpSRW003	Soil	B. pseudomallei	512	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387980	EPBR034	Patient	B. pseudomallei	Novel ST	Thailand:Buri Ram	Resistant to MEM; Susceptible to CAZ, SXT; Not determined: AMC
+SRR27387981	EPBR031	Patient	B. pseudomallei	Novel ST	Thailand:Buri Ram	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387982	EPBR027	Patient	B. pseudomallei	949	Thailand:Buri Ram	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387983	EPBR024	Patient	B. pseudomallei	507	Thailand:Buri Ram	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387984	EPBR020	Patient	B. pseudomallei	197	Thailand:Buri Ram	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387986	EPBR014	Patient	B. pseudomallei	Novel ST	Thailand:Buri Ram	Susceptible to AMC, CAZ, MEM, SXT
+SRR27387989	BpSRW002	Soil	B. pseudomallei	Novel ST	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388030	MBPC501	Patient	B. pseudomallei	Novel ST	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388035	MBPC483	Patient	B. pseudomallei	Novel ST	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388041	MBPC455	Patient	B. pseudomallei	1051	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388049	MBPC422	Patient	B. pseudomallei	56	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388054	MBPC411	Patient	B. pseudomallei	949	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388056	MBPC404	Patient	B. pseudomallei	157	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388063	BpZR07	Animal Organ	B. pseudomallei	34	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388068	EPNP212	Patient	B. pseudomallei	70	Thailand:Nakhon Phanom	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388071	EPNP199	Patient	B. pseudomallei	Novel ST	Thailand:Nakhon Phanom	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388072	EPNP195	Patient	B. pseudomallei	70	Thailand:Nakhon Phanom	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388073	EPNP190	Patient	B. pseudomallei	498	Thailand:Nakhon Phanom	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388074	BpZR06	Animal Organ	B. pseudomallei	93	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388085	BpZR05	Animal Organ	B. pseudomallei	70	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388097	BpSRW014	Soil	B. pseudomallei	Novel ST	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388106	EPMN198	Patient	B. pseudomallei	219	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388107	EPMN195	Patient	B. pseudomallei	309	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388108	BpSRW013	Soil	B. pseudomallei	Novel ST	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388111	EPMN186	Patient	B. pseudomallei	46	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388113	EPMN178	Patient	B. pseudomallei	46	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388115	EPMN170	Patient	B. pseudomallei	34	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388116	EPMN166	Patient	B. pseudomallei	1789	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388117	EPMN163	Patient	B. pseudomallei	Novel ST	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388118	EPMN157	Patient	B. pseudomallei	34	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388119	EPMN152	Patient	B. pseudomallei	167	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388120	BpSRW012	Soil	B. pseudomallei	507	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388121	EPMN148	Patient	B. pseudomallei	93	Thailand:Nakhon Ratchasima	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388149	MBPE155	Soil	B. pseudomallei	70	Thailand	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388150	MBPE149	Soil	B. pseudomallei	70	Thailand	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388152	MBPE138	Soil	B. pseudomallei	70	Thailand	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388153	MBPE128	Soil	B. pseudomallei	70	Thailand	Resistant to MEM, SXT; Susceptible to AMC, CAZ
+SRR27388160	MBPC618	Patient	B. pseudomallei	386	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388162	MBPC613	Patient	B. pseudomallei	70	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388164	MBPC610	Patient	B. pseudomallei	381	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388166	MBPC607	Patient	B. pseudomallei	650	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388169	MBPC600	Patient	B. pseudomallei	155	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388175	BpAQ03	Water	B. pseudomallei	Novel ST	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388177	MBPC571	Patient	B. pseudomallei	167	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388179	MBPC568	Patient	B. pseudomallei	34	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388184	MBPC534	Patient	B. pseudomallei	70	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR27388190	MBPC291	Patient	B. pseudomallei	23	Thailand:Khon Kaen	Susceptible to AMC, CAZ, MEM, SXT
+SRR34176025	B230	Patient	B. pseudomallei	177	Thailand:Ubon Ratchathani	Resistant to CAZ; Susceptible to AMC, MEM, SXT
+SRR34176026	B130	Patient	B. pseudomallei	219	Thailand:Ubon Ratchathani	Resistant to CAZ, MEM; Susceptible to SXT; Not determined: AMC
+SRR34176027	B110	Patient	B. pseudomallei	219	Thailand:Ubon Ratchathani	Resistant to MEM; Intermediate to CAZ; Susceptible to SXT; Not determined: AMC
