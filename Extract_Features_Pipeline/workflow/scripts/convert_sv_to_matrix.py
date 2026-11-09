@@ -1,13 +1,15 @@
 """
-extract_core_svs.py
--------------------
-Extract core SVs (present in most strains) from merged SV VCF.
+convert_sv_to_matrix.py
+-----------------------
+Build a sample x SV presence/absence matrix from the merged SV VCF.
 
-Core SVs are those with complete data (non-missing) across all samples,
-avoiding confounding from variable presence of genomic regions.
+The merged VCF is produced with `bcftools merge --missing-to-ref`, so an SV
+that was not called in a sample is encoded as absent (0). Any remaining
+missing genotypes (-1) cause the SV to be dropped. SVs that are present in
+all samples or in none carry no information and are dropped as well.
 
 Usage:
-    python extract_core_svs.py \
+    python convert_sv_to_matrix.py \
         --vcf results/03_SV/merged_svs.vcf.gz \
         --output results/svs_core.tsv \
         --metadata results/svs_core_meta.tsv
@@ -20,10 +22,10 @@ import pandas as pd
 
 def extract_core_svs(vcf_path):
     """
-    Extract core SVs (with complete data across all samples) from merged VCF.
+    Extract informative SVs (complete and variable across samples) from merged VCF.
 
     Returns:
-        - sv_df: DataFrame with samples as rows, SVs as columns (0/1 genotypes)
+        - sv_df: DataFrame with samples as rows, SVs as columns (0/1 presence)
         - sv_meta: dict with SV metadata (svtype, svlen)
     """
     vcf = VCF(vcf_path)
@@ -31,53 +33,55 @@ def extract_core_svs(vcf_path):
 
     sv_rows = {}
     sv_meta = {}
-    all_svs = []
 
     for variant in vcf:
-        chrom = variant.CHROM
-        pos = variant.POS
         svtype = variant.INFO.get("SVTYPE", "UNKNOWN")
-        svlen = abs(int(variant.INFO.get("SVLEN", 0)))
+        svlen = abs(int(variant.INFO.get("SVLEN", 0) or 0))
 
-        sv_id = f"sv__{chrom}_{pos}_{svtype}"
-        all_svs.append(sv_id)
+        # CHROM_POS_TYPE alone is not unique (e.g. two deletions of different
+        # length starting at the same position), so include END and the ALT allele.
+        sv_id = f"sv__{variant.CHROM}_{variant.POS}_{variant.end}_{svtype}"
+        if sv_id in sv_rows:
+            sv_id = f"{sv_id}_{'-'.join(variant.ALT)}"
 
         presences = []
         for gt in variant.genotypes:
-            a1, a2 = gt[0], gt[1]
-            present = int(a1 > 0 or a2 > 0) if (a1 != -1 and a2 != -1) else -1
-            presences.append(present)
+            alleles = gt[:-1]  # last element is the phased flag
+            if any(a == -1 for a in alleles):
+                presences.append(-1)
+            else:
+                presences.append(int(any(a > 0 for a in alleles)))
 
         sv_rows[sv_id] = presences
-        sv_meta[sv_id] = {
-            "svtype": svtype,
-            "svlen": svlen
-        }
+        sv_meta[sv_id] = {"svtype": svtype, "svlen": svlen}
 
     vcf.close()
 
-    # Create DataFrame with all SVs
     sv_df_all = pd.DataFrame(sv_rows, index=samples)
     sv_df_all.columns = sv_df_all.columns.astype(str)
     sv_df_all.index.name = "sample"
 
-    # Filter to core SVs (complete data, no missing values)
-    missing_per_sv = (sv_df_all == -1).sum(axis=0)
-    core_svs = sv_df_all.columns[missing_per_sv == 0]
+    # Keep SVs with complete data
+    complete = (sv_df_all == -1).sum(axis=0) == 0
+    # Keep SVs that vary across samples (not present in all / none)
+    n_present = sv_df_all.sum(axis=0)
+    variable = (n_present > 0) & (n_present < len(samples))
 
-    sv_df = sv_df_all[core_svs].copy()
-    sv_meta_core = {sv_id: sv_meta[sv_id] for sv_id in core_svs if sv_id in sv_meta}
+    keep = sv_df_all.columns[complete & variable]
+    sv_df = sv_df_all[keep].copy()
+    sv_meta_core = {sv_id: sv_meta[sv_id] for sv_id in keep}
 
-    print(f"[SV] Total SV events: {len(all_svs)}")
-    print(f"[SV] Core SV events (complete data): {len(core_svs)}")
-    print(f"[SV] Removed {len(all_svs) - len(core_svs)} SVs with missing data")
+    print(f"[SV] Total SV events: {sv_df_all.shape[1]}")
+    print(f"[SV] Removed {(~complete).sum()} SVs with missing data")
+    print(f"[SV] Removed {(complete & ~variable).sum()} invariant SVs")
+    print(f"[SV] Informative SV events kept: {len(keep)}")
     print(f"[SV] Samples: {len(samples)}")
 
     return sv_df, sv_meta_core
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Extract core SVs from merged VCF.")
+    parser = argparse.ArgumentParser(description="Convert merged SV VCF to a presence/absence matrix.")
     parser.add_argument("--vcf", required=True, help="Path to merged SV VCF (merged_svs.vcf.gz)")
     parser.add_argument("--output", required=True, help="Output SV feature matrix (TSV)")
     parser.add_argument("--metadata", required=True, help="Output SV metadata (TSV)")
@@ -88,7 +92,7 @@ def main():
 
     # Save feature matrix
     sv_df.to_csv(args.output, sep="\t")
-    print(f"\nCore SV feature matrix saved to: {args.output}")
+    print(f"\nSV feature matrix saved to: {args.output}")
     print(f"Matrix shape: {sv_df.shape[0]} samples × {sv_df.shape[1]} SVs")
 
     # Save metadata

@@ -53,10 +53,13 @@ rule pindel_config:
             O={output.metrics} \
             H={params.outdir}/insert_histogram.pdf
 
-        # Extract mean insert size from the insert_metrics.txt file (first data line after header)
-        # Extract mean insert size: skip comment lines (#) and the column header line
-        # then take the first field of the first data line.
-        INSERT_SIZE=$(awk 'BEGIN{{FS="\t"}} /^#/{{next}} /^MEDIAN_INSERT_SIZE/{{next}} NF>0{{print int($1); exit}}' {output.metrics})
+        # Extract the mean insert size (what Pindel expects): locate the
+        # MEAN_INSERT_SIZE column in the header line, then read it from the first data line.
+        INSERT_SIZE=$(awk 'BEGIN{{FS="\t"}} /^#/{{next}} /^MEDIAN_INSERT_SIZE/{{for(i=1;i<=NF;i++) if($i=="MEAN_INSERT_SIZE") c=i; next}} c && NF>0{{print int($c); exit}}' {output.metrics})
+        if [ -z "$INSERT_SIZE" ] || [ "$INSERT_SIZE" -le 0 ]; then
+            echo "Could not read MEAN_INSERT_SIZE from {output.metrics}" >&2
+            exit 1
+        fi
 
         echo "insert size: $INSERT_SIZE"
 
@@ -147,22 +150,36 @@ rule index_sv_vcf:
         "workflow/containers/bcftools.sif"
     shell:
         """
-        bcftools view -Oz -o {output.vcf_gz} {input.vcf}
+        # pindel2vcf output is not guaranteed to be coordinate-sorted (tabix requires it)
+        bcftools sort -Oz -o {output.vcf_gz} {input.vcf}
+        tabix -p vcf {output.vcf_gz}
+        """
+
+# Combine the 4 SV types of one sample into a single per-sample VCF.
+# (Merging them directly with bcftools merge would create 4 columns per sample.)
+rule concat_sample_svs:
+    input:
+        vcfs=expand("results/03_SV/{{sample}}/sv_{svtype}.vcf.gz", svtype=["TD", "INV", "LI", "D"]),
+        tbis=expand("results/03_SV/{{sample}}/sv_{svtype}.vcf.gz.tbi", svtype=["TD", "INV", "LI", "D"])
+    output:
+        vcf_gz="results/03_SV/{sample}/sv_all.vcf.gz",
+        tbi="results/03_SV/{sample}/sv_all.vcf.gz.tbi"
+    resources:
+        runtime=config["resources"]["general"]["runtime"],
+        mem_mb=config["resources"]["general"]["mem_mb"],
+        cpus_per_task=config["resources"]["general"]["cpus"]
+    container:
+        "workflow/containers/bcftools.sif"
+    shell:
+        """
+        bcftools concat -a -D {input.vcfs} -Ou | bcftools sort -Oz -o {output.vcf_gz}
         tabix -p vcf {output.vcf_gz}
         """
 
 rule merge_sv_vcfs:
     input:
-        vcfs=lambda _: expand(
-            "results/03_SV/{sample}/sv_{svtype}.vcf.gz",
-            sample=get_passed_samples(),
-            svtype=["TD", "INV", "LI", "D"]
-        ),
-        tbis=lambda _: expand(
-            "results/03_SV/{sample}/sv_{svtype}.vcf.gz.tbi",
-            sample=get_passed_samples(),
-            svtype=["TD", "INV", "LI", "D"]
-        )
+        vcfs=lambda _: expand("results/03_SV/{sample}/sv_all.vcf.gz", sample=get_passed_samples()),
+        tbis=lambda _: expand("results/03_SV/{sample}/sv_all.vcf.gz.tbi", sample=get_passed_samples())
     output:
         merged="results/03_SV/merged_svs.vcf.gz",
         tbi="results/03_SV/merged_svs.vcf.gz.tbi"
@@ -174,7 +191,13 @@ rule merge_sv_vcfs:
         "workflow/containers/bcftools.sif"
     shell:
         """
-        bcftools merge {input.vcfs} -Oz -o {output.merged} --missing-to-ref --force-samples
+        # An SV not called in a sample is treated as absent (0) via --missing-to-ref.
+        # Single input case: bcftools merge needs at least 2 files.
+        if [ $(echo {input.vcfs} | wc -w) -eq 1 ]; then
+            cp {input.vcfs} {output.merged}
+        else
+            bcftools merge {input.vcfs} -Oz -o {output.merged} --missing-to-ref
+        fi
         tabix -p vcf {output.merged}
         """
 
