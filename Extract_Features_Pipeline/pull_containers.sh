@@ -85,7 +85,8 @@ echo "Pulling pindel image"
 # singularity pull "$CONT_DIR/${OUTPUT[pindel]}" "${IMAGE[pindel]}"
 
 echo "Pulling SURVIVOR image"
-singularity pull "$CONT_DIR/${OUTPUT[survivor]}" "${IMAGE[survivor]}"
+# Defaults apply when config/containers.yaml has no 'survivor' entry
+singularity pull "$CONT_DIR/${OUTPUT[survivor]:-survivor.sif}" "${IMAGE[survivor]:-docker://openeuler/survivor:1.0.6-oe2403sp4}"
 
 echo "Pulling bedtools image"
 singularity pull "$CONT_DIR/${OUTPUT[bedtools]}" "${IMAGE[bedtools]}"
