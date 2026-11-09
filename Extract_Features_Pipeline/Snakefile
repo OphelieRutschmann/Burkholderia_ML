@@ -56,15 +56,16 @@ QC_ILLUMINA_OUTPUTS = [
 # Main target rule
 rule all:
     input:
+        # Currently only the SV part is built. Uncomment the lines below to run
+        # the SNP, CNV and phylogeny parts again.
         # QC_ILLUMINA_OUTPUTS,
-        lambda _: expand("results/02_Variant_SNPs/{sample}/snps.filt.vcf.gz", sample=get_passed_samples()),
-        "results/02_Variant_SNPs/core_SNP/core_snps.ann.vcf",
-        # "results/03_SV/merged_svs.vcf.gz",
-        "results/04_CNV/cnv_depth_matrix.tsv",
-        lambda _: expand("results/04_CNV/{sample}/cnv_per_region.tsv", sample=get_passed_samples()),
-        "results/04_Phylogeny/iqtree/iqtree.treefile",
-        # "results/svs_core.tsv"
-        
+        # lambda _: expand("results/02_Variant_SNPs/{sample}/snps.filt.vcf.gz", sample=get_passed_samples()),
+        # "results/02_Variant_SNPs/core_SNP/core_snps.ann.vcf",
+        # "results/04_CNV/cnv_depth_matrix.tsv",
+        # lambda _: expand("results/04_CNV/{sample}/cnv_per_region.tsv", sample=get_passed_samples()),
+        # "results/04_Phylogeny/iqtree/iqtree.treefile",
+        "results/svs_core.tsv"
+
 
 # Use rules from modules with prefixes
 use rule * from databases as databases_*
