@@ -84,6 +84,9 @@ singularity pull "$CONT_DIR/${OUTPUT[picard]}" "${IMAGE[picard]}"
 echo "Pulling pindel image"
 # singularity pull "$CONT_DIR/${OUTPUT[pindel]}" "${IMAGE[pindel]}"
 
+echo "Pulling SURVIVOR image"
+singularity pull "$CONT_DIR/${OUTPUT[survivor]}" "${IMAGE[survivor]}"
+
 echo "Pulling bedtools image"
 singularity pull "$CONT_DIR/${OUTPUT[bedtools]}" "${IMAGE[bedtools]}"
 
