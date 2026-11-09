@@ -71,7 +71,7 @@ rule index_snippy_vcf:
         bcftools view -Oz -o {output.vcf_gz} {input.vcf}
 
         # index
-        tabix -p vcf {output.vcf_gz}
+        bcftools index -t {output.vcf_gz}
         """
 
 rule annotate_ref:

@@ -1,0 +1,51 @@
+# config/config.yaml
+# The `samples` section is overwritten from the sample sheet each time
+# run_pipeline.sh -s <samples.tsv> is run.
+samples:
+  name:
+  - SRR3382162
+  - SRR6075126
+  - SRR2887021
+  - SRR3381885
+  - SRR3381934
+  - SRR5818275
+  - SRR6075113
+  - SRR6075121
+  raw_reads_r1:
+  - /home/ruop/Burkholderia_ML/raw_reads_new/SRR3382162_R1.fastq.gz
+  - /home/ruop/Burkholderia_ML/raw_reads_new/SRR6075126_R1.fastq.gz
+  - /home/ruop/Burkholderia_ML/raw_reads_new/SRR2887021_R1.fastq.gz
+  - /home/ruop/Burkholderia_ML/raw_reads_new/SRR3381885_R1.fastq.gz
+  - /home/ruop/Burkholderia_ML/raw_reads_new/SRR3381934_R1.fastq.gz
+  - /home/ruop/Burkholderia_ML/raw_reads_new/SRR5818275_R1.fastq.gz
+  - /home/ruop/Burkholderia_ML/raw_reads_new/SRR6075113_R1.fastq.gz
+  - /home/ruop/Burkholderia_ML/raw_reads_new/SRR6075121_R1.fastq.gz
+  raw_reads_r2:
+  - /home/ruop/Burkholderia_ML/raw_reads_new/SRR3382162_R2.fastq.gz
+  - /home/ruop/Burkholderia_ML/raw_reads_new/SRR6075126_R2.fastq.gz
+  - /home/ruop/Burkholderia_ML/raw_reads_new/SRR2887021_R2.fastq.gz
+  - /home/ruop/Burkholderia_ML/raw_reads_new/SRR3381885_R2.fastq.gz
+  - /home/ruop/Burkholderia_ML/raw_reads_new/SRR3381934_R2.fastq.gz
+  - /home/ruop/Burkholderia_ML/raw_reads_new/SRR5818275_R2.fastq.gz
+  - /home/ruop/Burkholderia_ML/raw_reads_new/SRR6075113_R2.fastq.gz
+  - /home/ruop/Burkholderia_ML/raw_reads_new/SRR6075121_R2.fastq.gz
+read_type: illumina-PE
+
+# Resources used by every rule (runtime in minutes)
+resources:
+  general:
+    runtime: 6000
+    mem_mb: 60000
+    cpus: 24
+
+# CNV module
+cnv_depth:
+  promoter_window: 200       # bp upstream of each gene/CDS counted as its promoter
+
+# SV module
+sv:
+  max_dist: 100              # max breakpoint distance (bp) to merge calls across samples (SURVIVOR)
+  min_size: 50               # minimum SV length (bp)
+  flank: 500                 # flank size (bp) checked on each side of an SV
+  min_depth: 10              # depth a flank base needs to count as covered
+  min_frac: 0.9              # fraction of flank bases that must reach min_depth

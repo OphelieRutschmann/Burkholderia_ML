@@ -67,10 +67,13 @@ echo "Pulling multiqc image"
 singularity pull "$CONT_DIR/${OUTPUT[multiqc]}" "${IMAGE[multiqc]}"
 
 echo "Pulling bcftools image"
-# singularity pull "$CONT_DIR/${OUTPUT[bcftools]}" "${IMAGE[bcftools]}"
+singularity pull "$CONT_DIR/${OUTPUT[bcftools]}" "${IMAGE[bcftools]}"
 
 echo "Building python_env image"
 singularity build "$CONT_DIR/${OUTPUT[python_env]}" "${IMAGE[python_env]}"
+
+echo "Pulling biopython image"
+singularity pull "$CONT_DIR/${OUTPUT[biopython]}" "${IMAGE[biopython]}"
 
 echo "Pulling snippy image"
 # singularity pull "$CONT_DIR/${OUTPUT[snippy]}" "${IMAGE[snippy]}"
@@ -82,7 +85,7 @@ echo "Pulling picard image"
 singularity pull "$CONT_DIR/${OUTPUT[picard]}" "${IMAGE[picard]}"
 
 echo "Pulling pindel image"
-# singularity pull "$CONT_DIR/${OUTPUT[pindel]}" "${IMAGE[pindel]}"
+singularity pull "$CONT_DIR/${OUTPUT[pindel]}" "${IMAGE[pindel]}"
 
 echo "Pulling SURVIVOR image"
 # Defaults apply when config/containers.yaml has no 'survivor' entry
@@ -107,5 +110,6 @@ echo "Pulling iqtree image"
 # singularity pull "$CONT_DIR/${OUTPUT[iqtree]}" "${IMAGE[iqtree]}"
 
 echo "Building python container"
-singularity build "$CONT_DIR/python.sif" "$CONT_DIR/python_env.def" # use --remote with access token if this doesn't work. 
+# python.sif is built above from config/containers.yaml (python_env). Use this instead if you have python_env.def:
+# singularity build "$CONT_DIR/python.sif" "$CONT_DIR/python_env.def" # use --remote with access token if this doesn't work. 
 

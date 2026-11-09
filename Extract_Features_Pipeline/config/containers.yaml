@@ -1,0 +1,79 @@
+# config/containers.yaml
+# Containers used by the pipeline, pulled by pull_containers.sh into workflow/containers/.
+# To change a tool version, change the link in image:. Keep output: as is, the rules use these file names.
+
+# QC_illumina
+fastqc:
+  image: docker://biocontainers/fastqc:v0.11.9_cv8
+  output: fastqc.sif
+
+fastp:
+  image: docker://staphb/fastp:1.0.1
+  output: fastp.sif
+
+multiqc:
+  image: docker://staphb/multiqc:1.30
+  output: multiqc.sif
+
+bwa:
+  image: docker://biocontainers/bwa:v0.7.17-3-deb_cv1
+  output: bwa.sif
+
+samtools:
+  image: docker://staphb/samtools:1.22.1
+  output: samtools.sif
+
+# databases / annotation (SNP module)
+bakta:
+  image: docker://staphb/bakta:1.11.4-6.0-light
+  output: bakta.sif
+
+# SNP module
+snippy:
+  image: docker://staphb/snippy:4.6.0
+  output: snippy.sif
+
+snpEff:
+  image: docker://staphb/snpeff:5.2f
+  output: snpEff.sif
+
+bcftools:
+  image: docker://staphb/bcftools:1.22
+  output: bcftools.sif
+
+# SV module
+picard:
+  image: docker://broadinstitute/picard:3.4.0
+  output: picard.sif
+
+pindel:
+  image: docker://hydragenetics/pindel:0.2.5b9
+  output: pindel.sif
+
+survivor:
+  image: docker://openeuler/survivor:1.0.6-oe2403sp4
+  output: survivor.sif
+
+# SV and CNV modules
+mosdepth:
+  image: docker://zlskidmore/mosdepth:0.3.12
+  output: mosdepth.sif
+
+# CNV module
+bedtools:
+  image: docker://staphb/bedtools:2.31.1
+  output: bedtools.sif
+
+# Python scripts (biopython + pandas + numpy)
+python_env:
+  image: docker://nanozoo/biopython:1.86--5c34e13
+  output: python.sif
+
+biopython:
+  image: docker://nanozoo/biopython:1.86--5c34e13
+  output: biopython.sif
+
+# Phylogeny
+iqtree:
+  image: docker://staphb/iqtree:1.6.7
+  output: iqtree.sif

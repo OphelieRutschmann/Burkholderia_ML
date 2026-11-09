@@ -1,0 +1,13 @@
+# config/databases.yaml
+# Paths to databases and reference files
+
+# Reference genome used for mapping, coverage, SNP, SV and CNV calling.
+# The files are copied to databases/genomes/refgenome/ when that folder doesn't have them yet.
+# Leave a path empty if the file is already in databases/genomes/refgenome/.
+ref_genome:
+  fasta: ""   # -> databases/genomes/refgenome/ref_genome.fasta (needed by all modules)
+  gbff: ""    # -> databases/genomes/refgenome/ref_genome.gbff  (needed by the SNP and CNV modules only)
+
+# If left empty, the Bakta database is downloaded to databases/bakta_db (SNP module only)
+databases_bakta:
+  bakta_path: ""

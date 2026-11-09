@@ -161,9 +161,9 @@ rule index_sv_vcf:
         "workflow/containers/bcftools.sif"
     shell:
         """
-        # pindel2vcf output is not guaranteed to be coordinate-sorted (tabix requires it)
+        # pindel2vcf output is not guaranteed to be coordinate-sorted (indexing requires it)
         bcftools sort -Oz -o {output.vcf_gz} {input.vcf}
-        tabix -p vcf {output.vcf_gz}
+        bcftools index -t {output.vcf_gz}
         """
 
 # Combine the 4 SV types of one sample into a single per-sample VCF.
@@ -251,7 +251,7 @@ rule index_merged_svs:
             print
         }}' | \
         bcftools view -Oz -o {output.merged}
-        tabix -p vcf {output.merged}
+        bcftools index -t {output.merged}
         """
 
 # BED of the regions flanking each merged SV (left of POS, right of END), clipped to

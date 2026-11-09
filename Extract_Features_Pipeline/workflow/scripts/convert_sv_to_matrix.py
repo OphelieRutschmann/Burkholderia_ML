@@ -25,8 +25,26 @@ Usage:
 """
 
 import argparse
-from cyvcf2 import VCF
+import gzip
 import pandas as pd
+
+
+def read_vcf_records(path):
+    """
+    Yield (ID, INFO dict) for each record of a (bgzipped) VCF.
+    Plain-Python parsing, so no VCF library is needed in the container.
+    """
+    opener = gzip.open if path.endswith(".gz") else open
+    with opener(path, "rt") as f:
+        for line in f:
+            if line.startswith("#"):
+                continue
+            fields = line.rstrip("\n").split("\t")
+            info = {}
+            for item in fields[7].split(";"):
+                key, _, value = item.partition("=")
+                info[key] = value if value else True
+            yield fields[2], info
 
 
 def read_flank_coverage(path):
@@ -54,10 +72,8 @@ def extract_core_svs(vcf_path, samples, coverage, min_frac):
     sv_rows = {}
     sv_meta = {}
 
-    vcf = VCF(vcf_path)
-    for variant in vcf:
-        sv_id = variant.ID
-        supp_vec = variant.INFO.get("SUPP_VEC")
+    for sv_id, info in read_vcf_records(vcf_path):
+        supp_vec = info.get("SUPP_VEC")
         if supp_vec is None or len(supp_vec) != len(samples):
             raise ValueError(
                 f"{sv_id}: SUPP_VEC '{supp_vec}' does not match the {len(samples)} samples"
@@ -74,10 +90,9 @@ def extract_core_svs(vcf_path, samples, coverage, min_frac):
 
         sv_rows[sv_id] = values
         sv_meta[sv_id] = {
-            "svtype": variant.INFO.get("SVTYPE", "UNKNOWN"),
-            "svlen": abs(int(variant.INFO.get("SVLEN", 0) or 0)),
+            "svtype": info.get("SVTYPE", "UNKNOWN"),
+            "svlen": abs(int(info.get("SVLEN", 0) or 0)),
         }
-    vcf.close()
 
     sv_df_all = pd.DataFrame(sv_rows, index=samples)
     sv_df_all.index.name = "sample"
