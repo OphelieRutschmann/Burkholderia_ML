@@ -37,6 +37,10 @@ rule ref_genome_fasta:
         fasta="databases/genomes/refgenome/ref_genome.fasta"
     params:
         src=config.get("ref_genome", {}).get("fasta", "")
+    resources:
+        runtime=30,
+        mem_mb=2000,
+        cpus_per_task=1
     shell:
         """
         if [ -z "{params.src}" ] || [ ! -f "{params.src}" ]; then
@@ -52,6 +56,10 @@ rule ref_genome_gbff:
         gbff="databases/genomes/refgenome/ref_genome.gbff"
     params:
         src=config.get("ref_genome", {}).get("gbff", "")
+    resources:
+        runtime=30,
+        mem_mb=2000,
+        cpus_per_task=1
     shell:
         """
         if [ -z "{params.src}" ] || [ ! -f "{params.src}" ]; then
