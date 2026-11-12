@@ -149,7 +149,8 @@ rule pindel2vcf:
 
 rule index_sv_vcf:
     input:
-        vcf="results/03_SV/{sample}/sv_{svtype}.vcf"
+        vcf="results/03_SV/{sample}/sv_{svtype}.vcf",
+        fai="databases/genomes/refgenome/ref_genome.fasta.fai"
     output:
         vcf_gz="results/03_SV/{sample}/sv_{svtype}.vcf.gz",
         tbi="results/03_SV/{sample}/sv_{svtype}.vcf.gz.tbi"
@@ -161,8 +162,9 @@ rule index_sv_vcf:
         "workflow/containers/bcftools.sif"
     shell:
         """
-        # pindel2vcf output is not guaranteed to be coordinate-sorted (indexing requires it)
-        bcftools sort -Oz -o {output.vcf_gz} {input.vcf}
+        # pindel2vcf writes no ##contig header lines, which bcftools needs: add them from the
+        # reference index. Its output is also not guaranteed to be coordinate-sorted.
+        bcftools reheader --fai {input.fai} {input.vcf} | bcftools sort -Oz -o {output.vcf_gz} -
         bcftools index -t {output.vcf_gz}
         """
 
@@ -225,7 +227,8 @@ rule merge_sv_vcfs:
 rule index_merged_svs:
     input:
         raw="results/03_SV/merged_svs.survivor.vcf",
-        samples="results/03_SV/merged_svs.samples.txt"
+        samples="results/03_SV/merged_svs.samples.txt",
+        fai="databases/genomes/refgenome/ref_genome.fasta.fai"
     output:
         merged="results/03_SV/merged_svs.vcf.gz",
         tbi="results/03_SV/merged_svs.vcf.gz.tbi"
@@ -237,7 +240,7 @@ rule index_merged_svs:
         "workflow/containers/bcftools.sif"
     shell:
         """
-        bcftools sort -Ov {input.raw} | \
+        bcftools reheader --fai {input.fai} {input.raw} | bcftools sort -Ov - | \
         awk 'BEGIN{{FS=OFS="\t"}} /^#/{{print; next}} {{
             end=$2; t="NA"
             n=split($8, a, ";")
