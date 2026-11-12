@@ -24,14 +24,14 @@ rule mark_duplicates:
         bai="results/01_alignement/{sample}.dedup.bai",
         metrics="results/01_alignement/{sample}.dedup.metrics.txt"
     resources:
-        runtime=config["resources"]["general"]["runtime"],
-        mem_mb=config["resources"]["general"]["mem_mb"],
-        cpus_per_task=config["resources"]["general"]["cpus"]
+        runtime=res("medium", "runtime"),
+        mem_mb=res("medium", "mem_mb"),
+        cpus_per_task=res("medium", "cpus")
     container:
         "workflow/containers/picard.sif"
     shell:
             """
-            java -jar /usr/picard/picard.jar MarkDuplicates \
+            java -Xmx$(( {resources.mem_mb} * 3 / 4 ))m -jar /usr/picard/picard.jar MarkDuplicates \
                 I={input.bam} \
                 O={output.bam} \
                 M={output.metrics} \
@@ -49,9 +49,9 @@ rule pindel_config:
     params:
         outdir="results/03_SV/{sample}"
     resources:
-        runtime=config["resources"]["general"]["runtime"],
-        mem_mb=config["resources"]["general"]["mem_mb"],
-        cpus_per_task=config["resources"]["general"]["cpus"]
+        runtime=res("medium", "runtime"),
+        mem_mb=res("medium", "mem_mb"),
+        cpus_per_task=res("medium", "cpus")
     container:
         "workflow/containers/picard.sif"
     shell:
@@ -59,7 +59,7 @@ rule pindel_config:
         mkdir -p {params.outdir}
         
         # Compute insert size metrics
-        java -jar /usr/picard/picard.jar CollectInsertSizeMetrics \
+        java -Xmx$(( {resources.mem_mb} * 3 / 4 ))m -jar /usr/picard/picard.jar CollectInsertSizeMetrics \
             I={input.bam} \
             O={output.metrics} \
             H={params.outdir}/insert_histogram.pdf
@@ -83,9 +83,9 @@ rule fasta_index:
     output:
         fai="databases/genomes/refgenome/ref_genome.fasta.fai"
     resources:
-        runtime=config["resources"]["general"]["runtime"],
-        mem_mb=config["resources"]["general"]["mem_mb"],
-        cpus_per_task=config["resources"]["general"]["cpus"]
+        runtime=res("light", "runtime"),
+        mem_mb=res("light", "mem_mb"),
+        cpus_per_task=res("light", "cpus")
     container:
         "workflow/containers/samtools.sif"
     shell:
@@ -107,9 +107,9 @@ rule pindel:
     params:
         prefix="results/03_SV/{sample}/pindel"
     resources:
-        runtime=config["resources"]["general"]["runtime"],
-        mem_mb=config["resources"]["general"]["mem_mb"],
-        cpus_per_task=config["resources"]["general"]["cpus"]
+        runtime=res("heavy", "runtime"),
+        mem_mb=res("heavy", "mem_mb"),
+        cpus_per_task=res("heavy", "cpus")
     container:
         "workflow/containers/pindel.sif"
     shell:
@@ -132,9 +132,9 @@ rule pindel2vcf:
         refname="ref",
         refdate="20240101"
     resources:
-        runtime=config["resources"]["general"]["runtime"],
-        mem_mb=config["resources"]["general"]["mem_mb"],
-        cpus_per_task=config["resources"]["general"]["cpus"]
+        runtime=res("light", "runtime"),
+        mem_mb=res("light", "mem_mb"),
+        cpus_per_task=res("light", "cpus")
     container:
         "workflow/containers/pindel.sif"
     shell:
@@ -155,9 +155,9 @@ rule index_sv_vcf:
         vcf_gz="results/03_SV/{sample}/sv_{svtype}.vcf.gz",
         tbi="results/03_SV/{sample}/sv_{svtype}.vcf.gz.tbi"
     resources:
-        runtime=config["resources"]["general"]["runtime"],
-        mem_mb=config["resources"]["general"]["mem_mb"],
-        cpus_per_task=config["resources"]["general"]["cpus"]
+        runtime=res("light", "runtime"),
+        mem_mb=res("light", "mem_mb"),
+        cpus_per_task=res("light", "cpus")
     container:
         "workflow/containers/bcftools.sif"
     shell:
@@ -181,9 +181,9 @@ rule concat_sample_svs:
     output:
         vcf="results/03_SV/{sample}/sv_all.vcf"
     resources:
-        runtime=config["resources"]["general"]["runtime"],
-        mem_mb=config["resources"]["general"]["mem_mb"],
-        cpus_per_task=config["resources"]["general"]["cpus"]
+        runtime=res("light", "runtime"),
+        mem_mb=res("light", "mem_mb"),
+        cpus_per_task=res("light", "cpus")
     container:
         "workflow/containers/bcftools.sif"
     shell:
@@ -210,9 +210,9 @@ rule merge_sv_vcfs:
         max_dist=SV_MAX_DIST,
         min_size=SV_MIN_SIZE
     resources:
-        runtime=config["resources"]["general"]["runtime"],
-        mem_mb=config["resources"]["general"]["mem_mb"],
-        cpus_per_task=config["resources"]["general"]["cpus"]
+        runtime=res("medium", "runtime"),
+        mem_mb=res("medium", "mem_mb"),
+        cpus_per_task=res("medium", "cpus")
     container:
         "workflow/containers/survivor.sif"
     shell:
@@ -233,9 +233,9 @@ rule index_merged_svs:
         merged="results/03_SV/merged_svs.vcf.gz",
         tbi="results/03_SV/merged_svs.vcf.gz.tbi"
     resources:
-        runtime=config["resources"]["general"]["runtime"],
-        mem_mb=config["resources"]["general"]["mem_mb"],
-        cpus_per_task=config["resources"]["general"]["cpus"]
+        runtime=res("light", "runtime"),
+        mem_mb=res("light", "mem_mb"),
+        cpus_per_task=res("light", "cpus")
     container:
         "workflow/containers/bcftools.sif"
     shell:
@@ -269,9 +269,9 @@ rule sv_flanks:
     params:
         flank=SV_FLANK
     resources:
-        runtime=config["resources"]["general"]["runtime"],
-        mem_mb=config["resources"]["general"]["mem_mb"],
-        cpus_per_task=config["resources"]["general"]["cpus"]
+        runtime=res("light", "runtime"),
+        mem_mb=res("light", "mem_mb"),
+        cpus_per_task=res("light", "cpus")
     container:
         "workflow/containers/bcftools.sif"
     shell:
@@ -299,9 +299,9 @@ rule mosdepth_sv_flanks:
         prefix="results/03_SV/{sample}/flanks",
         min_depth=SV_MIN_DEPTH
     resources:
-        runtime=config["resources"]["general"]["runtime"],
-        mem_mb=config["resources"]["general"]["mem_mb"],
-        cpus_per_task=config["resources"]["general"]["cpus"]
+        runtime=res("medium", "runtime"),
+        mem_mb=res("medium", "mem_mb"),
+        cpus_per_task=res("medium", "cpus")
     container:
         "workflow/containers/mosdepth.sif"
     shell:
@@ -327,9 +327,9 @@ rule extract_core_svs:
         coverage=lambda _: [f"{s}=results/03_SV/{s}/flanks.thresholds.bed.gz" for s in get_passed_samples()],
         min_frac=SV_MIN_FRAC
     resources:
-        runtime=config["resources"]["general"]["runtime"],
-        mem_mb=config["resources"]["general"]["mem_mb"],
-        cpus_per_task=config["resources"]["general"]["cpus"]
+        runtime=res("medium", "runtime"),
+        mem_mb=res("medium", "mem_mb"),
+        cpus_per_task=res("medium", "cpus")
     container:
         "workflow/containers/biopython.sif"
     shell:

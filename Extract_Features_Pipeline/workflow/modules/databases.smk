@@ -38,9 +38,9 @@ rule ref_genome_fasta:
     params:
         src=config.get("ref_genome", {}).get("fasta", "")
     resources:
-        runtime=30,
-        mem_mb=2000,
-        cpus_per_task=1
+        runtime=res("light", "runtime"),
+        mem_mb=res("light", "mem_mb"),
+        cpus_per_task=res("light", "cpus")
     shell:
         """
         if [ -z "{params.src}" ] || [ ! -f "{params.src}" ]; then
@@ -57,9 +57,9 @@ rule ref_genome_gbff:
     params:
         src=config.get("ref_genome", {}).get("gbff", "")
     resources:
-        runtime=30,
-        mem_mb=2000,
-        cpus_per_task=1
+        runtime=res("light", "runtime"),
+        mem_mb=res("light", "mem_mb"),
+        cpus_per_task=res("light", "cpus")
     shell:
         """
         if [ -z "{params.src}" ] || [ ! -f "{params.src}" ]; then

@@ -105,8 +105,7 @@ echo ""
 echo "Starting Snakemake..."
 snakemake \
     --cluster "sbatch --cpus-per-task={resources.cpus_per_task} --mem={resources.mem_mb} --time={resources.runtime} --exclude=hpc-srvbio-01" \
-    --jobs 10 \
-    --resources mem_mb=32000 \
+    --jobs 30 \
     --use-singularity \
     --latency-wait 60 \
     --singularity-args "-B /mnt/nfs -B /home/ruop/ -B ${TMPDIR}:/tmp" \

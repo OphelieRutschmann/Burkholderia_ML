@@ -49,9 +49,9 @@ rule fastp:
     container:
         "workflow/containers/fastp.sif"
     resources:
-        runtime=config["resources"]["general"]["runtime"],
-        mem_mb=config["resources"]["general"]["mem_mb"],
-        cpus_per_task=config["resources"]["general"]["cpus"]
+        runtime=res("medium", "runtime"),
+        mem_mb=res("medium", "mem_mb"),
+        cpus_per_task=res("medium", "cpus")
     shell:
         """
         mkdir -p {params.outdir}
@@ -65,7 +65,8 @@ rule fastp:
             --detect_adapter_for_pe \
             --qualified_quality_phred 30 \
             --html {output.html} \
-            --json {output.json}
+            --json {output.json} \
+            --thread {resources.cpus_per_task}
         """   
 
 rule multiqc:
@@ -75,9 +76,9 @@ rule multiqc:
         report="results/00_QC/multiqc/multiqc_report.html",
         data="results/00_QC/multiqc/multiqc_data/multiqc_fastp.txt"
     resources:
-        runtime=config["resources"]["general"]["runtime"],
-        mem_mb=config["resources"]["general"]["mem_mb"],
-        cpus_per_task=config["resources"]["general"]["cpus"]
+        runtime=res("medium", "runtime"),
+        mem_mb=res("medium", "mem_mb"),
+        cpus_per_task=res("medium", "cpus")
     container:
         "workflow/containers/multiqc.sif"
     shell:
@@ -95,9 +96,9 @@ rule bwa_index:
         pac="databases/genomes/refgenome/ref_genome.fasta.pac",
         sa="databases/genomes/refgenome/ref_genome.fasta.sa"
     resources:
-        runtime=config["resources"]["general"]["runtime"],
-        mem_mb=config["resources"]["general"]["mem_mb"],
-        cpus_per_task=config["resources"]["general"]["cpus"]
+        runtime=res("light", "runtime"),
+        mem_mb=res("light", "mem_mb"),
+        cpus_per_task=res("light", "cpus")
     container:
         "workflow/containers/bwa.sif"
     shell:
@@ -113,11 +114,11 @@ rule bwa:
         ref="databases/genomes/refgenome/ref_genome.fasta",
         index="databases/genomes/refgenome/ref_genome.fasta.ann",
     output:
-        alignement="results/01_alignement/{sample}.aligned.sam"
+        alignement=temp("results/01_alignement/{sample}.aligned.sam")
     resources:
-        runtime=config["resources"]["general"]["runtime"],
-        mem_mb=config["resources"]["general"]["mem_mb"],
-        cpus_per_task=config["resources"]["general"]["cpus"]
+        runtime=res("heavy", "runtime"),
+        mem_mb=res("heavy", "mem_mb"),
+        cpus_per_task=res("heavy", "cpus")
     container:
         "workflow/containers/bwa.sif"
     shell:
@@ -136,27 +137,26 @@ rule coverage:
         bam="results/01_alignement/{sample}.aligned.sorted.bam",      
         bai="results/01_alignement/{sample}.aligned.sorted.bam.bai",
         coverage="results/00_QC/coverage/{sample}/coverage.txt",
-        mapping_stats="results/00_QC/coverage/{sample}/mapping_stats.txt",
-        depth="results/00_QC/{sample}/depth.txt"
+        mapping_stats="results/00_QC/coverage/{sample}/mapping_stats.txt"
     params:
         outdir="results/00_QC/coverage/{sample}",
         alignement_dir="results/01_alignement"
     resources:
-        runtime=config["resources"]["general"]["runtime"],
-        mem_mb=config["resources"]["general"]["mem_mb"],
-        cpus_per_task=config["resources"]["general"]["cpus"]
+        runtime=res("medium", "runtime"),
+        mem_mb=res("medium", "mem_mb"),
+        cpus_per_task=res("medium", "cpus")
     container:
         "workflow/containers/samtools.sif"
     shell:
         """
         mkdir -p {params.outdir}
 
-        samtools view -bS {input.alignement} | samtools sort -o {output.bam}
+        # samtools sort reads SAM directly; -m is memory per thread
+        samtools sort -@ {resources.cpus_per_task} -m 1G -o {output.bam} {input.alignement}
         samtools index {output.bam}
 
         samtools coverage {output.bam} -o {output.coverage}
         samtools flagstat {output.bam} > {output.mapping_stats}
-        samtools depth -a {output.bam} > {output.depth}
         """
 
 checkpoint filter:
@@ -166,8 +166,8 @@ checkpoint filter:
     output:
         "results/00_QC/passed_samples.csv"
     resources:
-        runtime=config["resources"]["general"]["runtime"],
-        mem_mb=config["resources"]["general"]["mem_mb"],
-        cpus_per_task=config["resources"]["general"]["cpus"]
+        runtime=res("light", "runtime"),
+        mem_mb=res("light", "mem_mb"),
+        cpus_per_task=res("light", "cpus")
     script:
         "../scripts/filter_reads.py"
