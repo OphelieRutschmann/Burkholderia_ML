@@ -1,0 +1,11 @@
+model,hyperparameters,test_accuracy,cv_score
+Logistic Regression,"C=0.1000, l1_ratio=0.25",0.54,0.8085858585858586
+K-Nearest Neighbors,k=40,0.38,0.7347619047619047
+Decision Tree,"max_depth=10, min_samples_split=5",0.54,0.7741269841269841
+Support Vector Machine,"kernel=rbf, C=0.1000",0.54,0.7853968253968254
+XGBoost,"max_depth=5, learning_rate=0.05, reg_alpha=0.1, reg_lambda=1.0",0.52,0.774126984126984
+Logistic Regression,"C=0.1000, l1_ratio=0.0",0.7,0.8535353535353536
+K-Nearest Neighbors,k=10,0.48,0.7288888888888889
+Decision Tree,"max_depth=4, min_samples_split=2",0.62,0.6774603174603174
+Support Vector Machine,"kernel=rbf, C=10.0000",0.68,0.8695238095238096
+XGBoost,"max_depth=7, learning_rate=0.05, reg_alpha=0.0, reg_lambda=1.0",0.66,0.796984126984127

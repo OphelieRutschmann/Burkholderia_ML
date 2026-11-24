@@ -22,3 +22,19 @@ def get_passed_samples():
 
     with open("results/00_QC/passed_samples.csv", "r") as f:
         return [line.strip() for line in f if line.strip()]
+
+# Job resources by tier, sized for nodes with 32 CPUs / 128 GB (runtime in minutes):
+#   heavy  - bwa mem, Pindel (2 fit on a node)
+#   medium - fastp, samtools sort, Picard, MultiQC, mosdepth, SURVIVOR, matrix building
+#   light  - small single-threaded steps (indexing, sorting VCFs, copying files)
+# Override a tier by adding it under `resources:` in config/config.yaml, e.g.
+#   resources:
+#     heavy: {runtime: 2880, mem_mb: 32000, cpus: 16}
+RESOURCE_TIERS = {
+    "heavy":  {"runtime": 1440, "mem_mb": 32000, "cpus": 16},
+    "medium": {"runtime": 360,  "mem_mb": 8000,  "cpus": 4},
+    "light":  {"runtime": 120,  "mem_mb": 4000,  "cpus": 1},
+}
+
+def res(tier, key):
+    return config.get("resources", {}).get(tier, RESOURCE_TIERS[tier])[key]
